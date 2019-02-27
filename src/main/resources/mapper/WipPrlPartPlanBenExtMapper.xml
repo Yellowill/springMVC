@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlPartPlanBenExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlPartPlanBenExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+    <id column="BENEFIT_ID" jdbcType="DECIMAL" property="benefitId" />
+    <id column="PLAN_ID" jdbcType="DECIMAL" property="planId" />
+    <id column="PLAN_VERSION_NO" jdbcType="DECIMAL" property="planVersionNo" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="BENEFIT_CODE" jdbcType="VARCHAR" property="benefitCode" />
+    <result column="BENEFIT_NAME" jdbcType="VARCHAR" property="benefitName" />
+    <result column="SUM_INSURED" jdbcType="DECIMAL" property="sumInsured" />
+    <result column="LIMIT" jdbcType="VARCHAR" property="limit" />
+    <result column="POLICY_SI" jdbcType="DECIMAL" property="policySi" />
+    <result column="SUB_LIMIT_TYPE" jdbcType="VARCHAR" property="subLimitType" />
+    <result column="SUB_LIMIT" jdbcType="DECIMAL" property="subLimit" />
+    <result column="DEDUCTIBLE_DAYS" jdbcType="DECIMAL" property="deductibleDays" />
+    <result column="MAX_PAYMENT_DAYS" jdbcType="DECIMAL" property="maxPaymentDays" />
+    <result column="DAILY_PAYMENT_AMT" jdbcType="DECIMAL" property="dailyPaymentAmt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PARTITION_NO, BENEFIT_ID, PLAN_ID, PLAN_VERSION_NO, ACTION_CODE, VERSION_NO, 
+    OBJECT_ID, TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, BENEFIT_CODE, BENEFIT_NAME, 
+    SUM_INSURED, LIMIT, POLICY_SI, SUB_LIMIT_TYPE, SUB_LIMIT, DEDUCTIBLE_DAYS, MAX_PAYMENT_DAYS, 
+    DAILY_PAYMENT_AMT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanBenExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_PLAN_BEN_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BENEFIT_ID = #{benefitId,jdbcType=DECIMAL}
+      and PLAN_ID = #{planId,jdbcType=DECIMAL}
+      and PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL}
+  </select>
+  <select id="selectByContractId" parameterType="Long" resultMap="BaseResultMap" resultType="java.util.List">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_PLAN_BEN_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanBenExtKey">
+    delete from WIP_PRL_PART_PLAN_BEN_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BENEFIT_ID = #{benefitId,jdbcType=DECIMAL}
+      and PLAN_ID = #{planId,jdbcType=DECIMAL}
+      and PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlPartPlanBenExt">
+    insert into WIP_PRL_PART_PLAN_BEN_EXT (CONTRACT_ID, PARTITION_NO, BENEFIT_ID, 
+      PLAN_ID, PLAN_VERSION_NO, ACTION_CODE, 
+      VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+      PREVIOUS_VERSION, REVERSING_VERSION, BENEFIT_CODE, 
+      BENEFIT_NAME, SUM_INSURED, LIMIT, 
+      POLICY_SI, SUB_LIMIT_TYPE, SUB_LIMIT, 
+      DEDUCTIBLE_DAYS, MAX_PAYMENT_DAYS, DAILY_PAYMENT_AMT
+      )
+    values (#{contractId,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}, #{benefitId,jdbcType=DECIMAL}, 
+      #{planId,jdbcType=DECIMAL}, #{planVersionNo,jdbcType=DECIMAL}, #{actionCode,jdbcType=CHAR}, 
+      #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, #{topIndicator,jdbcType=CHAR}, 
+      #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, #{benefitCode,jdbcType=VARCHAR}, 
+      #{benefitName,jdbcType=VARCHAR}, #{sumInsured,jdbcType=DECIMAL}, #{limit,jdbcType=VARCHAR}, 
+      #{policySi,jdbcType=DECIMAL}, #{subLimitType,jdbcType=VARCHAR}, #{subLimit,jdbcType=DECIMAL}, 
+      #{deductibleDays,jdbcType=DECIMAL}, #{maxPaymentDays,jdbcType=DECIMAL}, #{dailyPaymentAmt,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanBenExt">
+    insert into WIP_PRL_PART_PLAN_BEN_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+      <if test="benefitId != null">
+        BENEFIT_ID,
+      </if>
+      <if test="planId != null">
+        PLAN_ID,
+      </if>
+      <if test="planVersionNo != null">
+        PLAN_VERSION_NO,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="benefitCode != null">
+        BENEFIT_CODE,
+      </if>
+      <if test="benefitName != null">
+        BENEFIT_NAME,
+      </if>
+      <if test="sumInsured != null">
+        SUM_INSURED,
+      </if>
+      <if test="limit != null">
+        LIMIT,
+      </if>
+      <if test="policySi != null">
+        POLICY_SI,
+      </if>
+      <if test="subLimitType != null">
+        SUB_LIMIT_TYPE,
+      </if>
+      <if test="subLimit != null">
+        SUB_LIMIT,
+      </if>
+      <if test="deductibleDays != null">
+        DEDUCTIBLE_DAYS,
+      </if>
+      <if test="maxPaymentDays != null">
+        MAX_PAYMENT_DAYS,
+      </if>
+      <if test="dailyPaymentAmt != null">
+        DAILY_PAYMENT_AMT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="benefitId != null">
+        #{benefitId,jdbcType=DECIMAL},
+      </if>
+      <if test="planId != null">
+        #{planId,jdbcType=DECIMAL},
+      </if>
+      <if test="planVersionNo != null">
+        #{planVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="benefitCode != null">
+        #{benefitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="benefitName != null">
+        #{benefitName,jdbcType=VARCHAR},
+      </if>
+      <if test="sumInsured != null">
+        #{sumInsured,jdbcType=DECIMAL},
+      </if>
+      <if test="limit != null">
+        #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="policySi != null">
+        #{policySi,jdbcType=DECIMAL},
+      </if>
+      <if test="subLimitType != null">
+        #{subLimitType,jdbcType=VARCHAR},
+      </if>
+      <if test="subLimit != null">
+        #{subLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="deductibleDays != null">
+        #{deductibleDays,jdbcType=DECIMAL},
+      </if>
+      <if test="maxPaymentDays != null">
+        #{maxPaymentDays,jdbcType=DECIMAL},
+      </if>
+      <if test="dailyPaymentAmt != null">
+        #{dailyPaymentAmt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanBenExt">
+    update WIP_PRL_PART_PLAN_BEN_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="benefitCode != null">
+        BENEFIT_CODE = #{benefitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="benefitName != null">
+        BENEFIT_NAME = #{benefitName,jdbcType=VARCHAR},
+      </if>
+      <if test="sumInsured != null">
+        SUM_INSURED = #{sumInsured,jdbcType=DECIMAL},
+      </if>
+      <if test="limit != null">
+        LIMIT = #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="policySi != null">
+        POLICY_SI = #{policySi,jdbcType=DECIMAL},
+      </if>
+      <if test="subLimitType != null">
+        SUB_LIMIT_TYPE = #{subLimitType,jdbcType=VARCHAR},
+      </if>
+      <if test="subLimit != null">
+        SUB_LIMIT = #{subLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="deductibleDays != null">
+        DEDUCTIBLE_DAYS = #{deductibleDays,jdbcType=DECIMAL},
+      </if>
+      <if test="maxPaymentDays != null">
+        MAX_PAYMENT_DAYS = #{maxPaymentDays,jdbcType=DECIMAL},
+      </if>
+      <if test="dailyPaymentAmt != null">
+        DAILY_PAYMENT_AMT = #{dailyPaymentAmt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BENEFIT_ID = #{benefitId,jdbcType=DECIMAL}
+      and PLAN_ID = #{planId,jdbcType=DECIMAL}
+      and PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanBenExt">
+    update WIP_PRL_PART_PLAN_BEN_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      BENEFIT_CODE = #{benefitCode,jdbcType=VARCHAR},
+      BENEFIT_NAME = #{benefitName,jdbcType=VARCHAR},
+      SUM_INSURED = #{sumInsured,jdbcType=DECIMAL},
+      LIMIT = #{limit,jdbcType=VARCHAR},
+      POLICY_SI = #{policySi,jdbcType=DECIMAL},
+      SUB_LIMIT_TYPE = #{subLimitType,jdbcType=VARCHAR},
+      SUB_LIMIT = #{subLimit,jdbcType=DECIMAL},
+      DEDUCTIBLE_DAYS = #{deductibleDays,jdbcType=DECIMAL},
+      MAX_PAYMENT_DAYS = #{maxPaymentDays,jdbcType=DECIMAL},
+      DAILY_PAYMENT_AMT = #{dailyPaymentAmt,jdbcType=DECIMAL}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BENEFIT_ID = #{benefitId,jdbcType=DECIMAL}
+      and PLAN_ID = #{planId,jdbcType=DECIMAL}
+      and PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

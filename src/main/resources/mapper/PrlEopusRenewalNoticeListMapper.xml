@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.PrlEopusRenewalNoticeListMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="POLICY_REF" jdbcType="VARCHAR" property="policyRef" />
+    <result column="PRP_NAME" jdbcType="VARCHAR" property="prpName" />
+    <result column="PRP_ID_NO" jdbcType="VARCHAR" property="prpIdNo" />
+    <result column="PRP_EMAIL" jdbcType="VARCHAR" property="prpEmail" />
+    <result column="PRP_PHONE" jdbcType="VARCHAR" property="prpPhone" />
+    <result column="FIRST_NOTICE_TIME" jdbcType="TIMESTAMP" property="firstNoticeTime" />
+    <result column="FIRST_NOTICE_SMS_STATUS" jdbcType="VARCHAR" property="firstNoticeSmsStatus" />
+    <result column="FIRST_NOTICE_EMAIL_STATUS" jdbcType="VARCHAR" property="firstNoticeEmailStatus" />
+    <result column="SECOND_NOTICE_TIME" jdbcType="TIMESTAMP" property="secondNoticeTime" />
+    <result column="SECOND_NOTICE_SMS_STATUS" jdbcType="VARCHAR" property="secondNoticeSmsStatus" />
+    <result column="SECOND_NOTICE_EMAIL_STATUS" jdbcType="VARCHAR" property="secondNoticeEmailStatus" />
+    <result column="THIRD_NOTICE_TIME" jdbcType="TIMESTAMP" property="thirdNoticeTime" />
+    <result column="THIRD_NOTICE_SMS_STATUS" jdbcType="VARCHAR" property="thirdNoticeSmsStatus" />
+    <result column="THIRD_NOTICE_EMAIL_STATUS" jdbcType="VARCHAR" property="thirdNoticeEmailStatus" />
+    <result column="NOTICE_SMS_CONTENT" jdbcType="VARCHAR" property="noticeSmsContent" />
+    <result column="NOTICE_EMAIL_SUBJECT" jdbcType="VARCHAR" property="noticeEmailSubject" />
+    <result column="NOTICE_PROCESS" jdbcType="VARCHAR" property="noticeProcess" />
+    <result column="CREATED_DATE" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="LAST_UPDATED_DATE" jdbcType="TIMESTAMP" property="lastUpdatedDate" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="ERROR_MESSAGE" jdbcType="VARCHAR" property="errorMessage" />
+    <result column="FOURTH_NOTICE_TIME" jdbcType="TIMESTAMP" property="fourthNoticeTime" />
+    <result column="FOURTH_NOTICE_SMS_STATUS" jdbcType="VARCHAR" property="fourthNoticeSmsStatus" />
+    <result column="FOURTH_NOTICE_EMAIL_STATUS" jdbcType="VARCHAR" property="fourthNoticeEmailStatus" />
+    <result column="FIFTH_NOTICE_TIME" jdbcType="TIMESTAMP" property="fifthNoticeTime" />
+    <result column="FIFTH_NOTICE_SMS_STATUS" jdbcType="VARCHAR" property="fifthNoticeSmsStatus" />
+    <result column="FIFTH_NOTICE_EMAIL_STATUS" jdbcType="VARCHAR" property="fifthNoticeEmailStatus" />
+    <result column="BIZ_TYPE" jdbcType="VARCHAR" property="bizType" />
+    <result column="NEW_CONTRACT_ID" jdbcType="DECIMAL" property="newContractId" />
+    <result column="NEW_POLICY_REF" jdbcType="VARCHAR" property="newPolicyRef" />
+    <result column="DEBIT_REQUEST_SN" jdbcType="VARCHAR" property="debitRequestSn" />
+    <result column="DEBIT_RESPONSE_CODE" jdbcType="VARCHAR" property="debitResponseCode" />
+    <result column="DEBIT_RESPONSE_MSG" jdbcType="VARCHAR" property="debitResponseMsg" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    <result column="NOTICE_EMAIL_CONTENT" jdbcType="CLOB" property="noticeEmailContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, VERSION_NO, POLICY_REF, PRP_NAME, PRP_ID_NO, PRP_EMAIL, PRP_PHONE, FIRST_NOTICE_TIME, 
+    FIRST_NOTICE_SMS_STATUS, FIRST_NOTICE_EMAIL_STATUS, SECOND_NOTICE_TIME, SECOND_NOTICE_SMS_STATUS, 
+    SECOND_NOTICE_EMAIL_STATUS, THIRD_NOTICE_TIME, THIRD_NOTICE_SMS_STATUS, THIRD_NOTICE_EMAIL_STATUS, 
+    NOTICE_SMS_CONTENT, NOTICE_EMAIL_SUBJECT, NOTICE_PROCESS, CREATED_DATE, LAST_UPDATED_DATE, 
+    REMARK, ERROR_MESSAGE, FOURTH_NOTICE_TIME, FOURTH_NOTICE_SMS_STATUS, FOURTH_NOTICE_EMAIL_STATUS, 
+    FIFTH_NOTICE_TIME, FIFTH_NOTICE_SMS_STATUS, FIFTH_NOTICE_EMAIL_STATUS, BIZ_TYPE, 
+    NEW_CONTRACT_ID, NEW_POLICY_REF, DEBIT_REQUEST_SN, DEBIT_RESPONSE_CODE, DEBIT_RESPONSE_MSG
+  </sql>
+  <sql id="Blob_Column_List">
+    NOTICE_EMAIL_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeListKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from PRL_EOPUS_RENEWAL_NOTICE_LIST
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and VERSION_NO = #{versionNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeListKey">
+    delete from PRL_EOPUS_RENEWAL_NOTICE_LIST
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and VERSION_NO = #{versionNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    insert into PRL_EOPUS_RENEWAL_NOTICE_LIST (CONTRACT_ID, VERSION_NO, POLICY_REF, 
+      PRP_NAME, PRP_ID_NO, PRP_EMAIL, 
+      PRP_PHONE, FIRST_NOTICE_TIME, FIRST_NOTICE_SMS_STATUS, 
+      FIRST_NOTICE_EMAIL_STATUS, SECOND_NOTICE_TIME, 
+      SECOND_NOTICE_SMS_STATUS, SECOND_NOTICE_EMAIL_STATUS, 
+      THIRD_NOTICE_TIME, THIRD_NOTICE_SMS_STATUS, 
+      THIRD_NOTICE_EMAIL_STATUS, NOTICE_SMS_CONTENT, 
+      NOTICE_EMAIL_SUBJECT, NOTICE_PROCESS, CREATED_DATE, 
+      LAST_UPDATED_DATE, REMARK, ERROR_MESSAGE, 
+      FOURTH_NOTICE_TIME, FOURTH_NOTICE_SMS_STATUS, 
+      FOURTH_NOTICE_EMAIL_STATUS, FIFTH_NOTICE_TIME, 
+      FIFTH_NOTICE_SMS_STATUS, FIFTH_NOTICE_EMAIL_STATUS, 
+      BIZ_TYPE, NEW_CONTRACT_ID, NEW_POLICY_REF, 
+      DEBIT_REQUEST_SN, DEBIT_RESPONSE_CODE, DEBIT_RESPONSE_MSG, 
+      NOTICE_EMAIL_CONTENT)
+    values (#{contractId,jdbcType=DECIMAL}, #{versionNo,jdbcType=DECIMAL}, #{policyRef,jdbcType=VARCHAR}, 
+      #{prpName,jdbcType=VARCHAR}, #{prpIdNo,jdbcType=VARCHAR}, #{prpEmail,jdbcType=VARCHAR}, 
+      #{prpPhone,jdbcType=VARCHAR}, #{firstNoticeTime,jdbcType=TIMESTAMP}, #{firstNoticeSmsStatus,jdbcType=VARCHAR}, 
+      #{firstNoticeEmailStatus,jdbcType=VARCHAR}, #{secondNoticeTime,jdbcType=TIMESTAMP}, 
+      #{secondNoticeSmsStatus,jdbcType=VARCHAR}, #{secondNoticeEmailStatus,jdbcType=VARCHAR}, 
+      #{thirdNoticeTime,jdbcType=TIMESTAMP}, #{thirdNoticeSmsStatus,jdbcType=VARCHAR}, 
+      #{thirdNoticeEmailStatus,jdbcType=VARCHAR}, #{noticeSmsContent,jdbcType=VARCHAR}, 
+      #{noticeEmailSubject,jdbcType=VARCHAR}, #{noticeProcess,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{lastUpdatedDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{errorMessage,jdbcType=VARCHAR}, 
+      #{fourthNoticeTime,jdbcType=TIMESTAMP}, #{fourthNoticeSmsStatus,jdbcType=VARCHAR}, 
+      #{fourthNoticeEmailStatus,jdbcType=VARCHAR}, #{fifthNoticeTime,jdbcType=TIMESTAMP}, 
+      #{fifthNoticeSmsStatus,jdbcType=VARCHAR}, #{fifthNoticeEmailStatus,jdbcType=VARCHAR}, 
+      #{bizType,jdbcType=VARCHAR}, #{newContractId,jdbcType=DECIMAL}, #{newPolicyRef,jdbcType=VARCHAR}, 
+      #{debitRequestSn,jdbcType=VARCHAR}, #{debitResponseCode,jdbcType=VARCHAR}, #{debitResponseMsg,jdbcType=VARCHAR}, 
+      #{noticeEmailContent,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    insert into PRL_EOPUS_RENEWAL_NOTICE_LIST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="policyRef != null">
+        POLICY_REF,
+      </if>
+      <if test="prpName != null">
+        PRP_NAME,
+      </if>
+      <if test="prpIdNo != null">
+        PRP_ID_NO,
+      </if>
+      <if test="prpEmail != null">
+        PRP_EMAIL,
+      </if>
+      <if test="prpPhone != null">
+        PRP_PHONE,
+      </if>
+      <if test="firstNoticeTime != null">
+        FIRST_NOTICE_TIME,
+      </if>
+      <if test="firstNoticeSmsStatus != null">
+        FIRST_NOTICE_SMS_STATUS,
+      </if>
+      <if test="firstNoticeEmailStatus != null">
+        FIRST_NOTICE_EMAIL_STATUS,
+      </if>
+      <if test="secondNoticeTime != null">
+        SECOND_NOTICE_TIME,
+      </if>
+      <if test="secondNoticeSmsStatus != null">
+        SECOND_NOTICE_SMS_STATUS,
+      </if>
+      <if test="secondNoticeEmailStatus != null">
+        SECOND_NOTICE_EMAIL_STATUS,
+      </if>
+      <if test="thirdNoticeTime != null">
+        THIRD_NOTICE_TIME,
+      </if>
+      <if test="thirdNoticeSmsStatus != null">
+        THIRD_NOTICE_SMS_STATUS,
+      </if>
+      <if test="thirdNoticeEmailStatus != null">
+        THIRD_NOTICE_EMAIL_STATUS,
+      </if>
+      <if test="noticeSmsContent != null">
+        NOTICE_SMS_CONTENT,
+      </if>
+      <if test="noticeEmailSubject != null">
+        NOTICE_EMAIL_SUBJECT,
+      </if>
+      <if test="noticeProcess != null">
+        NOTICE_PROCESS,
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE,
+      </if>
+      <if test="lastUpdatedDate != null">
+        LAST_UPDATED_DATE,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="errorMessage != null">
+        ERROR_MESSAGE,
+      </if>
+      <if test="fourthNoticeTime != null">
+        FOURTH_NOTICE_TIME,
+      </if>
+      <if test="fourthNoticeSmsStatus != null">
+        FOURTH_NOTICE_SMS_STATUS,
+      </if>
+      <if test="fourthNoticeEmailStatus != null">
+        FOURTH_NOTICE_EMAIL_STATUS,
+      </if>
+      <if test="fifthNoticeTime != null">
+        FIFTH_NOTICE_TIME,
+      </if>
+      <if test="fifthNoticeSmsStatus != null">
+        FIFTH_NOTICE_SMS_STATUS,
+      </if>
+      <if test="fifthNoticeEmailStatus != null">
+        FIFTH_NOTICE_EMAIL_STATUS,
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE,
+      </if>
+      <if test="newContractId != null">
+        NEW_CONTRACT_ID,
+      </if>
+      <if test="newPolicyRef != null">
+        NEW_POLICY_REF,
+      </if>
+      <if test="debitRequestSn != null">
+        DEBIT_REQUEST_SN,
+      </if>
+      <if test="debitResponseCode != null">
+        DEBIT_RESPONSE_CODE,
+      </if>
+      <if test="debitResponseMsg != null">
+        DEBIT_RESPONSE_MSG,
+      </if>
+      <if test="noticeEmailContent != null">
+        NOTICE_EMAIL_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="policyRef != null">
+        #{policyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="prpName != null">
+        #{prpName,jdbcType=VARCHAR},
+      </if>
+      <if test="prpIdNo != null">
+        #{prpIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="prpEmail != null">
+        #{prpEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="prpPhone != null">
+        #{prpPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="firstNoticeTime != null">
+        #{firstNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstNoticeSmsStatus != null">
+        #{firstNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="firstNoticeEmailStatus != null">
+        #{firstNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="secondNoticeTime != null">
+        #{secondNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondNoticeSmsStatus != null">
+        #{secondNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="secondNoticeEmailStatus != null">
+        #{secondNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdNoticeTime != null">
+        #{thirdNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thirdNoticeSmsStatus != null">
+        #{thirdNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdNoticeEmailStatus != null">
+        #{thirdNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeSmsContent != null">
+        #{noticeSmsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeEmailSubject != null">
+        #{noticeEmailSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeProcess != null">
+        #{noticeProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedDate != null">
+        #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMessage != null">
+        #{errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="fourthNoticeTime != null">
+        #{fourthNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fourthNoticeSmsStatus != null">
+        #{fourthNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fourthNoticeEmailStatus != null">
+        #{fourthNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fifthNoticeTime != null">
+        #{fifthNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fifthNoticeSmsStatus != null">
+        #{fifthNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fifthNoticeEmailStatus != null">
+        #{fifthNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="newContractId != null">
+        #{newContractId,jdbcType=DECIMAL},
+      </if>
+      <if test="newPolicyRef != null">
+        #{newPolicyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="debitRequestSn != null">
+        #{debitRequestSn,jdbcType=VARCHAR},
+      </if>
+      <if test="debitResponseCode != null">
+        #{debitResponseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="debitResponseMsg != null">
+        #{debitResponseMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeEmailContent != null">
+        #{noticeEmailContent,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    update PRL_EOPUS_RENEWAL_NOTICE_LIST
+    <set>
+      <if test="policyRef != null">
+        POLICY_REF = #{policyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="prpName != null">
+        PRP_NAME = #{prpName,jdbcType=VARCHAR},
+      </if>
+      <if test="prpIdNo != null">
+        PRP_ID_NO = #{prpIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="prpEmail != null">
+        PRP_EMAIL = #{prpEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="prpPhone != null">
+        PRP_PHONE = #{prpPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="firstNoticeTime != null">
+        FIRST_NOTICE_TIME = #{firstNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="firstNoticeSmsStatus != null">
+        FIRST_NOTICE_SMS_STATUS = #{firstNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="firstNoticeEmailStatus != null">
+        FIRST_NOTICE_EMAIL_STATUS = #{firstNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="secondNoticeTime != null">
+        SECOND_NOTICE_TIME = #{secondNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondNoticeSmsStatus != null">
+        SECOND_NOTICE_SMS_STATUS = #{secondNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="secondNoticeEmailStatus != null">
+        SECOND_NOTICE_EMAIL_STATUS = #{secondNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdNoticeTime != null">
+        THIRD_NOTICE_TIME = #{thirdNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thirdNoticeSmsStatus != null">
+        THIRD_NOTICE_SMS_STATUS = #{thirdNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdNoticeEmailStatus != null">
+        THIRD_NOTICE_EMAIL_STATUS = #{thirdNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeSmsContent != null">
+        NOTICE_SMS_CONTENT = #{noticeSmsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeEmailSubject != null">
+        NOTICE_EMAIL_SUBJECT = #{noticeEmailSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeProcess != null">
+        NOTICE_PROCESS = #{noticeProcess,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedDate != null">
+        LAST_UPDATED_DATE = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMessage != null">
+        ERROR_MESSAGE = #{errorMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="fourthNoticeTime != null">
+        FOURTH_NOTICE_TIME = #{fourthNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fourthNoticeSmsStatus != null">
+        FOURTH_NOTICE_SMS_STATUS = #{fourthNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fourthNoticeEmailStatus != null">
+        FOURTH_NOTICE_EMAIL_STATUS = #{fourthNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fifthNoticeTime != null">
+        FIFTH_NOTICE_TIME = #{fifthNoticeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fifthNoticeSmsStatus != null">
+        FIFTH_NOTICE_SMS_STATUS = #{fifthNoticeSmsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fifthNoticeEmailStatus != null">
+        FIFTH_NOTICE_EMAIL_STATUS = #{fifthNoticeEmailStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="bizType != null">
+        BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      </if>
+      <if test="newContractId != null">
+        NEW_CONTRACT_ID = #{newContractId,jdbcType=DECIMAL},
+      </if>
+      <if test="newPolicyRef != null">
+        NEW_POLICY_REF = #{newPolicyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="debitRequestSn != null">
+        DEBIT_REQUEST_SN = #{debitRequestSn,jdbcType=VARCHAR},
+      </if>
+      <if test="debitResponseCode != null">
+        DEBIT_RESPONSE_CODE = #{debitResponseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="debitResponseMsg != null">
+        DEBIT_RESPONSE_MSG = #{debitResponseMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeEmailContent != null">
+        NOTICE_EMAIL_CONTENT = #{noticeEmailContent,jdbcType=CLOB},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and VERSION_NO = #{versionNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    update PRL_EOPUS_RENEWAL_NOTICE_LIST
+    set POLICY_REF = #{policyRef,jdbcType=VARCHAR},
+      PRP_NAME = #{prpName,jdbcType=VARCHAR},
+      PRP_ID_NO = #{prpIdNo,jdbcType=VARCHAR},
+      PRP_EMAIL = #{prpEmail,jdbcType=VARCHAR},
+      PRP_PHONE = #{prpPhone,jdbcType=VARCHAR},
+      FIRST_NOTICE_TIME = #{firstNoticeTime,jdbcType=TIMESTAMP},
+      FIRST_NOTICE_SMS_STATUS = #{firstNoticeSmsStatus,jdbcType=VARCHAR},
+      FIRST_NOTICE_EMAIL_STATUS = #{firstNoticeEmailStatus,jdbcType=VARCHAR},
+      SECOND_NOTICE_TIME = #{secondNoticeTime,jdbcType=TIMESTAMP},
+      SECOND_NOTICE_SMS_STATUS = #{secondNoticeSmsStatus,jdbcType=VARCHAR},
+      SECOND_NOTICE_EMAIL_STATUS = #{secondNoticeEmailStatus,jdbcType=VARCHAR},
+      THIRD_NOTICE_TIME = #{thirdNoticeTime,jdbcType=TIMESTAMP},
+      THIRD_NOTICE_SMS_STATUS = #{thirdNoticeSmsStatus,jdbcType=VARCHAR},
+      THIRD_NOTICE_EMAIL_STATUS = #{thirdNoticeEmailStatus,jdbcType=VARCHAR},
+      NOTICE_SMS_CONTENT = #{noticeSmsContent,jdbcType=VARCHAR},
+      NOTICE_EMAIL_SUBJECT = #{noticeEmailSubject,jdbcType=VARCHAR},
+      NOTICE_PROCESS = #{noticeProcess,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_DATE = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      ERROR_MESSAGE = #{errorMessage,jdbcType=VARCHAR},
+      FOURTH_NOTICE_TIME = #{fourthNoticeTime,jdbcType=TIMESTAMP},
+      FOURTH_NOTICE_SMS_STATUS = #{fourthNoticeSmsStatus,jdbcType=VARCHAR},
+      FOURTH_NOTICE_EMAIL_STATUS = #{fourthNoticeEmailStatus,jdbcType=VARCHAR},
+      FIFTH_NOTICE_TIME = #{fifthNoticeTime,jdbcType=TIMESTAMP},
+      FIFTH_NOTICE_SMS_STATUS = #{fifthNoticeSmsStatus,jdbcType=VARCHAR},
+      FIFTH_NOTICE_EMAIL_STATUS = #{fifthNoticeEmailStatus,jdbcType=VARCHAR},
+      BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      NEW_CONTRACT_ID = #{newContractId,jdbcType=DECIMAL},
+      NEW_POLICY_REF = #{newPolicyRef,jdbcType=VARCHAR},
+      DEBIT_REQUEST_SN = #{debitRequestSn,jdbcType=VARCHAR},
+      DEBIT_RESPONSE_CODE = #{debitResponseCode,jdbcType=VARCHAR},
+      DEBIT_RESPONSE_MSG = #{debitResponseMsg,jdbcType=VARCHAR},
+      NOTICE_EMAIL_CONTENT = #{noticeEmailContent,jdbcType=CLOB}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and VERSION_NO = #{versionNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeList">
+    update PRL_EOPUS_RENEWAL_NOTICE_LIST
+    set POLICY_REF = #{policyRef,jdbcType=VARCHAR},
+      PRP_NAME = #{prpName,jdbcType=VARCHAR},
+      PRP_ID_NO = #{prpIdNo,jdbcType=VARCHAR},
+      PRP_EMAIL = #{prpEmail,jdbcType=VARCHAR},
+      PRP_PHONE = #{prpPhone,jdbcType=VARCHAR},
+      FIRST_NOTICE_TIME = #{firstNoticeTime,jdbcType=TIMESTAMP},
+      FIRST_NOTICE_SMS_STATUS = #{firstNoticeSmsStatus,jdbcType=VARCHAR},
+      FIRST_NOTICE_EMAIL_STATUS = #{firstNoticeEmailStatus,jdbcType=VARCHAR},
+      SECOND_NOTICE_TIME = #{secondNoticeTime,jdbcType=TIMESTAMP},
+      SECOND_NOTICE_SMS_STATUS = #{secondNoticeSmsStatus,jdbcType=VARCHAR},
+      SECOND_NOTICE_EMAIL_STATUS = #{secondNoticeEmailStatus,jdbcType=VARCHAR},
+      THIRD_NOTICE_TIME = #{thirdNoticeTime,jdbcType=TIMESTAMP},
+      THIRD_NOTICE_SMS_STATUS = #{thirdNoticeSmsStatus,jdbcType=VARCHAR},
+      THIRD_NOTICE_EMAIL_STATUS = #{thirdNoticeEmailStatus,jdbcType=VARCHAR},
+      NOTICE_SMS_CONTENT = #{noticeSmsContent,jdbcType=VARCHAR},
+      NOTICE_EMAIL_SUBJECT = #{noticeEmailSubject,jdbcType=VARCHAR},
+      NOTICE_PROCESS = #{noticeProcess,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_DATE = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      ERROR_MESSAGE = #{errorMessage,jdbcType=VARCHAR},
+      FOURTH_NOTICE_TIME = #{fourthNoticeTime,jdbcType=TIMESTAMP},
+      FOURTH_NOTICE_SMS_STATUS = #{fourthNoticeSmsStatus,jdbcType=VARCHAR},
+      FOURTH_NOTICE_EMAIL_STATUS = #{fourthNoticeEmailStatus,jdbcType=VARCHAR},
+      FIFTH_NOTICE_TIME = #{fifthNoticeTime,jdbcType=TIMESTAMP},
+      FIFTH_NOTICE_SMS_STATUS = #{fifthNoticeSmsStatus,jdbcType=VARCHAR},
+      FIFTH_NOTICE_EMAIL_STATUS = #{fifthNoticeEmailStatus,jdbcType=VARCHAR},
+      BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+      NEW_CONTRACT_ID = #{newContractId,jdbcType=DECIMAL},
+      NEW_POLICY_REF = #{newPolicyRef,jdbcType=VARCHAR},
+      DEBIT_REQUEST_SN = #{debitRequestSn,jdbcType=VARCHAR},
+      DEBIT_RESPONSE_CODE = #{debitResponseCode,jdbcType=VARCHAR},
+      DEBIT_RESPONSE_MSG = #{debitResponseMsg,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and VERSION_NO = #{versionNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

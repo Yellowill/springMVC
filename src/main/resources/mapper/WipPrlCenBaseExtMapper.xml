@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlCenBaseExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlCenBaseExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="BUSINESS_UNIT" jdbcType="VARCHAR" property="businessUnit" />
+    <result column="CALCULATION_PERIOD" jdbcType="VARCHAR" property="calculationPeriod" />
+    <result column="INSTALLMENT_PREMIUM" jdbcType="DECIMAL" property="installmentPremium" />
+    <result column="TOTAL_PREM" jdbcType="DECIMAL" property="totalPrem" />
+    <result column="TEMP_RECEIPT" jdbcType="VARCHAR" property="tempReceipt" />
+    <result column="CANCEL_REMARKS" jdbcType="VARCHAR" property="cancelRemarks" />
+    <result column="EXCH_RATE" jdbcType="DECIMAL" property="exchRate" />
+    <result column="GLOBAL_PROGRAM" jdbcType="VARCHAR" property="globalProgram" />
+    <result column="SOURCE_OF_BUSINESS" jdbcType="VARCHAR" property="sourceOfBusiness" />
+    <result column="SUB_PRODUCT" jdbcType="VARCHAR" property="subProduct" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="EXCH_DATE" jdbcType="TIMESTAMP" property="exchDate" />
+    <result column="NO_OF_COPIES" jdbcType="DECIMAL" property="noOfCopies" />
+    <result column="TAX" jdbcType="DECIMAL" property="tax" />
+    <result column="PAYMENT_TERMS" jdbcType="VARCHAR" property="paymentTerms" />
+    <result column="TAX_RATE" jdbcType="DECIMAL" property="taxRate" />
+    <result column="TAX_AMOUNT" jdbcType="DECIMAL" property="taxAmount" />
+    <result column="STAMP_RATE" jdbcType="DECIMAL" property="stampRate" />
+    <result column="STAMP_AMOUNT" jdbcType="DECIMAL" property="stampAmount" />
+    <result column="DIRECT_DISC_RATE" jdbcType="DECIMAL" property="directDiscRate" />
+    <result column="DISCOUNT_AMOUNT" jdbcType="DECIMAL" property="discountAmount" />
+    <result column="RENEWAL_NO" jdbcType="DECIMAL" property="renewalNo" />
+    <result column="EXT_VERSION_NO" jdbcType="DECIMAL" property="extVersionNo" />
+    <result column="INT_VERSION_NO" jdbcType="DECIMAL" property="intVersionNo" />
+    <result column="RCI_SHARE" jdbcType="DECIMAL" property="rciShare" />
+    <result column="GPA_CODE" jdbcType="VARCHAR" property="gpaCode" />
+    <result column="CUSTOMER_NAME" jdbcType="VARCHAR" property="customerName" />
+    <result column="ADJ_TAX_AMT" jdbcType="DECIMAL" property="adjTaxAmt" />
+    <result column="ADJ_STAMP_AMT" jdbcType="DECIMAL" property="adjStampAmt" />
+    <result column="POLICY_TYPE" jdbcType="VARCHAR" property="policyType" />
+    <result column="DRCR_NO" jdbcType="VARCHAR" property="drcrNo" />
+    <result column="CONST_START_DATE" jdbcType="TIMESTAMP" property="constStartDate" />
+    <result column="CONST_END_DATE" jdbcType="TIMESTAMP" property="constEndDate" />
+    <result column="MAINT_START_DATE" jdbcType="TIMESTAMP" property="maintStartDate" />
+    <result column="MAINT_END_DATE" jdbcType="TIMESTAMP" property="maintEndDate" />
+    <result column="INCEPTION_TIME" jdbcType="VARCHAR" property="inceptionTime" />
+    <result column="EXPIRY_TIME" jdbcType="VARCHAR" property="expiryTime" />
+    <result column="POLICY_SUB_TYPE" jdbcType="VARCHAR" property="policySubType" />
+    <result column="CONSTRUCTION_PERIOD" jdbcType="DECIMAL" property="constructionPeriod" />
+    <result column="CONST_PERIOD_TEXT" jdbcType="VARCHAR" property="constPeriodText" />
+    <result column="MAINTENANCE_PERIOD" jdbcType="DECIMAL" property="maintenancePeriod" />
+    <result column="MAINT_PERIOD_UNIT" jdbcType="CHAR" property="maintPeriodUnit" />
+    <result column="MAINT_PERIOD_TEXT" jdbcType="VARCHAR" property="maintPeriodText" />
+    <result column="COMP_RENEWAL" jdbcType="CHAR" property="compRenewal" />
+    <result column="REPLACING_COVERNOTE_NO" jdbcType="VARCHAR" property="replacingCovernoteNo" />
+    <result column="CONST_PERIOD_UNIT" jdbcType="CHAR" property="constPeriodUnit" />
+    <result column="REFER_TO" jdbcType="VARCHAR" property="referTo" />
+    <result column="REFER_COMMENTS" jdbcType="VARCHAR" property="referComments" />
+    <result column="REFER_TEXT" jdbcType="VARCHAR" property="referText" />
+    <result column="COMM_OV_IND" jdbcType="VARCHAR" property="commOvInd" />
+    <result column="CONTRACTUAL_RATE" jdbcType="VARCHAR" property="contractualRate" />
+    <result column="RENEWAL_REMARKS_INTERNAL" jdbcType="VARCHAR" property="renewalRemarksInternal" />
+    <result column="RENEWAL_REMARKS" jdbcType="VARCHAR" property="renewalRemarks" />
+    <result column="RENEWABLE" jdbcType="VARCHAR" property="renewable" />
+    <result column="CNL_NOTICE_DAYS" jdbcType="DECIMAL" property="cnlNoticeDays" />
+    <result column="POLICY_FORM_CODE" jdbcType="VARCHAR" property="policyFormCode" />
+    <result column="JACKET_CODE" jdbcType="VARCHAR" property="jacketCode" />
+    <result column="DOMICILE" jdbcType="VARCHAR" property="domicile" />
+    <result column="OFFSHORE_ONSHORE" jdbcType="VARCHAR" property="offshoreOnshore" />
+    <result column="HOLD_COVER" jdbcType="CHAR" property="holdCover" />
+    <result column="HOLD_COVER_DATE" jdbcType="TIMESTAMP" property="holdCoverDate" />
+    <result column="SECTION_ID" jdbcType="DECIMAL" property="sectionId" />
+    <result column="ANNUAL_POLICY" jdbcType="VARCHAR" property="annualPolicy" />
+    <result column="FORM_TYPE" jdbcType="DECIMAL" property="formType" />
+    <result column="MAINT_PERIOD_FLAG" jdbcType="VARCHAR" property="maintPeriodFlag" />
+    <result column="ICB" jdbcType="VARCHAR" property="icb" />
+    <result column="ICB_DEF" jdbcType="VARCHAR" property="icbDef" />
+    <result column="APPLICATION_NO" jdbcType="VARCHAR" property="applicationNo" />
+    <result column="STAFF_CODE" jdbcType="VARCHAR" property="staffCode" />
+    <result column="OFFSHORE_ONSHORE_TAX" jdbcType="VARCHAR" property="offshoreOnshoreTax" />
+    <result column="BASIS_OF_VALUATION" jdbcType="VARCHAR" property="basisOfValuation" />
+    <result column="POLICY_LIMIT" jdbcType="VARCHAR" property="policyLimit" />
+    <result column="DISPUTE_SOLUTION" jdbcType="VARCHAR" property="disputeSolution" />
+    <result column="PH_MAILING_ADDR" jdbcType="VARCHAR" property="phMailingAddr" />
+    <result column="ANNUAL_RATE" jdbcType="VARCHAR" property="annualRate" />
+    <result column="CLAUSE_WORDING" jdbcType="VARCHAR" property="clauseWording" />
+    <result column="NPS" jdbcType="VARCHAR" property="nps" />
+    <result column="CLAUSE_WORDING2" jdbcType="VARCHAR" property="clauseWording2" />
+    <result column="CLAUSE_WORDING3" jdbcType="VARCHAR" property="clauseWording3" />
+    <result column="POI_FLAG" jdbcType="VARCHAR" property="poiFlag" />
+    <result column="POI_TEXT" jdbcType="VARCHAR" property="poiText" />
+    <result column="HANDLER_USERNAME" jdbcType="VARCHAR" property="handlerUsername" />
+    <result column="SUM_INSURED_DESC" jdbcType="VARCHAR" property="sumInsuredDesc" />
+    <result column="INDEMNITY_PERIOD" jdbcType="VARCHAR" property="indemnityPeriod" />
+    <result column="SHOW_PREMIUM_FLAG" jdbcType="VARCHAR" property="showPremiumFlag" />
+    <result column="NON_BINDING" jdbcType="VARCHAR" property="nonBinding" />
+    <result column="SALES_TEAM" jdbcType="VARCHAR" property="salesTeam" />
+    <result column="BUSINESS_SOURCE" jdbcType="VARCHAR" property="businessSource" />
+    <result column="GAII_QUOTE_NO" jdbcType="VARCHAR" property="gaiiQuoteNo" />
+    <result column="FIX_EXCH" jdbcType="VARCHAR" property="fixExch" />
+    <result column="ABROAD_DRIVE_YN" jdbcType="VARCHAR" property="abroadDriveYn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, ACTION_CODE, VERSION_NO, TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+    BUSINESS_UNIT, CALCULATION_PERIOD, INSTALLMENT_PREMIUM, TOTAL_PREM, TEMP_RECEIPT, 
+    CANCEL_REMARKS, EXCH_RATE, GLOBAL_PROGRAM, SOURCE_OF_BUSINESS, SUB_PRODUCT, MEMO, 
+    EXCH_DATE, NO_OF_COPIES, TAX, PAYMENT_TERMS, TAX_RATE, TAX_AMOUNT, STAMP_RATE, STAMP_AMOUNT, 
+    DIRECT_DISC_RATE, DISCOUNT_AMOUNT, RENEWAL_NO, EXT_VERSION_NO, INT_VERSION_NO, RCI_SHARE, 
+    GPA_CODE, CUSTOMER_NAME, ADJ_TAX_AMT, ADJ_STAMP_AMT, POLICY_TYPE, DRCR_NO, CONST_START_DATE, 
+    CONST_END_DATE, MAINT_START_DATE, MAINT_END_DATE, INCEPTION_TIME, EXPIRY_TIME, POLICY_SUB_TYPE, 
+    CONSTRUCTION_PERIOD, CONST_PERIOD_TEXT, MAINTENANCE_PERIOD, MAINT_PERIOD_UNIT, MAINT_PERIOD_TEXT, 
+    COMP_RENEWAL, REPLACING_COVERNOTE_NO, CONST_PERIOD_UNIT, REFER_TO, REFER_COMMENTS, 
+    REFER_TEXT, COMM_OV_IND, CONTRACTUAL_RATE, RENEWAL_REMARKS_INTERNAL, RENEWAL_REMARKS, 
+    RENEWABLE, CNL_NOTICE_DAYS, POLICY_FORM_CODE, JACKET_CODE, DOMICILE, OFFSHORE_ONSHORE, 
+    HOLD_COVER, HOLD_COVER_DATE, SECTION_ID, ANNUAL_POLICY, FORM_TYPE, MAINT_PERIOD_FLAG, 
+    ICB, ICB_DEF, APPLICATION_NO, STAFF_CODE, OFFSHORE_ONSHORE_TAX, BASIS_OF_VALUATION, 
+    POLICY_LIMIT, DISPUTE_SOLUTION, PH_MAILING_ADDR, ANNUAL_RATE, CLAUSE_WORDING, NPS, 
+    CLAUSE_WORDING2, CLAUSE_WORDING3, POI_FLAG, POI_TEXT, HANDLER_USERNAME, SUM_INSURED_DESC, 
+    INDEMNITY_PERIOD, SHOW_PREMIUM_FLAG, NON_BINDING, SALES_TEAM, BUSINESS_SOURCE, GAII_QUOTE_NO, 
+    FIX_EXCH, ABROAD_DRIVE_YN
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_CEN_BASE_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from WIP_PRL_CEN_BASE_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlCenBaseExt">
+    insert into WIP_PRL_CEN_BASE_EXT (CONTRACT_ID, ACTION_CODE, VERSION_NO, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      BUSINESS_UNIT, CALCULATION_PERIOD, INSTALLMENT_PREMIUM, 
+      TOTAL_PREM, TEMP_RECEIPT, CANCEL_REMARKS, 
+      EXCH_RATE, GLOBAL_PROGRAM, SOURCE_OF_BUSINESS, 
+      SUB_PRODUCT, MEMO, EXCH_DATE, 
+      NO_OF_COPIES, TAX, PAYMENT_TERMS, 
+      TAX_RATE, TAX_AMOUNT, STAMP_RATE, 
+      STAMP_AMOUNT, DIRECT_DISC_RATE, DISCOUNT_AMOUNT, 
+      RENEWAL_NO, EXT_VERSION_NO, INT_VERSION_NO, 
+      RCI_SHARE, GPA_CODE, CUSTOMER_NAME, 
+      ADJ_TAX_AMT, ADJ_STAMP_AMT, POLICY_TYPE, 
+      DRCR_NO, CONST_START_DATE, CONST_END_DATE, 
+      MAINT_START_DATE, MAINT_END_DATE, INCEPTION_TIME, 
+      EXPIRY_TIME, POLICY_SUB_TYPE, CONSTRUCTION_PERIOD, 
+      CONST_PERIOD_TEXT, MAINTENANCE_PERIOD, MAINT_PERIOD_UNIT, 
+      MAINT_PERIOD_TEXT, COMP_RENEWAL, REPLACING_COVERNOTE_NO, 
+      CONST_PERIOD_UNIT, REFER_TO, REFER_COMMENTS, 
+      REFER_TEXT, COMM_OV_IND, CONTRACTUAL_RATE, 
+      RENEWAL_REMARKS_INTERNAL, RENEWAL_REMARKS, 
+      RENEWABLE, CNL_NOTICE_DAYS, POLICY_FORM_CODE, 
+      JACKET_CODE, DOMICILE, OFFSHORE_ONSHORE, 
+      HOLD_COVER, HOLD_COVER_DATE, SECTION_ID, 
+      ANNUAL_POLICY, FORM_TYPE, MAINT_PERIOD_FLAG, 
+      ICB, ICB_DEF, APPLICATION_NO, 
+      STAFF_CODE, OFFSHORE_ONSHORE_TAX, BASIS_OF_VALUATION, 
+      POLICY_LIMIT, DISPUTE_SOLUTION, PH_MAILING_ADDR, 
+      ANNUAL_RATE, CLAUSE_WORDING, NPS, 
+      CLAUSE_WORDING2, CLAUSE_WORDING3, POI_FLAG, 
+      POI_TEXT, HANDLER_USERNAME, SUM_INSURED_DESC, 
+      INDEMNITY_PERIOD, SHOW_PREMIUM_FLAG, NON_BINDING, 
+      SALES_TEAM, BUSINESS_SOURCE, GAII_QUOTE_NO, 
+      FIX_EXCH, ABROAD_DRIVE_YN)
+    values (#{contractId,jdbcType=DECIMAL}, #{actionCode,jdbcType=CHAR}, #{versionNo,jdbcType=DECIMAL}, 
+      #{topIndicator,jdbcType=CHAR}, #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, 
+      #{businessUnit,jdbcType=VARCHAR}, #{calculationPeriod,jdbcType=VARCHAR}, #{installmentPremium,jdbcType=DECIMAL}, 
+      #{totalPrem,jdbcType=DECIMAL}, #{tempReceipt,jdbcType=VARCHAR}, #{cancelRemarks,jdbcType=VARCHAR}, 
+      #{exchRate,jdbcType=DECIMAL}, #{globalProgram,jdbcType=VARCHAR}, #{sourceOfBusiness,jdbcType=VARCHAR}, 
+      #{subProduct,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{exchDate,jdbcType=TIMESTAMP}, 
+      #{noOfCopies,jdbcType=DECIMAL}, #{tax,jdbcType=DECIMAL}, #{paymentTerms,jdbcType=VARCHAR}, 
+      #{taxRate,jdbcType=DECIMAL}, #{taxAmount,jdbcType=DECIMAL}, #{stampRate,jdbcType=DECIMAL}, 
+      #{stampAmount,jdbcType=DECIMAL}, #{directDiscRate,jdbcType=DECIMAL}, #{discountAmount,jdbcType=DECIMAL}, 
+      #{renewalNo,jdbcType=DECIMAL}, #{extVersionNo,jdbcType=DECIMAL}, #{intVersionNo,jdbcType=DECIMAL}, 
+      #{rciShare,jdbcType=DECIMAL}, #{gpaCode,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, 
+      #{adjTaxAmt,jdbcType=DECIMAL}, #{adjStampAmt,jdbcType=DECIMAL}, #{policyType,jdbcType=VARCHAR}, 
+      #{drcrNo,jdbcType=VARCHAR}, #{constStartDate,jdbcType=TIMESTAMP}, #{constEndDate,jdbcType=TIMESTAMP}, 
+      #{maintStartDate,jdbcType=TIMESTAMP}, #{maintEndDate,jdbcType=TIMESTAMP}, #{inceptionTime,jdbcType=VARCHAR}, 
+      #{expiryTime,jdbcType=VARCHAR}, #{policySubType,jdbcType=VARCHAR}, #{constructionPeriod,jdbcType=DECIMAL}, 
+      #{constPeriodText,jdbcType=VARCHAR}, #{maintenancePeriod,jdbcType=DECIMAL}, #{maintPeriodUnit,jdbcType=CHAR}, 
+      #{maintPeriodText,jdbcType=VARCHAR}, #{compRenewal,jdbcType=CHAR}, #{replacingCovernoteNo,jdbcType=VARCHAR}, 
+      #{constPeriodUnit,jdbcType=CHAR}, #{referTo,jdbcType=VARCHAR}, #{referComments,jdbcType=VARCHAR}, 
+      #{referText,jdbcType=VARCHAR}, #{commOvInd,jdbcType=VARCHAR}, #{contractualRate,jdbcType=VARCHAR}, 
+      #{renewalRemarksInternal,jdbcType=VARCHAR}, #{renewalRemarks,jdbcType=VARCHAR}, 
+      #{renewable,jdbcType=VARCHAR}, #{cnlNoticeDays,jdbcType=DECIMAL}, #{policyFormCode,jdbcType=VARCHAR}, 
+      #{jacketCode,jdbcType=VARCHAR}, #{domicile,jdbcType=VARCHAR}, #{offshoreOnshore,jdbcType=VARCHAR}, 
+      #{holdCover,jdbcType=CHAR}, #{holdCoverDate,jdbcType=TIMESTAMP}, #{sectionId,jdbcType=DECIMAL}, 
+      #{annualPolicy,jdbcType=VARCHAR}, #{formType,jdbcType=DECIMAL}, #{maintPeriodFlag,jdbcType=VARCHAR}, 
+      #{icb,jdbcType=VARCHAR}, #{icbDef,jdbcType=VARCHAR}, #{applicationNo,jdbcType=VARCHAR}, 
+      #{staffCode,jdbcType=VARCHAR}, #{offshoreOnshoreTax,jdbcType=VARCHAR}, #{basisOfValuation,jdbcType=VARCHAR}, 
+      #{policyLimit,jdbcType=VARCHAR}, #{disputeSolution,jdbcType=VARCHAR}, #{phMailingAddr,jdbcType=VARCHAR}, 
+      #{annualRate,jdbcType=VARCHAR}, #{clauseWording,jdbcType=VARCHAR}, #{nps,jdbcType=VARCHAR}, 
+      #{clauseWording2,jdbcType=VARCHAR}, #{clauseWording3,jdbcType=VARCHAR}, #{poiFlag,jdbcType=VARCHAR}, 
+      #{poiText,jdbcType=VARCHAR}, #{handlerUsername,jdbcType=VARCHAR}, #{sumInsuredDesc,jdbcType=VARCHAR}, 
+      #{indemnityPeriod,jdbcType=VARCHAR}, #{showPremiumFlag,jdbcType=VARCHAR}, #{nonBinding,jdbcType=VARCHAR}, 
+      #{salesTeam,jdbcType=VARCHAR}, #{businessSource,jdbcType=VARCHAR}, #{gaiiQuoteNo,jdbcType=VARCHAR}, 
+      #{fixExch,jdbcType=VARCHAR}, #{abroadDriveYn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlCenBaseExt">
+    insert into WIP_PRL_CEN_BASE_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="businessUnit != null">
+        BUSINESS_UNIT,
+      </if>
+      <if test="calculationPeriod != null">
+        CALCULATION_PERIOD,
+      </if>
+      <if test="installmentPremium != null">
+        INSTALLMENT_PREMIUM,
+      </if>
+      <if test="totalPrem != null">
+        TOTAL_PREM,
+      </if>
+      <if test="tempReceipt != null">
+        TEMP_RECEIPT,
+      </if>
+      <if test="cancelRemarks != null">
+        CANCEL_REMARKS,
+      </if>
+      <if test="exchRate != null">
+        EXCH_RATE,
+      </if>
+      <if test="globalProgram != null">
+        GLOBAL_PROGRAM,
+      </if>
+      <if test="sourceOfBusiness != null">
+        SOURCE_OF_BUSINESS,
+      </if>
+      <if test="subProduct != null">
+        SUB_PRODUCT,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="exchDate != null">
+        EXCH_DATE,
+      </if>
+      <if test="noOfCopies != null">
+        NO_OF_COPIES,
+      </if>
+      <if test="tax != null">
+        TAX,
+      </if>
+      <if test="paymentTerms != null">
+        PAYMENT_TERMS,
+      </if>
+      <if test="taxRate != null">
+        TAX_RATE,
+      </if>
+      <if test="taxAmount != null">
+        TAX_AMOUNT,
+      </if>
+      <if test="stampRate != null">
+        STAMP_RATE,
+      </if>
+      <if test="stampAmount != null">
+        STAMP_AMOUNT,
+      </if>
+      <if test="directDiscRate != null">
+        DIRECT_DISC_RATE,
+      </if>
+      <if test="discountAmount != null">
+        DISCOUNT_AMOUNT,
+      </if>
+      <if test="renewalNo != null">
+        RENEWAL_NO,
+      </if>
+      <if test="extVersionNo != null">
+        EXT_VERSION_NO,
+      </if>
+      <if test="intVersionNo != null">
+        INT_VERSION_NO,
+      </if>
+      <if test="rciShare != null">
+        RCI_SHARE,
+      </if>
+      <if test="gpaCode != null">
+        GPA_CODE,
+      </if>
+      <if test="customerName != null">
+        CUSTOMER_NAME,
+      </if>
+      <if test="adjTaxAmt != null">
+        ADJ_TAX_AMT,
+      </if>
+      <if test="adjStampAmt != null">
+        ADJ_STAMP_AMT,
+      </if>
+      <if test="policyType != null">
+        POLICY_TYPE,
+      </if>
+      <if test="drcrNo != null">
+        DRCR_NO,
+      </if>
+      <if test="constStartDate != null">
+        CONST_START_DATE,
+      </if>
+      <if test="constEndDate != null">
+        CONST_END_DATE,
+      </if>
+      <if test="maintStartDate != null">
+        MAINT_START_DATE,
+      </if>
+      <if test="maintEndDate != null">
+        MAINT_END_DATE,
+      </if>
+      <if test="inceptionTime != null">
+        INCEPTION_TIME,
+      </if>
+      <if test="expiryTime != null">
+        EXPIRY_TIME,
+      </if>
+      <if test="policySubType != null">
+        POLICY_SUB_TYPE,
+      </if>
+      <if test="constructionPeriod != null">
+        CONSTRUCTION_PERIOD,
+      </if>
+      <if test="constPeriodText != null">
+        CONST_PERIOD_TEXT,
+      </if>
+      <if test="maintenancePeriod != null">
+        MAINTENANCE_PERIOD,
+      </if>
+      <if test="maintPeriodUnit != null">
+        MAINT_PERIOD_UNIT,
+      </if>
+      <if test="maintPeriodText != null">
+        MAINT_PERIOD_TEXT,
+      </if>
+      <if test="compRenewal != null">
+        COMP_RENEWAL,
+      </if>
+      <if test="replacingCovernoteNo != null">
+        REPLACING_COVERNOTE_NO,
+      </if>
+      <if test="constPeriodUnit != null">
+        CONST_PERIOD_UNIT,
+      </if>
+      <if test="referTo != null">
+        REFER_TO,
+      </if>
+      <if test="referComments != null">
+        REFER_COMMENTS,
+      </if>
+      <if test="referText != null">
+        REFER_TEXT,
+      </if>
+      <if test="commOvInd != null">
+        COMM_OV_IND,
+      </if>
+      <if test="contractualRate != null">
+        CONTRACTUAL_RATE,
+      </if>
+      <if test="renewalRemarksInternal != null">
+        RENEWAL_REMARKS_INTERNAL,
+      </if>
+      <if test="renewalRemarks != null">
+        RENEWAL_REMARKS,
+      </if>
+      <if test="renewable != null">
+        RENEWABLE,
+      </if>
+      <if test="cnlNoticeDays != null">
+        CNL_NOTICE_DAYS,
+      </if>
+      <if test="policyFormCode != null">
+        POLICY_FORM_CODE,
+      </if>
+      <if test="jacketCode != null">
+        JACKET_CODE,
+      </if>
+      <if test="domicile != null">
+        DOMICILE,
+      </if>
+      <if test="offshoreOnshore != null">
+        OFFSHORE_ONSHORE,
+      </if>
+      <if test="holdCover != null">
+        HOLD_COVER,
+      </if>
+      <if test="holdCoverDate != null">
+        HOLD_COVER_DATE,
+      </if>
+      <if test="sectionId != null">
+        SECTION_ID,
+      </if>
+      <if test="annualPolicy != null">
+        ANNUAL_POLICY,
+      </if>
+      <if test="formType != null">
+        FORM_TYPE,
+      </if>
+      <if test="maintPeriodFlag != null">
+        MAINT_PERIOD_FLAG,
+      </if>
+      <if test="icb != null">
+        ICB,
+      </if>
+      <if test="icbDef != null">
+        ICB_DEF,
+      </if>
+      <if test="applicationNo != null">
+        APPLICATION_NO,
+      </if>
+      <if test="staffCode != null">
+        STAFF_CODE,
+      </if>
+      <if test="offshoreOnshoreTax != null">
+        OFFSHORE_ONSHORE_TAX,
+      </if>
+      <if test="basisOfValuation != null">
+        BASIS_OF_VALUATION,
+      </if>
+      <if test="policyLimit != null">
+        POLICY_LIMIT,
+      </if>
+      <if test="disputeSolution != null">
+        DISPUTE_SOLUTION,
+      </if>
+      <if test="phMailingAddr != null">
+        PH_MAILING_ADDR,
+      </if>
+      <if test="annualRate != null">
+        ANNUAL_RATE,
+      </if>
+      <if test="clauseWording != null">
+        CLAUSE_WORDING,
+      </if>
+      <if test="nps != null">
+        NPS,
+      </if>
+      <if test="clauseWording2 != null">
+        CLAUSE_WORDING2,
+      </if>
+      <if test="clauseWording3 != null">
+        CLAUSE_WORDING3,
+      </if>
+      <if test="poiFlag != null">
+        POI_FLAG,
+      </if>
+      <if test="poiText != null">
+        POI_TEXT,
+      </if>
+      <if test="handlerUsername != null">
+        HANDLER_USERNAME,
+      </if>
+      <if test="sumInsuredDesc != null">
+        SUM_INSURED_DESC,
+      </if>
+      <if test="indemnityPeriod != null">
+        INDEMNITY_PERIOD,
+      </if>
+      <if test="showPremiumFlag != null">
+        SHOW_PREMIUM_FLAG,
+      </if>
+      <if test="nonBinding != null">
+        NON_BINDING,
+      </if>
+      <if test="salesTeam != null">
+        SALES_TEAM,
+      </if>
+      <if test="businessSource != null">
+        BUSINESS_SOURCE,
+      </if>
+      <if test="gaiiQuoteNo != null">
+        GAII_QUOTE_NO,
+      </if>
+      <if test="fixExch != null">
+        FIX_EXCH,
+      </if>
+      <if test="abroadDriveYn != null">
+        ABROAD_DRIVE_YN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="businessUnit != null">
+        #{businessUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="calculationPeriod != null">
+        #{calculationPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="installmentPremium != null">
+        #{installmentPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrem != null">
+        #{totalPrem,jdbcType=DECIMAL},
+      </if>
+      <if test="tempReceipt != null">
+        #{tempReceipt,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelRemarks != null">
+        #{cancelRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="exchRate != null">
+        #{exchRate,jdbcType=DECIMAL},
+      </if>
+      <if test="globalProgram != null">
+        #{globalProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOfBusiness != null">
+        #{sourceOfBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="subProduct != null">
+        #{subProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="exchDate != null">
+        #{exchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="noOfCopies != null">
+        #{noOfCopies,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null">
+        #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentTerms != null">
+        #{paymentTerms,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="taxAmount != null">
+        #{taxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="stampRate != null">
+        #{stampRate,jdbcType=DECIMAL},
+      </if>
+      <if test="stampAmount != null">
+        #{stampAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="directDiscRate != null">
+        #{directDiscRate,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null">
+        #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="renewalNo != null">
+        #{renewalNo,jdbcType=DECIMAL},
+      </if>
+      <if test="extVersionNo != null">
+        #{extVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="intVersionNo != null">
+        #{intVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="rciShare != null">
+        #{rciShare,jdbcType=DECIMAL},
+      </if>
+      <if test="gpaCode != null">
+        #{gpaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjTaxAmt != null">
+        #{adjTaxAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="adjStampAmt != null">
+        #{adjStampAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="policyType != null">
+        #{policyType,jdbcType=VARCHAR},
+      </if>
+      <if test="drcrNo != null">
+        #{drcrNo,jdbcType=VARCHAR},
+      </if>
+      <if test="constStartDate != null">
+        #{constStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constEndDate != null">
+        #{constEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintStartDate != null">
+        #{maintStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintEndDate != null">
+        #{maintEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inceptionTime != null">
+        #{inceptionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="expiryTime != null">
+        #{expiryTime,jdbcType=VARCHAR},
+      </if>
+      <if test="policySubType != null">
+        #{policySubType,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionPeriod != null">
+        #{constructionPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="constPeriodText != null">
+        #{constPeriodText,jdbcType=VARCHAR},
+      </if>
+      <if test="maintenancePeriod != null">
+        #{maintenancePeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="maintPeriodUnit != null">
+        #{maintPeriodUnit,jdbcType=CHAR},
+      </if>
+      <if test="maintPeriodText != null">
+        #{maintPeriodText,jdbcType=VARCHAR},
+      </if>
+      <if test="compRenewal != null">
+        #{compRenewal,jdbcType=CHAR},
+      </if>
+      <if test="replacingCovernoteNo != null">
+        #{replacingCovernoteNo,jdbcType=VARCHAR},
+      </if>
+      <if test="constPeriodUnit != null">
+        #{constPeriodUnit,jdbcType=CHAR},
+      </if>
+      <if test="referTo != null">
+        #{referTo,jdbcType=VARCHAR},
+      </if>
+      <if test="referComments != null">
+        #{referComments,jdbcType=VARCHAR},
+      </if>
+      <if test="referText != null">
+        #{referText,jdbcType=VARCHAR},
+      </if>
+      <if test="commOvInd != null">
+        #{commOvInd,jdbcType=VARCHAR},
+      </if>
+      <if test="contractualRate != null">
+        #{contractualRate,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalRemarksInternal != null">
+        #{renewalRemarksInternal,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalRemarks != null">
+        #{renewalRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="renewable != null">
+        #{renewable,jdbcType=VARCHAR},
+      </if>
+      <if test="cnlNoticeDays != null">
+        #{cnlNoticeDays,jdbcType=DECIMAL},
+      </if>
+      <if test="policyFormCode != null">
+        #{policyFormCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jacketCode != null">
+        #{jacketCode,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null">
+        #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="offshoreOnshore != null">
+        #{offshoreOnshore,jdbcType=VARCHAR},
+      </if>
+      <if test="holdCover != null">
+        #{holdCover,jdbcType=CHAR},
+      </if>
+      <if test="holdCoverDate != null">
+        #{holdCoverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sectionId != null">
+        #{sectionId,jdbcType=DECIMAL},
+      </if>
+      <if test="annualPolicy != null">
+        #{annualPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="formType != null">
+        #{formType,jdbcType=DECIMAL},
+      </if>
+      <if test="maintPeriodFlag != null">
+        #{maintPeriodFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="icb != null">
+        #{icb,jdbcType=VARCHAR},
+      </if>
+      <if test="icbDef != null">
+        #{icbDef,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationNo != null">
+        #{applicationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCode != null">
+        #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="offshoreOnshoreTax != null">
+        #{offshoreOnshoreTax,jdbcType=VARCHAR},
+      </if>
+      <if test="basisOfValuation != null">
+        #{basisOfValuation,jdbcType=VARCHAR},
+      </if>
+      <if test="policyLimit != null">
+        #{policyLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="disputeSolution != null">
+        #{disputeSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="phMailingAddr != null">
+        #{phMailingAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="annualRate != null">
+        #{annualRate,jdbcType=VARCHAR},
+      </if>
+      <if test="clauseWording != null">
+        #{clauseWording,jdbcType=VARCHAR},
+      </if>
+      <if test="nps != null">
+        #{nps,jdbcType=VARCHAR},
+      </if>
+      <if test="clauseWording2 != null">
+        #{clauseWording2,jdbcType=VARCHAR},
+      </if>
+      <if test="clauseWording3 != null">
+        #{clauseWording3,jdbcType=VARCHAR},
+      </if>
+      <if test="poiFlag != null">
+        #{poiFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="poiText != null">
+        #{poiText,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerUsername != null">
+        #{handlerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sumInsuredDesc != null">
+        #{sumInsuredDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="indemnityPeriod != null">
+        #{indemnityPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="showPremiumFlag != null">
+        #{showPremiumFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="nonBinding != null">
+        #{nonBinding,jdbcType=VARCHAR},
+      </if>
+      <if test="salesTeam != null">
+        #{salesTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSource != null">
+        #{businessSource,jdbcType=VARCHAR},
+      </if>
+      <if test="gaiiQuoteNo != null">
+        #{gaiiQuoteNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fixExch != null">
+        #{fixExch,jdbcType=VARCHAR},
+      </if>
+      <if test="abroadDriveYn != null">
+        #{abroadDriveYn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlCenBaseExt">
+    update WIP_PRL_CEN_BASE_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="businessUnit != null">
+        BUSINESS_UNIT = #{businessUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="calculationPeriod != null">
+        CALCULATION_PERIOD = #{calculationPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="installmentPremium != null">
+        INSTALLMENT_PREMIUM = #{installmentPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="totalPrem != null">
+        TOTAL_PREM = #{totalPrem,jdbcType=DECIMAL},
+      </if>
+      <if test="tempReceipt != null">
+        TEMP_RECEIPT = #{tempReceipt,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelRemarks != null">
+        CANCEL_REMARKS = #{cancelRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="exchRate != null">
+        EXCH_RATE = #{exchRate,jdbcType=DECIMAL},
+      </if>
+      <if test="globalProgram != null">
+        GLOBAL_PROGRAM = #{globalProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceOfBusiness != null">
+        SOURCE_OF_BUSINESS = #{sourceOfBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="subProduct != null">
+        SUB_PRODUCT = #{subProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="exchDate != null">
+        EXCH_DATE = #{exchDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="noOfCopies != null">
+        NO_OF_COPIES = #{noOfCopies,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null">
+        TAX = #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentTerms != null">
+        PAYMENT_TERMS = #{paymentTerms,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null">
+        TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="taxAmount != null">
+        TAX_AMOUNT = #{taxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="stampRate != null">
+        STAMP_RATE = #{stampRate,jdbcType=DECIMAL},
+      </if>
+      <if test="stampAmount != null">
+        STAMP_AMOUNT = #{stampAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="directDiscRate != null">
+        DIRECT_DISC_RATE = #{directDiscRate,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null">
+        DISCOUNT_AMOUNT = #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="renewalNo != null">
+        RENEWAL_NO = #{renewalNo,jdbcType=DECIMAL},
+      </if>
+      <if test="extVersionNo != null">
+        EXT_VERSION_NO = #{extVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="intVersionNo != null">
+        INT_VERSION_NO = #{intVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="rciShare != null">
+        RCI_SHARE = #{rciShare,jdbcType=DECIMAL},
+      </if>
+      <if test="gpaCode != null">
+        GPA_CODE = #{gpaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjTaxAmt != null">
+        ADJ_TAX_AMT = #{adjTaxAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="adjStampAmt != null">
+        ADJ_STAMP_AMT = #{adjStampAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="policyType != null">
+        POLICY_TYPE = #{policyType,jdbcType=VARCHAR},
+      </if>
+      <if test="drcrNo != null">
+        DRCR_NO = #{drcrNo,jdbcType=VARCHAR},
+      </if>
+      <if test="constStartDate != null">
+        CONST_START_DATE = #{constStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constEndDate != null">
+        CONST_END_DATE = #{constEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintStartDate != null">
+        MAINT_START_DATE = #{maintStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintEndDate != null">
+        MAINT_END_DATE = #{maintEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inceptionTime != null">
+        INCEPTION_TIME = #{inceptionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="expiryTime != null">
+        EXPIRY_TIME = #{expiryTime,jdbcType=VARCHAR},
+      </if>
+      <if test="policySubType != null">
+        POLICY_SUB_TYPE = #{policySubType,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionPeriod != null">
+        CONSTRUCTION_PERIOD = #{constructionPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="constPeriodText != null">
+        CONST_PERIOD_TEXT = #{constPeriodText,jdbcType=VARCHAR},
+      </if>
+      <if test="maintenancePeriod != null">
+        MAINTENANCE_PERIOD = #{maintenancePeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="maintPeriodUnit != null">
+        MAINT_PERIOD_UNIT = #{maintPeriodUnit,jdbcType=CHAR},
+      </if>
+      <if test="maintPeriodText != null">
+        MAINT_PERIOD_TEXT = #{maintPeriodText,jdbcType=VARCHAR},
+      </if>
+      <if test="compRenewal != null">
+        COMP_RENEWAL = #{compRenewal,jdbcType=CHAR},
+      </if>
+      <if test="replacingCovernoteNo != null">
+        REPLACING_COVERNOTE_NO = #{replacingCovernoteNo,jdbcType=VARCHAR},
+      </if>
+      <if test="constPeriodUnit != null">
+        CONST_PERIOD_UNIT = #{constPeriodUnit,jdbcType=CHAR},
+      </if>
+      <if test="referTo != null">
+        REFER_TO = #{referTo,jdbcType=VARCHAR},
+      </if>
+      <if test="referComments != null">
+        REFER_COMMENTS = #{referComments,jdbcType=VARCHAR},
+      </if>
+      <if test="referText != null">
+        REFER_TEXT = #{referText,jdbcType=VARCHAR},
+      </if>
+      <if test="commOvInd != null">
+        COMM_OV_IND = #{commOvInd,jdbcType=VARCHAR},
+      </if>
+      <if test="contractualRate != null">
+        CONTRACTUAL_RATE = #{contractualRate,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalRemarksInternal != null">
+        RENEWAL_REMARKS_INTERNAL = #{renewalRemarksInternal,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalRemarks != null">
+        RENEWAL_REMARKS = #{renewalRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="renewable != null">
+        RENEWABLE = #{renewable,jdbcType=VARCHAR},
+      </if>
+      <if test="cnlNoticeDays != null">
+        CNL_NOTICE_DAYS = #{cnlNoticeDays,jdbcType=DECIMAL},
+      </if>
+      <if test="policyFormCode != null">
+        POLICY_FORM_CODE = #{policyFormCode,jdbcType=VARCHAR},
+      </if>
+      <if test="jacketCode != null">
+        JACKET_CODE = #{jacketCode,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null">
+        DOMICILE = #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="offshoreOnshore != null">
+        OFFSHORE_ONSHORE = #{offshoreOnshore,jdbcType=VARCHAR},
+      </if>
+      <if test="holdCover != null">
+        HOLD_COVER = #{holdCover,jdbcType=CHAR},
+      </if>
+      <if test="holdCoverDate != null">
+        HOLD_COVER_DATE = #{holdCoverDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sectionId != null">
+        SECTION_ID = #{sectionId,jdbcType=DECIMAL},
+      </if>
+      <if test="annualPolicy != null">
+        ANNUAL_POLICY = #{annualPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="formType != null">
+        FORM_TYPE = #{formType,jdbcType=DECIMAL},
+      </if>
+      <if test="maintPeriodFlag != null">
+        MAINT_PERIOD_FLAG = #{maintPeriodFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="icb != null">
+        ICB = #{icb,jdbcType=VARCHAR},
+      </if>
+      <if test="icbDef != null">
+        ICB_DEF = #{icbDef,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationNo != null">
+        APPLICATION_NO = #{applicationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="staffCode != null">
+        STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="offshoreOnshoreTax != null">
+        OFFSHORE_ONSHORE_TAX = #{offshoreOnshoreTax,jdbcType=VARCHAR},
+      </if>
+      <if test="basisOfValuation != null">
+        BASIS_OF_VALUATION = #{basisOfValuation,jdbcType=VARCHAR},
+      </if>
+      <if test="policyLimit != null">
+        POLICY_LIMIT = #{policyLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="disputeSolution != null">
+        DISPUTE_SOLUTION = #{disputeSolution,jdbcType=VARCHAR},
+      </if>
+      <if test="phMailingAddr != null">
+        PH_MAILING_ADDR = #{phMailingAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="annualRate != null">
+        ANNUAL_RATE = #{annualRate,jdbcType=VARCHAR},
+      </if>
+      <if test="clauseWording != null">
+        CLAUSE_WORDING = #{clauseWording,jdbcType=VARCHAR},
+      </if>
+      <if test="nps != null">
+        NPS = #{nps,jdbcType=VARCHAR},
+      </if>
+      <if test="clauseWording2 != null">
+        CLAUSE_WORDING2 = #{clauseWording2,jdbcType=VARCHAR},
+      </if>
+      <if test="clauseWording3 != null">
+        CLAUSE_WORDING3 = #{clauseWording3,jdbcType=VARCHAR},
+      </if>
+      <if test="poiFlag != null">
+        POI_FLAG = #{poiFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="poiText != null">
+        POI_TEXT = #{poiText,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerUsername != null">
+        HANDLER_USERNAME = #{handlerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sumInsuredDesc != null">
+        SUM_INSURED_DESC = #{sumInsuredDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="indemnityPeriod != null">
+        INDEMNITY_PERIOD = #{indemnityPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="showPremiumFlag != null">
+        SHOW_PREMIUM_FLAG = #{showPremiumFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="nonBinding != null">
+        NON_BINDING = #{nonBinding,jdbcType=VARCHAR},
+      </if>
+      <if test="salesTeam != null">
+        SALES_TEAM = #{salesTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSource != null">
+        BUSINESS_SOURCE = #{businessSource,jdbcType=VARCHAR},
+      </if>
+      <if test="gaiiQuoteNo != null">
+        GAII_QUOTE_NO = #{gaiiQuoteNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fixExch != null">
+        FIX_EXCH = #{fixExch,jdbcType=VARCHAR},
+      </if>
+      <if test="abroadDriveYn != null">
+        ABROAD_DRIVE_YN = #{abroadDriveYn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlCenBaseExt">
+    update WIP_PRL_CEN_BASE_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      BUSINESS_UNIT = #{businessUnit,jdbcType=VARCHAR},
+      CALCULATION_PERIOD = #{calculationPeriod,jdbcType=VARCHAR},
+      INSTALLMENT_PREMIUM = #{installmentPremium,jdbcType=DECIMAL},
+      TOTAL_PREM = #{totalPrem,jdbcType=DECIMAL},
+      TEMP_RECEIPT = #{tempReceipt,jdbcType=VARCHAR},
+      CANCEL_REMARKS = #{cancelRemarks,jdbcType=VARCHAR},
+      EXCH_RATE = #{exchRate,jdbcType=DECIMAL},
+      GLOBAL_PROGRAM = #{globalProgram,jdbcType=VARCHAR},
+      SOURCE_OF_BUSINESS = #{sourceOfBusiness,jdbcType=VARCHAR},
+      SUB_PRODUCT = #{subProduct,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      EXCH_DATE = #{exchDate,jdbcType=TIMESTAMP},
+      NO_OF_COPIES = #{noOfCopies,jdbcType=DECIMAL},
+      TAX = #{tax,jdbcType=DECIMAL},
+      PAYMENT_TERMS = #{paymentTerms,jdbcType=VARCHAR},
+      TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+      TAX_AMOUNT = #{taxAmount,jdbcType=DECIMAL},
+      STAMP_RATE = #{stampRate,jdbcType=DECIMAL},
+      STAMP_AMOUNT = #{stampAmount,jdbcType=DECIMAL},
+      DIRECT_DISC_RATE = #{directDiscRate,jdbcType=DECIMAL},
+      DISCOUNT_AMOUNT = #{discountAmount,jdbcType=DECIMAL},
+      RENEWAL_NO = #{renewalNo,jdbcType=DECIMAL},
+      EXT_VERSION_NO = #{extVersionNo,jdbcType=DECIMAL},
+      INT_VERSION_NO = #{intVersionNo,jdbcType=DECIMAL},
+      RCI_SHARE = #{rciShare,jdbcType=DECIMAL},
+      GPA_CODE = #{gpaCode,jdbcType=VARCHAR},
+      CUSTOMER_NAME = #{customerName,jdbcType=VARCHAR},
+      ADJ_TAX_AMT = #{adjTaxAmt,jdbcType=DECIMAL},
+      ADJ_STAMP_AMT = #{adjStampAmt,jdbcType=DECIMAL},
+      POLICY_TYPE = #{policyType,jdbcType=VARCHAR},
+      DRCR_NO = #{drcrNo,jdbcType=VARCHAR},
+      CONST_START_DATE = #{constStartDate,jdbcType=TIMESTAMP},
+      CONST_END_DATE = #{constEndDate,jdbcType=TIMESTAMP},
+      MAINT_START_DATE = #{maintStartDate,jdbcType=TIMESTAMP},
+      MAINT_END_DATE = #{maintEndDate,jdbcType=TIMESTAMP},
+      INCEPTION_TIME = #{inceptionTime,jdbcType=VARCHAR},
+      EXPIRY_TIME = #{expiryTime,jdbcType=VARCHAR},
+      POLICY_SUB_TYPE = #{policySubType,jdbcType=VARCHAR},
+      CONSTRUCTION_PERIOD = #{constructionPeriod,jdbcType=DECIMAL},
+      CONST_PERIOD_TEXT = #{constPeriodText,jdbcType=VARCHAR},
+      MAINTENANCE_PERIOD = #{maintenancePeriod,jdbcType=DECIMAL},
+      MAINT_PERIOD_UNIT = #{maintPeriodUnit,jdbcType=CHAR},
+      MAINT_PERIOD_TEXT = #{maintPeriodText,jdbcType=VARCHAR},
+      COMP_RENEWAL = #{compRenewal,jdbcType=CHAR},
+      REPLACING_COVERNOTE_NO = #{replacingCovernoteNo,jdbcType=VARCHAR},
+      CONST_PERIOD_UNIT = #{constPeriodUnit,jdbcType=CHAR},
+      REFER_TO = #{referTo,jdbcType=VARCHAR},
+      REFER_COMMENTS = #{referComments,jdbcType=VARCHAR},
+      REFER_TEXT = #{referText,jdbcType=VARCHAR},
+      COMM_OV_IND = #{commOvInd,jdbcType=VARCHAR},
+      CONTRACTUAL_RATE = #{contractualRate,jdbcType=VARCHAR},
+      RENEWAL_REMARKS_INTERNAL = #{renewalRemarksInternal,jdbcType=VARCHAR},
+      RENEWAL_REMARKS = #{renewalRemarks,jdbcType=VARCHAR},
+      RENEWABLE = #{renewable,jdbcType=VARCHAR},
+      CNL_NOTICE_DAYS = #{cnlNoticeDays,jdbcType=DECIMAL},
+      POLICY_FORM_CODE = #{policyFormCode,jdbcType=VARCHAR},
+      JACKET_CODE = #{jacketCode,jdbcType=VARCHAR},
+      DOMICILE = #{domicile,jdbcType=VARCHAR},
+      OFFSHORE_ONSHORE = #{offshoreOnshore,jdbcType=VARCHAR},
+      HOLD_COVER = #{holdCover,jdbcType=CHAR},
+      HOLD_COVER_DATE = #{holdCoverDate,jdbcType=TIMESTAMP},
+      SECTION_ID = #{sectionId,jdbcType=DECIMAL},
+      ANNUAL_POLICY = #{annualPolicy,jdbcType=VARCHAR},
+      FORM_TYPE = #{formType,jdbcType=DECIMAL},
+      MAINT_PERIOD_FLAG = #{maintPeriodFlag,jdbcType=VARCHAR},
+      ICB = #{icb,jdbcType=VARCHAR},
+      ICB_DEF = #{icbDef,jdbcType=VARCHAR},
+      APPLICATION_NO = #{applicationNo,jdbcType=VARCHAR},
+      STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+      OFFSHORE_ONSHORE_TAX = #{offshoreOnshoreTax,jdbcType=VARCHAR},
+      BASIS_OF_VALUATION = #{basisOfValuation,jdbcType=VARCHAR},
+      POLICY_LIMIT = #{policyLimit,jdbcType=VARCHAR},
+      DISPUTE_SOLUTION = #{disputeSolution,jdbcType=VARCHAR},
+      PH_MAILING_ADDR = #{phMailingAddr,jdbcType=VARCHAR},
+      ANNUAL_RATE = #{annualRate,jdbcType=VARCHAR},
+      CLAUSE_WORDING = #{clauseWording,jdbcType=VARCHAR},
+      NPS = #{nps,jdbcType=VARCHAR},
+      CLAUSE_WORDING2 = #{clauseWording2,jdbcType=VARCHAR},
+      CLAUSE_WORDING3 = #{clauseWording3,jdbcType=VARCHAR},
+      POI_FLAG = #{poiFlag,jdbcType=VARCHAR},
+      POI_TEXT = #{poiText,jdbcType=VARCHAR},
+      HANDLER_USERNAME = #{handlerUsername,jdbcType=VARCHAR},
+      SUM_INSURED_DESC = #{sumInsuredDesc,jdbcType=VARCHAR},
+      INDEMNITY_PERIOD = #{indemnityPeriod,jdbcType=VARCHAR},
+      SHOW_PREMIUM_FLAG = #{showPremiumFlag,jdbcType=VARCHAR},
+      NON_BINDING = #{nonBinding,jdbcType=VARCHAR},
+      SALES_TEAM = #{salesTeam,jdbcType=VARCHAR},
+      BUSINESS_SOURCE = #{businessSource,jdbcType=VARCHAR},
+      GAII_QUOTE_NO = #{gaiiQuoteNo,jdbcType=VARCHAR},
+      FIX_EXCH = #{fixExch,jdbcType=VARCHAR},
+      ABROAD_DRIVE_YN = #{abroadDriveYn,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+</mapper>

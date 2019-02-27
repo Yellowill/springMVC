@@ -1,0 +1,1114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlFirePartitionExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlFirePartitionExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="LOCATION_ID" jdbcType="DECIMAL" property="locationId" />
+    <result column="LOCATION_DESC" jdbcType="VARCHAR" property="locationDesc" />
+    <result column="FLOOR_FLAT_NO" jdbcType="VARCHAR" property="floorFlatNo" />
+    <result column="OCCU_DESC" jdbcType="VARCHAR" property="occuDesc" />
+    <result column="ABC_CODE" jdbcType="VARCHAR" property="abcCode" />
+    <result column="CONSTRUCTION_CLASS" jdbcType="VARCHAR" property="constructionClass" />
+    <result column="EARTHQUAKE_ZONE" jdbcType="VARCHAR" property="earthquakeZone" />
+    <result column="TYPHOON_ZONE" jdbcType="VARCHAR" property="typhoonZone" />
+    <result column="LOC_TYPE_CODE" jdbcType="VARCHAR" property="locTypeCode" />
+    <result column="DEDUCTIBLE_AMOUNT" jdbcType="DECIMAL" property="deductibleAmount" />
+    <result column="FEA_CODE" jdbcType="VARCHAR" property="feaCode" />
+    <result column="RISK_TYPE" jdbcType="VARCHAR" property="riskType" />
+    <result column="BI_REQUIRED" jdbcType="VARCHAR" property="biRequired" />
+    <result column="CONSTRUCTION_LOADING" jdbcType="DECIMAL" property="constructionLoading" />
+    <result column="EQ_COVER_REQUIRED" jdbcType="VARCHAR" property="eqCoverRequired" />
+    <result column="EARTHQUAKE_LOADING" jdbcType="DECIMAL" property="earthquakeLoading" />
+    <result column="TYPHOON_LOADING" jdbcType="DECIMAL" property="typhoonLoading" />
+    <result column="LOCATION_LOADING" jdbcType="DECIMAL" property="locationLoading" />
+    <result column="DEDUCTIBLE_DAYS" jdbcType="DECIMAL" property="deductibleDays" />
+    <result column="USE_TARIFF_RATE" jdbcType="CHAR" property="useTariffRate" />
+    <result column="EXS_DISCOUNT" jdbcType="DECIMAL" property="exsDiscount" />
+    <result column="FTP_RATE" jdbcType="DECIMAL" property="ftpRate" />
+    <result column="GROSS_FLOOR_AREA_SR" jdbcType="DECIMAL" property="grossFloorAreaSr" />
+    <result column="PML" jdbcType="DECIMAL" property="pml" />
+    <result column="STK_MINPREM_PCT" jdbcType="DECIMAL" property="stkMinpremPct" />
+    <result column="STK_DEPOSIT_PCT" jdbcType="DECIMAL" property="stkDepositPct" />
+    <result column="FLAT_PREMIUM" jdbcType="DECIMAL" property="flatPremium" />
+    <result column="FLOOD_COVER_REQD" jdbcType="VARCHAR" property="floodCoverReqd" />
+    <result column="FLOOD_LOADING" jdbcType="DECIMAL" property="floodLoading" />
+    <result column="FLOOD_LIMIT" jdbcType="DECIMAL" property="floodLimit" />
+    <result column="DEDUCTIBLE_DISCOUNT" jdbcType="DECIMAL" property="deductibleDiscount" />
+    <result column="FEA_DISCOUNT" jdbcType="DECIMAL" property="feaDiscount" />
+    <result column="RISKPOINT_DISCOUNT" jdbcType="DECIMAL" property="riskpointDiscount" />
+    <result column="FINAL_RATE" jdbcType="DECIMAL" property="finalRate" />
+    <result column="TOTAL_SUM_INSURED" jdbcType="DECIMAL" property="totalSumInsured" />
+    <result column="BASE_RATE" jdbcType="DECIMAL" property="baseRate" />
+    <result column="NATURE_OF_RISK" jdbcType="VARCHAR" property="natureOfRisk" />
+    <result column="TY_COVER_REQUIRED" jdbcType="VARCHAR" property="tyCoverRequired" />
+    <result column="EARTHQUAKE_LIMIT" jdbcType="DECIMAL" property="earthquakeLimit" />
+    <result column="TYPHOON_LIMIT" jdbcType="DECIMAL" property="typhoonLimit" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="VESSEL_NAME" jdbcType="VARCHAR" property="vesselName" />
+    <result column="LICENSE_NO" jdbcType="VARCHAR" property="licenseNo" />
+    <result column="VESSEL_TYPE" jdbcType="VARCHAR" property="vesselType" />
+    <result column="CONSTRUCTION" jdbcType="VARCHAR" property="construction" />
+    <result column="YEAR_BUILT" jdbcType="VARCHAR" property="yearBuilt" />
+    <result column="DIMENSION" jdbcType="VARCHAR" property="dimension" />
+    <result column="HORSE_POWER" jdbcType="VARCHAR" property="horsePower" />
+    <result column="MAXIMUM_SPEED" jdbcType="VARCHAR" property="maximumSpeed" />
+    <result column="ENGINE_MADE" jdbcType="VARCHAR" property="engineMade" />
+    <result column="MOORING_PLACE" jdbcType="VARCHAR" property="mooringPlace" />
+    <result column="OCCUPATION" jdbcType="VARCHAR" property="occupation" />
+    <result column="OCCUPATION_DESC" jdbcType="VARCHAR" property="occupationDesc" />
+    <result column="OCCUPATION_CLASS" jdbcType="VARCHAR" property="occupationClass" />
+    <result column="IDENTITY_NO" jdbcType="VARCHAR" property="identityNo" />
+    <result column="NATIONALITY" jdbcType="VARCHAR" property="nationality" />
+    <result column="DOB" jdbcType="TIMESTAMP" property="dob" />
+    <result column="AGE" jdbcType="DECIMAL" property="age" />
+    <result column="MARITAL_STATUS" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="GENDER" jdbcType="CHAR" property="gender" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="PLAN" jdbcType="VARCHAR" property="plan" />
+    <result column="GROUP_SIZE" jdbcType="DECIMAL" property="groupSize" />
+    <result column="CONTRACT_NO" jdbcType="VARCHAR" property="contractNo" />
+    <result column="PROJECT_BLOCK_CODE" jdbcType="DECIMAL" property="projectBlockCode" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="ENGINE_NO" jdbcType="VARCHAR" property="engineNo" />
+    <result column="OCCUPATION_CLASS_DESC" jdbcType="VARCHAR" property="occupationClassDesc" />
+    <result column="RISKPOINT_DISCOUNT_AMT" jdbcType="DECIMAL" property="riskpointDiscountAmt" />
+    <result column="LOCATION_LOADING_AMT" jdbcType="DECIMAL" property="locationLoadingAmt" />
+    <result column="APPLY_MIN_PREM" jdbcType="VARCHAR" property="applyMinPrem" />
+    <result column="APPLY_DEPOSIT_PREM" jdbcType="VARCHAR" property="applyDepositPrem" />
+    <result column="PREM_PRINT_FLAG" jdbcType="VARCHAR" property="premPrintFlag" />
+    <result column="INDEMNITY_PRINT_FLAG" jdbcType="VARCHAR" property="indemnityPrintFlag" />
+    <result column="FLAT_PREMIUM_REMARK" jdbcType="VARCHAR" property="flatPremiumRemark" />
+    <result column="RISK_PRINT_FLAG" jdbcType="VARCHAR" property="riskPrintFlag" />
+    <result column="APPLY_TOTAL_SI" jdbcType="VARCHAR" property="applyTotalSi" />
+    <result column="GROUP_PRINT_FLAG" jdbcType="VARCHAR" property="groupPrintFlag" />
+    <result column="MODIFY_FLAG" jdbcType="VARCHAR" property="modifyFlag" />
+    <result column="GAII_LOSS_FREE_RATE" jdbcType="DECIMAL" property="gaiiLossFreeRate" />
+    <result column="GAII_LOSS_FREE_AMT" jdbcType="DECIMAL" property="gaiiLossFreeAmt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PARTITION_NO, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, PREVIOUS_VERSION, 
+    REVERSING_VERSION, LOCATION_ID, LOCATION_DESC, FLOOR_FLAT_NO, OCCU_DESC, ABC_CODE, 
+    CONSTRUCTION_CLASS, EARTHQUAKE_ZONE, TYPHOON_ZONE, LOC_TYPE_CODE, DEDUCTIBLE_AMOUNT, 
+    FEA_CODE, RISK_TYPE, BI_REQUIRED, CONSTRUCTION_LOADING, EQ_COVER_REQUIRED, EARTHQUAKE_LOADING, 
+    TYPHOON_LOADING, LOCATION_LOADING, DEDUCTIBLE_DAYS, USE_TARIFF_RATE, EXS_DISCOUNT, 
+    FTP_RATE, GROSS_FLOOR_AREA_SR, PML, STK_MINPREM_PCT, STK_DEPOSIT_PCT, FLAT_PREMIUM, 
+    FLOOD_COVER_REQD, FLOOD_LOADING, FLOOD_LIMIT, DEDUCTIBLE_DISCOUNT, FEA_DISCOUNT, 
+    RISKPOINT_DISCOUNT, FINAL_RATE, TOTAL_SUM_INSURED, BASE_RATE, NATURE_OF_RISK, TY_COVER_REQUIRED, 
+    EARTHQUAKE_LIMIT, TYPHOON_LIMIT, NAME, DESCRIPTION, REMARK, VESSEL_NAME, LICENSE_NO, 
+    VESSEL_TYPE, CONSTRUCTION, YEAR_BUILT, DIMENSION, HORSE_POWER, MAXIMUM_SPEED, ENGINE_MADE, 
+    MOORING_PLACE, OCCUPATION, OCCUPATION_DESC, OCCUPATION_CLASS, IDENTITY_NO, NATIONALITY, 
+    DOB, AGE, MARITAL_STATUS, GENDER, ADDRESS, PLAN, GROUP_SIZE, CONTRACT_NO, PROJECT_BLOCK_CODE, 
+    LOCATION, ENGINE_NO, OCCUPATION_CLASS_DESC, RISKPOINT_DISCOUNT_AMT, LOCATION_LOADING_AMT, 
+    APPLY_MIN_PREM, APPLY_DEPOSIT_PREM, PREM_PRINT_FLAG, INDEMNITY_PRINT_FLAG, FLAT_PREMIUM_REMARK, 
+    RISK_PRINT_FLAG, APPLY_TOTAL_SI, GROUP_PRINT_FLAG, MODIFY_FLAG, GAII_LOSS_FREE_RATE, 
+    GAII_LOSS_FREE_AMT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlFirePartitionExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_FIRE_PARTITION_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlFirePartitionExtKey">
+    delete from WIP_PRL_FIRE_PARTITION_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlFirePartitionExt">
+    insert into WIP_PRL_FIRE_PARTITION_EXT (CONTRACT_ID, PARTITION_NO, ACTION_CODE, 
+      VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+      PREVIOUS_VERSION, REVERSING_VERSION, LOCATION_ID, 
+      LOCATION_DESC, FLOOR_FLAT_NO, OCCU_DESC, 
+      ABC_CODE, CONSTRUCTION_CLASS, EARTHQUAKE_ZONE, 
+      TYPHOON_ZONE, LOC_TYPE_CODE, DEDUCTIBLE_AMOUNT, 
+      FEA_CODE, RISK_TYPE, BI_REQUIRED, 
+      CONSTRUCTION_LOADING, EQ_COVER_REQUIRED, EARTHQUAKE_LOADING, 
+      TYPHOON_LOADING, LOCATION_LOADING, DEDUCTIBLE_DAYS, 
+      USE_TARIFF_RATE, EXS_DISCOUNT, FTP_RATE, 
+      GROSS_FLOOR_AREA_SR, PML, STK_MINPREM_PCT, 
+      STK_DEPOSIT_PCT, FLAT_PREMIUM, FLOOD_COVER_REQD, 
+      FLOOD_LOADING, FLOOD_LIMIT, DEDUCTIBLE_DISCOUNT, 
+      FEA_DISCOUNT, RISKPOINT_DISCOUNT, FINAL_RATE, 
+      TOTAL_SUM_INSURED, BASE_RATE, NATURE_OF_RISK, 
+      TY_COVER_REQUIRED, EARTHQUAKE_LIMIT, TYPHOON_LIMIT, 
+      NAME, DESCRIPTION, REMARK, 
+      VESSEL_NAME, LICENSE_NO, VESSEL_TYPE, 
+      CONSTRUCTION, YEAR_BUILT, DIMENSION, 
+      HORSE_POWER, MAXIMUM_SPEED, ENGINE_MADE, 
+      MOORING_PLACE, OCCUPATION, OCCUPATION_DESC, 
+      OCCUPATION_CLASS, IDENTITY_NO, NATIONALITY, 
+      DOB, AGE, MARITAL_STATUS, 
+      GENDER, ADDRESS, PLAN, 
+      GROUP_SIZE, CONTRACT_NO, PROJECT_BLOCK_CODE, 
+      LOCATION, ENGINE_NO, OCCUPATION_CLASS_DESC, 
+      RISKPOINT_DISCOUNT_AMT, LOCATION_LOADING_AMT, 
+      APPLY_MIN_PREM, APPLY_DEPOSIT_PREM, PREM_PRINT_FLAG, 
+      INDEMNITY_PRINT_FLAG, FLAT_PREMIUM_REMARK, 
+      RISK_PRINT_FLAG, APPLY_TOTAL_SI, GROUP_PRINT_FLAG, 
+      MODIFY_FLAG, GAII_LOSS_FREE_RATE, GAII_LOSS_FREE_AMT
+      )
+    values (#{contractId,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}, #{actionCode,jdbcType=CHAR}, 
+      #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, #{topIndicator,jdbcType=CHAR}, 
+      #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, #{locationId,jdbcType=DECIMAL}, 
+      #{locationDesc,jdbcType=VARCHAR}, #{floorFlatNo,jdbcType=VARCHAR}, #{occuDesc,jdbcType=VARCHAR}, 
+      #{abcCode,jdbcType=VARCHAR}, #{constructionClass,jdbcType=VARCHAR}, #{earthquakeZone,jdbcType=VARCHAR}, 
+      #{typhoonZone,jdbcType=VARCHAR}, #{locTypeCode,jdbcType=VARCHAR}, #{deductibleAmount,jdbcType=DECIMAL}, 
+      #{feaCode,jdbcType=VARCHAR}, #{riskType,jdbcType=VARCHAR}, #{biRequired,jdbcType=VARCHAR}, 
+      #{constructionLoading,jdbcType=DECIMAL}, #{eqCoverRequired,jdbcType=VARCHAR}, #{earthquakeLoading,jdbcType=DECIMAL}, 
+      #{typhoonLoading,jdbcType=DECIMAL}, #{locationLoading,jdbcType=DECIMAL}, #{deductibleDays,jdbcType=DECIMAL}, 
+      #{useTariffRate,jdbcType=CHAR}, #{exsDiscount,jdbcType=DECIMAL}, #{ftpRate,jdbcType=DECIMAL}, 
+      #{grossFloorAreaSr,jdbcType=DECIMAL}, #{pml,jdbcType=DECIMAL}, #{stkMinpremPct,jdbcType=DECIMAL}, 
+      #{stkDepositPct,jdbcType=DECIMAL}, #{flatPremium,jdbcType=DECIMAL}, #{floodCoverReqd,jdbcType=VARCHAR}, 
+      #{floodLoading,jdbcType=DECIMAL}, #{floodLimit,jdbcType=DECIMAL}, #{deductibleDiscount,jdbcType=DECIMAL}, 
+      #{feaDiscount,jdbcType=DECIMAL}, #{riskpointDiscount,jdbcType=DECIMAL}, #{finalRate,jdbcType=DECIMAL}, 
+      #{totalSumInsured,jdbcType=DECIMAL}, #{baseRate,jdbcType=DECIMAL}, #{natureOfRisk,jdbcType=VARCHAR}, 
+      #{tyCoverRequired,jdbcType=VARCHAR}, #{earthquakeLimit,jdbcType=DECIMAL}, #{typhoonLimit,jdbcType=DECIMAL}, 
+      #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{vesselName,jdbcType=VARCHAR}, #{licenseNo,jdbcType=VARCHAR}, #{vesselType,jdbcType=VARCHAR}, 
+      #{construction,jdbcType=VARCHAR}, #{yearBuilt,jdbcType=VARCHAR}, #{dimension,jdbcType=VARCHAR}, 
+      #{horsePower,jdbcType=VARCHAR}, #{maximumSpeed,jdbcType=VARCHAR}, #{engineMade,jdbcType=VARCHAR}, 
+      #{mooringPlace,jdbcType=VARCHAR}, #{occupation,jdbcType=VARCHAR}, #{occupationDesc,jdbcType=VARCHAR}, 
+      #{occupationClass,jdbcType=VARCHAR}, #{identityNo,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, 
+      #{dob,jdbcType=TIMESTAMP}, #{age,jdbcType=DECIMAL}, #{maritalStatus,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{plan,jdbcType=VARCHAR}, 
+      #{groupSize,jdbcType=DECIMAL}, #{contractNo,jdbcType=VARCHAR}, #{projectBlockCode,jdbcType=DECIMAL}, 
+      #{location,jdbcType=VARCHAR}, #{engineNo,jdbcType=VARCHAR}, #{occupationClassDesc,jdbcType=VARCHAR}, 
+      #{riskpointDiscountAmt,jdbcType=DECIMAL}, #{locationLoadingAmt,jdbcType=DECIMAL}, 
+      #{applyMinPrem,jdbcType=VARCHAR}, #{applyDepositPrem,jdbcType=VARCHAR}, #{premPrintFlag,jdbcType=VARCHAR}, 
+      #{indemnityPrintFlag,jdbcType=VARCHAR}, #{flatPremiumRemark,jdbcType=VARCHAR}, 
+      #{riskPrintFlag,jdbcType=VARCHAR}, #{applyTotalSi,jdbcType=VARCHAR}, #{groupPrintFlag,jdbcType=VARCHAR}, 
+      #{modifyFlag,jdbcType=VARCHAR}, #{gaiiLossFreeRate,jdbcType=DECIMAL}, #{gaiiLossFreeAmt,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlFirePartitionExt">
+    insert into WIP_PRL_FIRE_PARTITION_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="locationId != null">
+        LOCATION_ID,
+      </if>
+      <if test="locationDesc != null">
+        LOCATION_DESC,
+      </if>
+      <if test="floorFlatNo != null">
+        FLOOR_FLAT_NO,
+      </if>
+      <if test="occuDesc != null">
+        OCCU_DESC,
+      </if>
+      <if test="abcCode != null">
+        ABC_CODE,
+      </if>
+      <if test="constructionClass != null">
+        CONSTRUCTION_CLASS,
+      </if>
+      <if test="earthquakeZone != null">
+        EARTHQUAKE_ZONE,
+      </if>
+      <if test="typhoonZone != null">
+        TYPHOON_ZONE,
+      </if>
+      <if test="locTypeCode != null">
+        LOC_TYPE_CODE,
+      </if>
+      <if test="deductibleAmount != null">
+        DEDUCTIBLE_AMOUNT,
+      </if>
+      <if test="feaCode != null">
+        FEA_CODE,
+      </if>
+      <if test="riskType != null">
+        RISK_TYPE,
+      </if>
+      <if test="biRequired != null">
+        BI_REQUIRED,
+      </if>
+      <if test="constructionLoading != null">
+        CONSTRUCTION_LOADING,
+      </if>
+      <if test="eqCoverRequired != null">
+        EQ_COVER_REQUIRED,
+      </if>
+      <if test="earthquakeLoading != null">
+        EARTHQUAKE_LOADING,
+      </if>
+      <if test="typhoonLoading != null">
+        TYPHOON_LOADING,
+      </if>
+      <if test="locationLoading != null">
+        LOCATION_LOADING,
+      </if>
+      <if test="deductibleDays != null">
+        DEDUCTIBLE_DAYS,
+      </if>
+      <if test="useTariffRate != null">
+        USE_TARIFF_RATE,
+      </if>
+      <if test="exsDiscount != null">
+        EXS_DISCOUNT,
+      </if>
+      <if test="ftpRate != null">
+        FTP_RATE,
+      </if>
+      <if test="grossFloorAreaSr != null">
+        GROSS_FLOOR_AREA_SR,
+      </if>
+      <if test="pml != null">
+        PML,
+      </if>
+      <if test="stkMinpremPct != null">
+        STK_MINPREM_PCT,
+      </if>
+      <if test="stkDepositPct != null">
+        STK_DEPOSIT_PCT,
+      </if>
+      <if test="flatPremium != null">
+        FLAT_PREMIUM,
+      </if>
+      <if test="floodCoverReqd != null">
+        FLOOD_COVER_REQD,
+      </if>
+      <if test="floodLoading != null">
+        FLOOD_LOADING,
+      </if>
+      <if test="floodLimit != null">
+        FLOOD_LIMIT,
+      </if>
+      <if test="deductibleDiscount != null">
+        DEDUCTIBLE_DISCOUNT,
+      </if>
+      <if test="feaDiscount != null">
+        FEA_DISCOUNT,
+      </if>
+      <if test="riskpointDiscount != null">
+        RISKPOINT_DISCOUNT,
+      </if>
+      <if test="finalRate != null">
+        FINAL_RATE,
+      </if>
+      <if test="totalSumInsured != null">
+        TOTAL_SUM_INSURED,
+      </if>
+      <if test="baseRate != null">
+        BASE_RATE,
+      </if>
+      <if test="natureOfRisk != null">
+        NATURE_OF_RISK,
+      </if>
+      <if test="tyCoverRequired != null">
+        TY_COVER_REQUIRED,
+      </if>
+      <if test="earthquakeLimit != null">
+        EARTHQUAKE_LIMIT,
+      </if>
+      <if test="typhoonLimit != null">
+        TYPHOON_LIMIT,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="vesselName != null">
+        VESSEL_NAME,
+      </if>
+      <if test="licenseNo != null">
+        LICENSE_NO,
+      </if>
+      <if test="vesselType != null">
+        VESSEL_TYPE,
+      </if>
+      <if test="construction != null">
+        CONSTRUCTION,
+      </if>
+      <if test="yearBuilt != null">
+        YEAR_BUILT,
+      </if>
+      <if test="dimension != null">
+        DIMENSION,
+      </if>
+      <if test="horsePower != null">
+        HORSE_POWER,
+      </if>
+      <if test="maximumSpeed != null">
+        MAXIMUM_SPEED,
+      </if>
+      <if test="engineMade != null">
+        ENGINE_MADE,
+      </if>
+      <if test="mooringPlace != null">
+        MOORING_PLACE,
+      </if>
+      <if test="occupation != null">
+        OCCUPATION,
+      </if>
+      <if test="occupationDesc != null">
+        OCCUPATION_DESC,
+      </if>
+      <if test="occupationClass != null">
+        OCCUPATION_CLASS,
+      </if>
+      <if test="identityNo != null">
+        IDENTITY_NO,
+      </if>
+      <if test="nationality != null">
+        NATIONALITY,
+      </if>
+      <if test="dob != null">
+        DOB,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="maritalStatus != null">
+        MARITAL_STATUS,
+      </if>
+      <if test="gender != null">
+        GENDER,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="plan != null">
+        PLAN,
+      </if>
+      <if test="groupSize != null">
+        GROUP_SIZE,
+      </if>
+      <if test="contractNo != null">
+        CONTRACT_NO,
+      </if>
+      <if test="projectBlockCode != null">
+        PROJECT_BLOCK_CODE,
+      </if>
+      <if test="location != null">
+        LOCATION,
+      </if>
+      <if test="engineNo != null">
+        ENGINE_NO,
+      </if>
+      <if test="occupationClassDesc != null">
+        OCCUPATION_CLASS_DESC,
+      </if>
+      <if test="riskpointDiscountAmt != null">
+        RISKPOINT_DISCOUNT_AMT,
+      </if>
+      <if test="locationLoadingAmt != null">
+        LOCATION_LOADING_AMT,
+      </if>
+      <if test="applyMinPrem != null">
+        APPLY_MIN_PREM,
+      </if>
+      <if test="applyDepositPrem != null">
+        APPLY_DEPOSIT_PREM,
+      </if>
+      <if test="premPrintFlag != null">
+        PREM_PRINT_FLAG,
+      </if>
+      <if test="indemnityPrintFlag != null">
+        INDEMNITY_PRINT_FLAG,
+      </if>
+      <if test="flatPremiumRemark != null">
+        FLAT_PREMIUM_REMARK,
+      </if>
+      <if test="riskPrintFlag != null">
+        RISK_PRINT_FLAG,
+      </if>
+      <if test="applyTotalSi != null">
+        APPLY_TOTAL_SI,
+      </if>
+      <if test="groupPrintFlag != null">
+        GROUP_PRINT_FLAG,
+      </if>
+      <if test="modifyFlag != null">
+        MODIFY_FLAG,
+      </if>
+      <if test="gaiiLossFreeRate != null">
+        GAII_LOSS_FREE_RATE,
+      </if>
+      <if test="gaiiLossFreeAmt != null">
+        GAII_LOSS_FREE_AMT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="locationId != null">
+        #{locationId,jdbcType=DECIMAL},
+      </if>
+      <if test="locationDesc != null">
+        #{locationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="floorFlatNo != null">
+        #{floorFlatNo,jdbcType=VARCHAR},
+      </if>
+      <if test="occuDesc != null">
+        #{occuDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="abcCode != null">
+        #{abcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionClass != null">
+        #{constructionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="earthquakeZone != null">
+        #{earthquakeZone,jdbcType=VARCHAR},
+      </if>
+      <if test="typhoonZone != null">
+        #{typhoonZone,jdbcType=VARCHAR},
+      </if>
+      <if test="locTypeCode != null">
+        #{locTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deductibleAmount != null">
+        #{deductibleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="feaCode != null">
+        #{feaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="riskType != null">
+        #{riskType,jdbcType=VARCHAR},
+      </if>
+      <if test="biRequired != null">
+        #{biRequired,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionLoading != null">
+        #{constructionLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="eqCoverRequired != null">
+        #{eqCoverRequired,jdbcType=VARCHAR},
+      </if>
+      <if test="earthquakeLoading != null">
+        #{earthquakeLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="typhoonLoading != null">
+        #{typhoonLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="locationLoading != null">
+        #{locationLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="deductibleDays != null">
+        #{deductibleDays,jdbcType=DECIMAL},
+      </if>
+      <if test="useTariffRate != null">
+        #{useTariffRate,jdbcType=CHAR},
+      </if>
+      <if test="exsDiscount != null">
+        #{exsDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="ftpRate != null">
+        #{ftpRate,jdbcType=DECIMAL},
+      </if>
+      <if test="grossFloorAreaSr != null">
+        #{grossFloorAreaSr,jdbcType=DECIMAL},
+      </if>
+      <if test="pml != null">
+        #{pml,jdbcType=DECIMAL},
+      </if>
+      <if test="stkMinpremPct != null">
+        #{stkMinpremPct,jdbcType=DECIMAL},
+      </if>
+      <if test="stkDepositPct != null">
+        #{stkDepositPct,jdbcType=DECIMAL},
+      </if>
+      <if test="flatPremium != null">
+        #{flatPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="floodCoverReqd != null">
+        #{floodCoverReqd,jdbcType=VARCHAR},
+      </if>
+      <if test="floodLoading != null">
+        #{floodLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="floodLimit != null">
+        #{floodLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="deductibleDiscount != null">
+        #{deductibleDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="feaDiscount != null">
+        #{feaDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="riskpointDiscount != null">
+        #{riskpointDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="finalRate != null">
+        #{finalRate,jdbcType=DECIMAL},
+      </if>
+      <if test="totalSumInsured != null">
+        #{totalSumInsured,jdbcType=DECIMAL},
+      </if>
+      <if test="baseRate != null">
+        #{baseRate,jdbcType=DECIMAL},
+      </if>
+      <if test="natureOfRisk != null">
+        #{natureOfRisk,jdbcType=VARCHAR},
+      </if>
+      <if test="tyCoverRequired != null">
+        #{tyCoverRequired,jdbcType=VARCHAR},
+      </if>
+      <if test="earthquakeLimit != null">
+        #{earthquakeLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="typhoonLimit != null">
+        #{typhoonLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="vesselName != null">
+        #{vesselName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNo != null">
+        #{licenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vesselType != null">
+        #{vesselType,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null">
+        #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="yearBuilt != null">
+        #{yearBuilt,jdbcType=VARCHAR},
+      </if>
+      <if test="dimension != null">
+        #{dimension,jdbcType=VARCHAR},
+      </if>
+      <if test="horsePower != null">
+        #{horsePower,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumSpeed != null">
+        #{maximumSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="engineMade != null">
+        #{engineMade,jdbcType=VARCHAR},
+      </if>
+      <if test="mooringPlace != null">
+        #{mooringPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationDesc != null">
+        #{occupationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationClass != null">
+        #{occupationClass,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null">
+        #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        #{dob,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="plan != null">
+        #{plan,jdbcType=VARCHAR},
+      </if>
+      <if test="groupSize != null">
+        #{groupSize,jdbcType=DECIMAL},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectBlockCode != null">
+        #{projectBlockCode,jdbcType=DECIMAL},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null">
+        #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationClassDesc != null">
+        #{occupationClassDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="riskpointDiscountAmt != null">
+        #{riskpointDiscountAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="locationLoadingAmt != null">
+        #{locationLoadingAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="applyMinPrem != null">
+        #{applyMinPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDepositPrem != null">
+        #{applyDepositPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="premPrintFlag != null">
+        #{premPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="indemnityPrintFlag != null">
+        #{indemnityPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="flatPremiumRemark != null">
+        #{flatPremiumRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="riskPrintFlag != null">
+        #{riskPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTotalSi != null">
+        #{applyTotalSi,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPrintFlag != null">
+        #{groupPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyFlag != null">
+        #{modifyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="gaiiLossFreeRate != null">
+        #{gaiiLossFreeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="gaiiLossFreeAmt != null">
+        #{gaiiLossFreeAmt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlFirePartitionExt">
+    update WIP_PRL_FIRE_PARTITION_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="locationId != null">
+        LOCATION_ID = #{locationId,jdbcType=DECIMAL},
+      </if>
+      <if test="locationDesc != null">
+        LOCATION_DESC = #{locationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="floorFlatNo != null">
+        FLOOR_FLAT_NO = #{floorFlatNo,jdbcType=VARCHAR},
+      </if>
+      <if test="occuDesc != null">
+        OCCU_DESC = #{occuDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="abcCode != null">
+        ABC_CODE = #{abcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionClass != null">
+        CONSTRUCTION_CLASS = #{constructionClass,jdbcType=VARCHAR},
+      </if>
+      <if test="earthquakeZone != null">
+        EARTHQUAKE_ZONE = #{earthquakeZone,jdbcType=VARCHAR},
+      </if>
+      <if test="typhoonZone != null">
+        TYPHOON_ZONE = #{typhoonZone,jdbcType=VARCHAR},
+      </if>
+      <if test="locTypeCode != null">
+        LOC_TYPE_CODE = #{locTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deductibleAmount != null">
+        DEDUCTIBLE_AMOUNT = #{deductibleAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="feaCode != null">
+        FEA_CODE = #{feaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="riskType != null">
+        RISK_TYPE = #{riskType,jdbcType=VARCHAR},
+      </if>
+      <if test="biRequired != null">
+        BI_REQUIRED = #{biRequired,jdbcType=VARCHAR},
+      </if>
+      <if test="constructionLoading != null">
+        CONSTRUCTION_LOADING = #{constructionLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="eqCoverRequired != null">
+        EQ_COVER_REQUIRED = #{eqCoverRequired,jdbcType=VARCHAR},
+      </if>
+      <if test="earthquakeLoading != null">
+        EARTHQUAKE_LOADING = #{earthquakeLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="typhoonLoading != null">
+        TYPHOON_LOADING = #{typhoonLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="locationLoading != null">
+        LOCATION_LOADING = #{locationLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="deductibleDays != null">
+        DEDUCTIBLE_DAYS = #{deductibleDays,jdbcType=DECIMAL},
+      </if>
+      <if test="useTariffRate != null">
+        USE_TARIFF_RATE = #{useTariffRate,jdbcType=CHAR},
+      </if>
+      <if test="exsDiscount != null">
+        EXS_DISCOUNT = #{exsDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="ftpRate != null">
+        FTP_RATE = #{ftpRate,jdbcType=DECIMAL},
+      </if>
+      <if test="grossFloorAreaSr != null">
+        GROSS_FLOOR_AREA_SR = #{grossFloorAreaSr,jdbcType=DECIMAL},
+      </if>
+      <if test="pml != null">
+        PML = #{pml,jdbcType=DECIMAL},
+      </if>
+      <if test="stkMinpremPct != null">
+        STK_MINPREM_PCT = #{stkMinpremPct,jdbcType=DECIMAL},
+      </if>
+      <if test="stkDepositPct != null">
+        STK_DEPOSIT_PCT = #{stkDepositPct,jdbcType=DECIMAL},
+      </if>
+      <if test="flatPremium != null">
+        FLAT_PREMIUM = #{flatPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="floodCoverReqd != null">
+        FLOOD_COVER_REQD = #{floodCoverReqd,jdbcType=VARCHAR},
+      </if>
+      <if test="floodLoading != null">
+        FLOOD_LOADING = #{floodLoading,jdbcType=DECIMAL},
+      </if>
+      <if test="floodLimit != null">
+        FLOOD_LIMIT = #{floodLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="deductibleDiscount != null">
+        DEDUCTIBLE_DISCOUNT = #{deductibleDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="feaDiscount != null">
+        FEA_DISCOUNT = #{feaDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="riskpointDiscount != null">
+        RISKPOINT_DISCOUNT = #{riskpointDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="finalRate != null">
+        FINAL_RATE = #{finalRate,jdbcType=DECIMAL},
+      </if>
+      <if test="totalSumInsured != null">
+        TOTAL_SUM_INSURED = #{totalSumInsured,jdbcType=DECIMAL},
+      </if>
+      <if test="baseRate != null">
+        BASE_RATE = #{baseRate,jdbcType=DECIMAL},
+      </if>
+      <if test="natureOfRisk != null">
+        NATURE_OF_RISK = #{natureOfRisk,jdbcType=VARCHAR},
+      </if>
+      <if test="tyCoverRequired != null">
+        TY_COVER_REQUIRED = #{tyCoverRequired,jdbcType=VARCHAR},
+      </if>
+      <if test="earthquakeLimit != null">
+        EARTHQUAKE_LIMIT = #{earthquakeLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="typhoonLimit != null">
+        TYPHOON_LIMIT = #{typhoonLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="vesselName != null">
+        VESSEL_NAME = #{vesselName,jdbcType=VARCHAR},
+      </if>
+      <if test="licenseNo != null">
+        LICENSE_NO = #{licenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vesselType != null">
+        VESSEL_TYPE = #{vesselType,jdbcType=VARCHAR},
+      </if>
+      <if test="construction != null">
+        CONSTRUCTION = #{construction,jdbcType=VARCHAR},
+      </if>
+      <if test="yearBuilt != null">
+        YEAR_BUILT = #{yearBuilt,jdbcType=VARCHAR},
+      </if>
+      <if test="dimension != null">
+        DIMENSION = #{dimension,jdbcType=VARCHAR},
+      </if>
+      <if test="horsePower != null">
+        HORSE_POWER = #{horsePower,jdbcType=VARCHAR},
+      </if>
+      <if test="maximumSpeed != null">
+        MAXIMUM_SPEED = #{maximumSpeed,jdbcType=VARCHAR},
+      </if>
+      <if test="engineMade != null">
+        ENGINE_MADE = #{engineMade,jdbcType=VARCHAR},
+      </if>
+      <if test="mooringPlace != null">
+        MOORING_PLACE = #{mooringPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        OCCUPATION = #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationDesc != null">
+        OCCUPATION_DESC = #{occupationDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationClass != null">
+        OCCUPATION_CLASS = #{occupationClass,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null">
+        IDENTITY_NO = #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null">
+        NATIONALITY = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        DOB = #{dob,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="maritalStatus != null">
+        MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        GENDER = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="plan != null">
+        PLAN = #{plan,jdbcType=VARCHAR},
+      </if>
+      <if test="groupSize != null">
+        GROUP_SIZE = #{groupSize,jdbcType=DECIMAL},
+      </if>
+      <if test="contractNo != null">
+        CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectBlockCode != null">
+        PROJECT_BLOCK_CODE = #{projectBlockCode,jdbcType=DECIMAL},
+      </if>
+      <if test="location != null">
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="engineNo != null">
+        ENGINE_NO = #{engineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationClassDesc != null">
+        OCCUPATION_CLASS_DESC = #{occupationClassDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="riskpointDiscountAmt != null">
+        RISKPOINT_DISCOUNT_AMT = #{riskpointDiscountAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="locationLoadingAmt != null">
+        LOCATION_LOADING_AMT = #{locationLoadingAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="applyMinPrem != null">
+        APPLY_MIN_PREM = #{applyMinPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDepositPrem != null">
+        APPLY_DEPOSIT_PREM = #{applyDepositPrem,jdbcType=VARCHAR},
+      </if>
+      <if test="premPrintFlag != null">
+        PREM_PRINT_FLAG = #{premPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="indemnityPrintFlag != null">
+        INDEMNITY_PRINT_FLAG = #{indemnityPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="flatPremiumRemark != null">
+        FLAT_PREMIUM_REMARK = #{flatPremiumRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="riskPrintFlag != null">
+        RISK_PRINT_FLAG = #{riskPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTotalSi != null">
+        APPLY_TOTAL_SI = #{applyTotalSi,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPrintFlag != null">
+        GROUP_PRINT_FLAG = #{groupPrintFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyFlag != null">
+        MODIFY_FLAG = #{modifyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="gaiiLossFreeRate != null">
+        GAII_LOSS_FREE_RATE = #{gaiiLossFreeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="gaiiLossFreeAmt != null">
+        GAII_LOSS_FREE_AMT = #{gaiiLossFreeAmt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlFirePartitionExt">
+    update WIP_PRL_FIRE_PARTITION_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      LOCATION_ID = #{locationId,jdbcType=DECIMAL},
+      LOCATION_DESC = #{locationDesc,jdbcType=VARCHAR},
+      FLOOR_FLAT_NO = #{floorFlatNo,jdbcType=VARCHAR},
+      OCCU_DESC = #{occuDesc,jdbcType=VARCHAR},
+      ABC_CODE = #{abcCode,jdbcType=VARCHAR},
+      CONSTRUCTION_CLASS = #{constructionClass,jdbcType=VARCHAR},
+      EARTHQUAKE_ZONE = #{earthquakeZone,jdbcType=VARCHAR},
+      TYPHOON_ZONE = #{typhoonZone,jdbcType=VARCHAR},
+      LOC_TYPE_CODE = #{locTypeCode,jdbcType=VARCHAR},
+      DEDUCTIBLE_AMOUNT = #{deductibleAmount,jdbcType=DECIMAL},
+      FEA_CODE = #{feaCode,jdbcType=VARCHAR},
+      RISK_TYPE = #{riskType,jdbcType=VARCHAR},
+      BI_REQUIRED = #{biRequired,jdbcType=VARCHAR},
+      CONSTRUCTION_LOADING = #{constructionLoading,jdbcType=DECIMAL},
+      EQ_COVER_REQUIRED = #{eqCoverRequired,jdbcType=VARCHAR},
+      EARTHQUAKE_LOADING = #{earthquakeLoading,jdbcType=DECIMAL},
+      TYPHOON_LOADING = #{typhoonLoading,jdbcType=DECIMAL},
+      LOCATION_LOADING = #{locationLoading,jdbcType=DECIMAL},
+      DEDUCTIBLE_DAYS = #{deductibleDays,jdbcType=DECIMAL},
+      USE_TARIFF_RATE = #{useTariffRate,jdbcType=CHAR},
+      EXS_DISCOUNT = #{exsDiscount,jdbcType=DECIMAL},
+      FTP_RATE = #{ftpRate,jdbcType=DECIMAL},
+      GROSS_FLOOR_AREA_SR = #{grossFloorAreaSr,jdbcType=DECIMAL},
+      PML = #{pml,jdbcType=DECIMAL},
+      STK_MINPREM_PCT = #{stkMinpremPct,jdbcType=DECIMAL},
+      STK_DEPOSIT_PCT = #{stkDepositPct,jdbcType=DECIMAL},
+      FLAT_PREMIUM = #{flatPremium,jdbcType=DECIMAL},
+      FLOOD_COVER_REQD = #{floodCoverReqd,jdbcType=VARCHAR},
+      FLOOD_LOADING = #{floodLoading,jdbcType=DECIMAL},
+      FLOOD_LIMIT = #{floodLimit,jdbcType=DECIMAL},
+      DEDUCTIBLE_DISCOUNT = #{deductibleDiscount,jdbcType=DECIMAL},
+      FEA_DISCOUNT = #{feaDiscount,jdbcType=DECIMAL},
+      RISKPOINT_DISCOUNT = #{riskpointDiscount,jdbcType=DECIMAL},
+      FINAL_RATE = #{finalRate,jdbcType=DECIMAL},
+      TOTAL_SUM_INSURED = #{totalSumInsured,jdbcType=DECIMAL},
+      BASE_RATE = #{baseRate,jdbcType=DECIMAL},
+      NATURE_OF_RISK = #{natureOfRisk,jdbcType=VARCHAR},
+      TY_COVER_REQUIRED = #{tyCoverRequired,jdbcType=VARCHAR},
+      EARTHQUAKE_LIMIT = #{earthquakeLimit,jdbcType=DECIMAL},
+      TYPHOON_LIMIT = #{typhoonLimit,jdbcType=DECIMAL},
+      NAME = #{name,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      VESSEL_NAME = #{vesselName,jdbcType=VARCHAR},
+      LICENSE_NO = #{licenseNo,jdbcType=VARCHAR},
+      VESSEL_TYPE = #{vesselType,jdbcType=VARCHAR},
+      CONSTRUCTION = #{construction,jdbcType=VARCHAR},
+      YEAR_BUILT = #{yearBuilt,jdbcType=VARCHAR},
+      DIMENSION = #{dimension,jdbcType=VARCHAR},
+      HORSE_POWER = #{horsePower,jdbcType=VARCHAR},
+      MAXIMUM_SPEED = #{maximumSpeed,jdbcType=VARCHAR},
+      ENGINE_MADE = #{engineMade,jdbcType=VARCHAR},
+      MOORING_PLACE = #{mooringPlace,jdbcType=VARCHAR},
+      OCCUPATION = #{occupation,jdbcType=VARCHAR},
+      OCCUPATION_DESC = #{occupationDesc,jdbcType=VARCHAR},
+      OCCUPATION_CLASS = #{occupationClass,jdbcType=VARCHAR},
+      IDENTITY_NO = #{identityNo,jdbcType=VARCHAR},
+      NATIONALITY = #{nationality,jdbcType=VARCHAR},
+      DOB = #{dob,jdbcType=TIMESTAMP},
+      AGE = #{age,jdbcType=DECIMAL},
+      MARITAL_STATUS = #{maritalStatus,jdbcType=VARCHAR},
+      GENDER = #{gender,jdbcType=CHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PLAN = #{plan,jdbcType=VARCHAR},
+      GROUP_SIZE = #{groupSize,jdbcType=DECIMAL},
+      CONTRACT_NO = #{contractNo,jdbcType=VARCHAR},
+      PROJECT_BLOCK_CODE = #{projectBlockCode,jdbcType=DECIMAL},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      ENGINE_NO = #{engineNo,jdbcType=VARCHAR},
+      OCCUPATION_CLASS_DESC = #{occupationClassDesc,jdbcType=VARCHAR},
+      RISKPOINT_DISCOUNT_AMT = #{riskpointDiscountAmt,jdbcType=DECIMAL},
+      LOCATION_LOADING_AMT = #{locationLoadingAmt,jdbcType=DECIMAL},
+      APPLY_MIN_PREM = #{applyMinPrem,jdbcType=VARCHAR},
+      APPLY_DEPOSIT_PREM = #{applyDepositPrem,jdbcType=VARCHAR},
+      PREM_PRINT_FLAG = #{premPrintFlag,jdbcType=VARCHAR},
+      INDEMNITY_PRINT_FLAG = #{indemnityPrintFlag,jdbcType=VARCHAR},
+      FLAT_PREMIUM_REMARK = #{flatPremiumRemark,jdbcType=VARCHAR},
+      RISK_PRINT_FLAG = #{riskPrintFlag,jdbcType=VARCHAR},
+      APPLY_TOTAL_SI = #{applyTotalSi,jdbcType=VARCHAR},
+      GROUP_PRINT_FLAG = #{groupPrintFlag,jdbcType=VARCHAR},
+      MODIFY_FLAG = #{modifyFlag,jdbcType=VARCHAR},
+      GAII_LOSS_FREE_RATE = #{gaiiLossFreeRate,jdbcType=DECIMAL},
+      GAII_LOSS_FREE_AMT = #{gaiiLossFreeAmt,jdbcType=DECIMAL}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

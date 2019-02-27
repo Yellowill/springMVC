@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPolicyBasesMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPolicyBases">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <result column="ACTION_CODE" jdbcType="VARCHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="COMPANY_ID" jdbcType="DECIMAL" property="companyId" />
+    <result column="POLICY_REF" jdbcType="VARCHAR" property="policyRef" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="TERM_START_DATE" jdbcType="TIMESTAMP" property="termStartDate" />
+    <result column="TERM_END_DATE" jdbcType="TIMESTAMP" property="termEndDate" />
+    <result column="BILL_TYPE_METHOD_OF_PAYMENT" jdbcType="VARCHAR" property="billTypeMethodOfPayment" />
+    <result column="COINSURANCE_LEAD_FOLLOWER" jdbcType="VARCHAR" property="coinsuranceLeadFollower" />
+    <result column="COMPANY_ORG_UNIT" jdbcType="DECIMAL" property="companyOrgUnit" />
+    <result column="AGENT_ROLE" jdbcType="DECIMAL" property="agentRole" />
+    <result column="FREQUENCY_PAYMENT_PLAN" jdbcType="VARCHAR" property="frequencyPaymentPlan" />
+    <result column="COMPANY_FUND" jdbcType="VARCHAR" property="companyFund" />
+    <result column="GROUP_ID" jdbcType="DECIMAL" property="groupId" />
+    <result column="OTHER_COMPANY_REFERENCE" jdbcType="VARCHAR" property="otherCompanyReference" />
+    <result column="PRODUCER_ROLE" jdbcType="DECIMAL" property="producerRole" />
+    <result column="TAX_STATUS" jdbcType="VARCHAR" property="taxStatus" />
+    <result column="ACCOUNT_NO" jdbcType="VARCHAR" property="accountNo" />
+    <result column="GEOGRAPHIC_SCOPE" jdbcType="VARCHAR" property="geographicScope" />
+    <result column="BOOKING_FREQUENCY" jdbcType="VARCHAR" property="bookingFrequency" />
+    <result column="MANUAL_REINS_IND" jdbcType="VARCHAR" property="manualReinsInd" />
+    <result column="MANUAL_COINS_IND" jdbcType="VARCHAR" property="manualCoinsInd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, ACTION_CODE, VERSION_NO, COMPANY_ID, POLICY_REF, TOP_INDICATOR, PREVIOUS_VERSION, 
+    REVERSING_VERSION, TERM_START_DATE, TERM_END_DATE, BILL_TYPE_METHOD_OF_PAYMENT, COINSURANCE_LEAD_FOLLOWER, 
+    COMPANY_ORG_UNIT, AGENT_ROLE, FREQUENCY_PAYMENT_PLAN, COMPANY_FUND, GROUP_ID, OTHER_COMPANY_REFERENCE, 
+    PRODUCER_ROLE, TAX_STATUS, ACCOUNT_NO, GEOGRAPHIC_SCOPE, BOOKING_FREQUENCY, MANUAL_REINS_IND, 
+    MANUAL_COINS_IND
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_POLICY_BASES
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from WIP_POLICY_BASES
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPolicyBases">
+    insert into WIP_POLICY_BASES (CONTRACT_ID, ACTION_CODE, VERSION_NO, 
+      COMPANY_ID, POLICY_REF, TOP_INDICATOR, 
+      PREVIOUS_VERSION, REVERSING_VERSION, TERM_START_DATE, 
+      TERM_END_DATE, BILL_TYPE_METHOD_OF_PAYMENT, 
+      COINSURANCE_LEAD_FOLLOWER, COMPANY_ORG_UNIT, 
+      AGENT_ROLE, FREQUENCY_PAYMENT_PLAN, COMPANY_FUND, 
+      GROUP_ID, OTHER_COMPANY_REFERENCE, PRODUCER_ROLE, 
+      TAX_STATUS, ACCOUNT_NO, GEOGRAPHIC_SCOPE, 
+      BOOKING_FREQUENCY, MANUAL_REINS_IND, MANUAL_COINS_IND
+      )
+    values (#{contractId,jdbcType=DECIMAL}, #{actionCode,jdbcType=VARCHAR}, #{versionNo,jdbcType=DECIMAL}, 
+      #{companyId,jdbcType=DECIMAL}, #{policyRef,jdbcType=VARCHAR}, #{topIndicator,jdbcType=CHAR}, 
+      #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, #{termStartDate,jdbcType=TIMESTAMP}, 
+      #{termEndDate,jdbcType=TIMESTAMP}, #{billTypeMethodOfPayment,jdbcType=VARCHAR}, 
+      #{coinsuranceLeadFollower,jdbcType=VARCHAR}, #{companyOrgUnit,jdbcType=DECIMAL}, 
+      #{agentRole,jdbcType=DECIMAL}, #{frequencyPaymentPlan,jdbcType=VARCHAR}, #{companyFund,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=DECIMAL}, #{otherCompanyReference,jdbcType=VARCHAR}, #{producerRole,jdbcType=DECIMAL}, 
+      #{taxStatus,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR}, #{geographicScope,jdbcType=VARCHAR}, 
+      #{bookingFrequency,jdbcType=VARCHAR}, #{manualReinsInd,jdbcType=VARCHAR}, #{manualCoinsInd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPolicyBases">
+    insert into WIP_POLICY_BASES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="companyId != null">
+        COMPANY_ID,
+      </if>
+      <if test="policyRef != null">
+        POLICY_REF,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="termStartDate != null">
+        TERM_START_DATE,
+      </if>
+      <if test="termEndDate != null">
+        TERM_END_DATE,
+      </if>
+      <if test="billTypeMethodOfPayment != null">
+        BILL_TYPE_METHOD_OF_PAYMENT,
+      </if>
+      <if test="coinsuranceLeadFollower != null">
+        COINSURANCE_LEAD_FOLLOWER,
+      </if>
+      <if test="companyOrgUnit != null">
+        COMPANY_ORG_UNIT,
+      </if>
+      <if test="agentRole != null">
+        AGENT_ROLE,
+      </if>
+      <if test="frequencyPaymentPlan != null">
+        FREQUENCY_PAYMENT_PLAN,
+      </if>
+      <if test="companyFund != null">
+        COMPANY_FUND,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+      <if test="otherCompanyReference != null">
+        OTHER_COMPANY_REFERENCE,
+      </if>
+      <if test="producerRole != null">
+        PRODUCER_ROLE,
+      </if>
+      <if test="taxStatus != null">
+        TAX_STATUS,
+      </if>
+      <if test="accountNo != null">
+        ACCOUNT_NO,
+      </if>
+      <if test="geographicScope != null">
+        GEOGRAPHIC_SCOPE,
+      </if>
+      <if test="bookingFrequency != null">
+        BOOKING_FREQUENCY,
+      </if>
+      <if test="manualReinsInd != null">
+        MANUAL_REINS_IND,
+      </if>
+      <if test="manualCoinsInd != null">
+        MANUAL_COINS_IND,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="policyRef != null">
+        #{policyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="termStartDate != null">
+        #{termStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termEndDate != null">
+        #{termEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billTypeMethodOfPayment != null">
+        #{billTypeMethodOfPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="coinsuranceLeadFollower != null">
+        #{coinsuranceLeadFollower,jdbcType=VARCHAR},
+      </if>
+      <if test="companyOrgUnit != null">
+        #{companyOrgUnit,jdbcType=DECIMAL},
+      </if>
+      <if test="agentRole != null">
+        #{agentRole,jdbcType=DECIMAL},
+      </if>
+      <if test="frequencyPaymentPlan != null">
+        #{frequencyPaymentPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFund != null">
+        #{companyFund,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="otherCompanyReference != null">
+        #{otherCompanyReference,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRole != null">
+        #{producerRole,jdbcType=DECIMAL},
+      </if>
+      <if test="taxStatus != null">
+        #{taxStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null">
+        #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="geographicScope != null">
+        #{geographicScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bookingFrequency != null">
+        #{bookingFrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="manualReinsInd != null">
+        #{manualReinsInd,jdbcType=VARCHAR},
+      </if>
+      <if test="manualCoinsInd != null">
+        #{manualCoinsInd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPolicyBases">
+    update WIP_POLICY_BASES
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="companyId != null">
+        COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      </if>
+      <if test="policyRef != null">
+        POLICY_REF = #{policyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="termStartDate != null">
+        TERM_START_DATE = #{termStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="termEndDate != null">
+        TERM_END_DATE = #{termEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billTypeMethodOfPayment != null">
+        BILL_TYPE_METHOD_OF_PAYMENT = #{billTypeMethodOfPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="coinsuranceLeadFollower != null">
+        COINSURANCE_LEAD_FOLLOWER = #{coinsuranceLeadFollower,jdbcType=VARCHAR},
+      </if>
+      <if test="companyOrgUnit != null">
+        COMPANY_ORG_UNIT = #{companyOrgUnit,jdbcType=DECIMAL},
+      </if>
+      <if test="agentRole != null">
+        AGENT_ROLE = #{agentRole,jdbcType=DECIMAL},
+      </if>
+      <if test="frequencyPaymentPlan != null">
+        FREQUENCY_PAYMENT_PLAN = #{frequencyPaymentPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFund != null">
+        COMPANY_FUND = #{companyFund,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        GROUP_ID = #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="otherCompanyReference != null">
+        OTHER_COMPANY_REFERENCE = #{otherCompanyReference,jdbcType=VARCHAR},
+      </if>
+      <if test="producerRole != null">
+        PRODUCER_ROLE = #{producerRole,jdbcType=DECIMAL},
+      </if>
+      <if test="taxStatus != null">
+        TAX_STATUS = #{taxStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNo != null">
+        ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="geographicScope != null">
+        GEOGRAPHIC_SCOPE = #{geographicScope,jdbcType=VARCHAR},
+      </if>
+      <if test="bookingFrequency != null">
+        BOOKING_FREQUENCY = #{bookingFrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="manualReinsInd != null">
+        MANUAL_REINS_IND = #{manualReinsInd,jdbcType=VARCHAR},
+      </if>
+      <if test="manualCoinsInd != null">
+        MANUAL_COINS_IND = #{manualCoinsInd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPolicyBases">
+    update WIP_POLICY_BASES
+    set ACTION_CODE = #{actionCode,jdbcType=VARCHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      COMPANY_ID = #{companyId,jdbcType=DECIMAL},
+      POLICY_REF = #{policyRef,jdbcType=VARCHAR},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      TERM_START_DATE = #{termStartDate,jdbcType=TIMESTAMP},
+      TERM_END_DATE = #{termEndDate,jdbcType=TIMESTAMP},
+      BILL_TYPE_METHOD_OF_PAYMENT = #{billTypeMethodOfPayment,jdbcType=VARCHAR},
+      COINSURANCE_LEAD_FOLLOWER = #{coinsuranceLeadFollower,jdbcType=VARCHAR},
+      COMPANY_ORG_UNIT = #{companyOrgUnit,jdbcType=DECIMAL},
+      AGENT_ROLE = #{agentRole,jdbcType=DECIMAL},
+      FREQUENCY_PAYMENT_PLAN = #{frequencyPaymentPlan,jdbcType=VARCHAR},
+      COMPANY_FUND = #{companyFund,jdbcType=VARCHAR},
+      GROUP_ID = #{groupId,jdbcType=DECIMAL},
+      OTHER_COMPANY_REFERENCE = #{otherCompanyReference,jdbcType=VARCHAR},
+      PRODUCER_ROLE = #{producerRole,jdbcType=DECIMAL},
+      TAX_STATUS = #{taxStatus,jdbcType=VARCHAR},
+      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      GEOGRAPHIC_SCOPE = #{geographicScope,jdbcType=VARCHAR},
+      BOOKING_FREQUENCY = #{bookingFrequency,jdbcType=VARCHAR},
+      MANUAL_REINS_IND = #{manualReinsInd,jdbcType=VARCHAR},
+      MANUAL_COINS_IND = #{manualCoinsInd,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+</mapper>

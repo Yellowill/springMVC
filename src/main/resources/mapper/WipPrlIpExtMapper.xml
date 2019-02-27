@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlIpExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlIpExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="IP_NO" jdbcType="DECIMAL" property="ipNo" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="HFEE_PCT" jdbcType="DECIMAL" property="hfeePct" />
+    <result column="HFEE_AMT" jdbcType="DECIMAL" property="hfeeAmt" />
+    <result column="LONG_NAME" jdbcType="VARCHAR" property="longName" />
+    <result column="INSURED_BUSINESS" jdbcType="VARCHAR" property="insuredBusiness" />
+    <result column="HFEE_GST_PCT" jdbcType="DECIMAL" property="hfeeGstPct" />
+    <result column="HFEE_GST_AMT" jdbcType="DECIMAL" property="hfeeGstAmt" />
+    <result column="HFEE_GST_RATE" jdbcType="DECIMAL" property="hfeeGstRate" />
+    <result column="ROLE_TYPE_ID" jdbcType="DECIMAL" property="roleTypeId" />
+    <result column="DSP_OCCUPATION" jdbcType="VARCHAR" property="dspOccupation" />
+    <result column="OCCUPATION" jdbcType="VARCHAR" property="occupation" />
+    <result column="CLIENT_REF" jdbcType="VARCHAR" property="clientRef" />
+    <result column="HANDLER_REF" jdbcType="VARCHAR" property="handlerRef" />
+    <result column="OVERRIDE_ADDRESS" jdbcType="VARCHAR" property="overrideAddress" />
+    <result column="HOTLINE_TEL_NO" jdbcType="VARCHAR" property="hotlineTelNo" />
+    <result column="PERIOD_OF_INSURANCE" jdbcType="VARCHAR" property="periodOfInsurance" />
+    <result column="POLICY_NO" jdbcType="VARCHAR" property="policyNo" />
+    <result column="ARRANGED_BY_US" jdbcType="VARCHAR" property="arrangedByUs" />
+    <result column="LIMIT" jdbcType="VARCHAR" property="limit" />
+    <result column="DEDUCTIBLE" jdbcType="VARCHAR" property="deductible" />
+    <result column="PREMIUM" jdbcType="DECIMAL" property="premium" />
+    <result column="CLAUSES" jdbcType="VARCHAR" property="clauses" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="INSURED_OVERWRITE_FLAG" jdbcType="VARCHAR" property="insuredOverwriteFlag" />
+    <result column="SHOW_COMM_FLAG" jdbcType="VARCHAR" property="showCommFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, IP_NO, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, PREVIOUS_VERSION, 
+    REVERSING_VERSION, HFEE_PCT, HFEE_AMT, LONG_NAME, INSURED_BUSINESS, HFEE_GST_PCT, 
+    HFEE_GST_AMT, HFEE_GST_RATE, ROLE_TYPE_ID, DSP_OCCUPATION, OCCUPATION, CLIENT_REF, 
+    HANDLER_REF, OVERRIDE_ADDRESS, HOTLINE_TEL_NO, PERIOD_OF_INSURANCE, POLICY_NO, ARRANGED_BY_US, 
+    LIMIT, DEDUCTIBLE, PREMIUM, CLAUSES, REMARK, INSURED_OVERWRITE_FLAG, SHOW_COMM_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlIpExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_IP_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlIpExtKey">
+    delete from WIP_PRL_IP_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlIpExt">
+    insert into WIP_PRL_IP_EXT (CONTRACT_ID, IP_NO, ACTION_CODE, 
+      VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+      PREVIOUS_VERSION, REVERSING_VERSION, HFEE_PCT, 
+      HFEE_AMT, LONG_NAME, INSURED_BUSINESS, 
+      HFEE_GST_PCT, HFEE_GST_AMT, HFEE_GST_RATE, 
+      ROLE_TYPE_ID, DSP_OCCUPATION, OCCUPATION, 
+      CLIENT_REF, HANDLER_REF, OVERRIDE_ADDRESS, 
+      HOTLINE_TEL_NO, PERIOD_OF_INSURANCE, POLICY_NO, 
+      ARRANGED_BY_US, LIMIT, DEDUCTIBLE, 
+      PREMIUM, CLAUSES, REMARK, 
+      INSURED_OVERWRITE_FLAG, SHOW_COMM_FLAG)
+    values (#{contractId,jdbcType=DECIMAL}, #{ipNo,jdbcType=DECIMAL}, #{actionCode,jdbcType=CHAR}, 
+      #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, #{topIndicator,jdbcType=CHAR}, 
+      #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, #{hfeePct,jdbcType=DECIMAL}, 
+      #{hfeeAmt,jdbcType=DECIMAL}, #{longName,jdbcType=VARCHAR}, #{insuredBusiness,jdbcType=VARCHAR}, 
+      #{hfeeGstPct,jdbcType=DECIMAL}, #{hfeeGstAmt,jdbcType=DECIMAL}, #{hfeeGstRate,jdbcType=DECIMAL}, 
+      #{roleTypeId,jdbcType=DECIMAL}, #{dspOccupation,jdbcType=VARCHAR}, #{occupation,jdbcType=VARCHAR}, 
+      #{clientRef,jdbcType=VARCHAR}, #{handlerRef,jdbcType=VARCHAR}, #{overrideAddress,jdbcType=VARCHAR}, 
+      #{hotlineTelNo,jdbcType=VARCHAR}, #{periodOfInsurance,jdbcType=VARCHAR}, #{policyNo,jdbcType=VARCHAR}, 
+      #{arrangedByUs,jdbcType=VARCHAR}, #{limit,jdbcType=VARCHAR}, #{deductible,jdbcType=VARCHAR}, 
+      #{premium,jdbcType=DECIMAL}, #{clauses,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{insuredOverwriteFlag,jdbcType=VARCHAR}, #{showCommFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlIpExt">
+    insert into WIP_PRL_IP_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="ipNo != null">
+        IP_NO,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="hfeePct != null">
+        HFEE_PCT,
+      </if>
+      <if test="hfeeAmt != null">
+        HFEE_AMT,
+      </if>
+      <if test="longName != null">
+        LONG_NAME,
+      </if>
+      <if test="insuredBusiness != null">
+        INSURED_BUSINESS,
+      </if>
+      <if test="hfeeGstPct != null">
+        HFEE_GST_PCT,
+      </if>
+      <if test="hfeeGstAmt != null">
+        HFEE_GST_AMT,
+      </if>
+      <if test="hfeeGstRate != null">
+        HFEE_GST_RATE,
+      </if>
+      <if test="roleTypeId != null">
+        ROLE_TYPE_ID,
+      </if>
+      <if test="dspOccupation != null">
+        DSP_OCCUPATION,
+      </if>
+      <if test="occupation != null">
+        OCCUPATION,
+      </if>
+      <if test="clientRef != null">
+        CLIENT_REF,
+      </if>
+      <if test="handlerRef != null">
+        HANDLER_REF,
+      </if>
+      <if test="overrideAddress != null">
+        OVERRIDE_ADDRESS,
+      </if>
+      <if test="hotlineTelNo != null">
+        HOTLINE_TEL_NO,
+      </if>
+      <if test="periodOfInsurance != null">
+        PERIOD_OF_INSURANCE,
+      </if>
+      <if test="policyNo != null">
+        POLICY_NO,
+      </if>
+      <if test="arrangedByUs != null">
+        ARRANGED_BY_US,
+      </if>
+      <if test="limit != null">
+        LIMIT,
+      </if>
+      <if test="deductible != null">
+        DEDUCTIBLE,
+      </if>
+      <if test="premium != null">
+        PREMIUM,
+      </if>
+      <if test="clauses != null">
+        CLAUSES,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="insuredOverwriteFlag != null">
+        INSURED_OVERWRITE_FLAG,
+      </if>
+      <if test="showCommFlag != null">
+        SHOW_COMM_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="ipNo != null">
+        #{ipNo,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeePct != null">
+        #{hfeePct,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeeAmt != null">
+        #{hfeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="longName != null">
+        #{longName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredBusiness != null">
+        #{insuredBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="hfeeGstPct != null">
+        #{hfeeGstPct,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeeGstAmt != null">
+        #{hfeeGstAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeeGstRate != null">
+        #{hfeeGstRate,jdbcType=DECIMAL},
+      </if>
+      <if test="roleTypeId != null">
+        #{roleTypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="dspOccupation != null">
+        #{dspOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRef != null">
+        #{clientRef,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerRef != null">
+        #{handlerRef,jdbcType=VARCHAR},
+      </if>
+      <if test="overrideAddress != null">
+        #{overrideAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotlineTelNo != null">
+        #{hotlineTelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="periodOfInsurance != null">
+        #{periodOfInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null">
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="arrangedByUs != null">
+        #{arrangedByUs,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null">
+        #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="deductible != null">
+        #{deductible,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null">
+        #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="clauses != null">
+        #{clauses,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredOverwriteFlag != null">
+        #{insuredOverwriteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="showCommFlag != null">
+        #{showCommFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlIpExt">
+    update WIP_PRL_IP_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeePct != null">
+        HFEE_PCT = #{hfeePct,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeeAmt != null">
+        HFEE_AMT = #{hfeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="longName != null">
+        LONG_NAME = #{longName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredBusiness != null">
+        INSURED_BUSINESS = #{insuredBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="hfeeGstPct != null">
+        HFEE_GST_PCT = #{hfeeGstPct,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeeGstAmt != null">
+        HFEE_GST_AMT = #{hfeeGstAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="hfeeGstRate != null">
+        HFEE_GST_RATE = #{hfeeGstRate,jdbcType=DECIMAL},
+      </if>
+      <if test="roleTypeId != null">
+        ROLE_TYPE_ID = #{roleTypeId,jdbcType=DECIMAL},
+      </if>
+      <if test="dspOccupation != null">
+        DSP_OCCUPATION = #{dspOccupation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        OCCUPATION = #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRef != null">
+        CLIENT_REF = #{clientRef,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerRef != null">
+        HANDLER_REF = #{handlerRef,jdbcType=VARCHAR},
+      </if>
+      <if test="overrideAddress != null">
+        OVERRIDE_ADDRESS = #{overrideAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotlineTelNo != null">
+        HOTLINE_TEL_NO = #{hotlineTelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="periodOfInsurance != null">
+        PERIOD_OF_INSURANCE = #{periodOfInsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null">
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="arrangedByUs != null">
+        ARRANGED_BY_US = #{arrangedByUs,jdbcType=VARCHAR},
+      </if>
+      <if test="limit != null">
+        LIMIT = #{limit,jdbcType=VARCHAR},
+      </if>
+      <if test="deductible != null">
+        DEDUCTIBLE = #{deductible,jdbcType=VARCHAR},
+      </if>
+      <if test="premium != null">
+        PREMIUM = #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="clauses != null">
+        CLAUSES = #{clauses,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredOverwriteFlag != null">
+        INSURED_OVERWRITE_FLAG = #{insuredOverwriteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="showCommFlag != null">
+        SHOW_COMM_FLAG = #{showCommFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlIpExt">
+    update WIP_PRL_IP_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      HFEE_PCT = #{hfeePct,jdbcType=DECIMAL},
+      HFEE_AMT = #{hfeeAmt,jdbcType=DECIMAL},
+      LONG_NAME = #{longName,jdbcType=VARCHAR},
+      INSURED_BUSINESS = #{insuredBusiness,jdbcType=VARCHAR},
+      HFEE_GST_PCT = #{hfeeGstPct,jdbcType=DECIMAL},
+      HFEE_GST_AMT = #{hfeeGstAmt,jdbcType=DECIMAL},
+      HFEE_GST_RATE = #{hfeeGstRate,jdbcType=DECIMAL},
+      ROLE_TYPE_ID = #{roleTypeId,jdbcType=DECIMAL},
+      DSP_OCCUPATION = #{dspOccupation,jdbcType=VARCHAR},
+      OCCUPATION = #{occupation,jdbcType=VARCHAR},
+      CLIENT_REF = #{clientRef,jdbcType=VARCHAR},
+      HANDLER_REF = #{handlerRef,jdbcType=VARCHAR},
+      OVERRIDE_ADDRESS = #{overrideAddress,jdbcType=VARCHAR},
+      HOTLINE_TEL_NO = #{hotlineTelNo,jdbcType=VARCHAR},
+      PERIOD_OF_INSURANCE = #{periodOfInsurance,jdbcType=VARCHAR},
+      POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      ARRANGED_BY_US = #{arrangedByUs,jdbcType=VARCHAR},
+      LIMIT = #{limit,jdbcType=VARCHAR},
+      DEDUCTIBLE = #{deductible,jdbcType=VARCHAR},
+      PREMIUM = #{premium,jdbcType=DECIMAL},
+      CLAUSES = #{clauses,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      INSURED_OVERWRITE_FLAG = #{insuredOverwriteFlag,jdbcType=VARCHAR},
+      SHOW_COMM_FLAG = #{showCommFlag,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

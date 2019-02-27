@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.PrlThirdpInterfPolDataMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.PrlThirdpInterfPolData">
+    <id column="REQUEST_ID" jdbcType="VARCHAR" property="requestId" />
+    <id column="AGENCY_CODE" jdbcType="VARCHAR" property="agencyCode" />
+    <result column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <result column="INSURED_BENEFICIALTYPE" jdbcType="VARCHAR" property="insuredBeneficialtype" />
+    <result column="EMERGENCY_CONTACT_NAME" jdbcType="VARCHAR" property="emergencyContactName" />
+    <result column="EMERGENCY_MOBILE" jdbcType="VARCHAR" property="emergencyMobile" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="RELATIONSHIP" jdbcType="VARCHAR" property="relationship" />
+    <result column="BENEF_NAME" jdbcType="VARCHAR" property="benefName" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="INSURED_SEX" jdbcType="VARCHAR" property="insuredSex" />
+    <result column="MERCHANT_ACCT_ID" jdbcType="VARCHAR" property="merchantAcctId" />
+    <result column="GATEWAY_VERSION" jdbcType="VARCHAR" property="gatewayVersion" />
+    <result column="SIGN_TYPE" jdbcType="DECIMAL" property="signType" />
+    <result column="ORDER_ID" jdbcType="VARCHAR" property="orderId" />
+    <result column="ORDER_TIME" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="ORDER_AMOUNT" jdbcType="DECIMAL" property="orderAmount" />
+    <result column="DEAL_ID" jdbcType="VARCHAR" property="dealId" />
+    <result column="REQUEST_RESULT" jdbcType="DECIMAL" property="requestResult" />
+    <result column="SIGN_MSG" jdbcType="VARCHAR" property="signMsg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    REQUEST_ID, AGENCY_CODE, CONTRACT_ID, INSURED_BENEFICIALTYPE, EMERGENCY_CONTACT_NAME, 
+    EMERGENCY_MOBILE, SEX, RELATIONSHIP, BENEF_NAME, REMARK, STATE, INSURED_SEX, MERCHANT_ACCT_ID, 
+    GATEWAY_VERSION, SIGN_TYPE, ORDER_ID, ORDER_TIME, ORDER_AMOUNT, DEAL_ID, REQUEST_RESULT, 
+    SIGN_MSG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.PrlThirdpInterfPolDataKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRL_THIRDP_INTERF_POL_DATA
+    where REQUEST_ID = #{requestId,jdbcType=VARCHAR}
+      and AGENCY_CODE = #{agencyCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.PrlThirdpInterfPolDataKey">
+    delete from PRL_THIRDP_INTERF_POL_DATA
+    where REQUEST_ID = #{requestId,jdbcType=VARCHAR}
+      and AGENCY_CODE = #{agencyCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.PrlThirdpInterfPolData">
+    insert into PRL_THIRDP_INTERF_POL_DATA (REQUEST_ID, AGENCY_CODE, CONTRACT_ID, 
+      INSURED_BENEFICIALTYPE, EMERGENCY_CONTACT_NAME, 
+      EMERGENCY_MOBILE, SEX, RELATIONSHIP, 
+      BENEF_NAME, REMARK, STATE, 
+      INSURED_SEX, MERCHANT_ACCT_ID, GATEWAY_VERSION, 
+      SIGN_TYPE, ORDER_ID, ORDER_TIME, 
+      ORDER_AMOUNT, DEAL_ID, REQUEST_RESULT, 
+      SIGN_MSG)
+    values (#{requestId,jdbcType=VARCHAR}, #{agencyCode,jdbcType=VARCHAR}, #{contractId,jdbcType=DECIMAL}, 
+      #{insuredBeneficialtype,jdbcType=VARCHAR}, #{emergencyContactName,jdbcType=VARCHAR}, 
+      #{emergencyMobile,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{relationship,jdbcType=VARCHAR}, 
+      #{benefName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{insuredSex,jdbcType=VARCHAR}, #{merchantAcctId,jdbcType=VARCHAR}, #{gatewayVersion,jdbcType=VARCHAR}, 
+      #{signType,jdbcType=DECIMAL}, #{orderId,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{orderAmount,jdbcType=DECIMAL}, #{dealId,jdbcType=VARCHAR}, #{requestResult,jdbcType=DECIMAL}, 
+      #{signMsg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.PrlThirdpInterfPolData">
+    insert into PRL_THIRDP_INTERF_POL_DATA
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="requestId != null">
+        REQUEST_ID,
+      </if>
+      <if test="agencyCode != null">
+        AGENCY_CODE,
+      </if>
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="insuredBeneficialtype != null">
+        INSURED_BENEFICIALTYPE,
+      </if>
+      <if test="emergencyContactName != null">
+        EMERGENCY_CONTACT_NAME,
+      </if>
+      <if test="emergencyMobile != null">
+        EMERGENCY_MOBILE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="relationship != null">
+        RELATIONSHIP,
+      </if>
+      <if test="benefName != null">
+        BENEF_NAME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="insuredSex != null">
+        INSURED_SEX,
+      </if>
+      <if test="merchantAcctId != null">
+        MERCHANT_ACCT_ID,
+      </if>
+      <if test="gatewayVersion != null">
+        GATEWAY_VERSION,
+      </if>
+      <if test="signType != null">
+        SIGN_TYPE,
+      </if>
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME,
+      </if>
+      <if test="orderAmount != null">
+        ORDER_AMOUNT,
+      </if>
+      <if test="dealId != null">
+        DEAL_ID,
+      </if>
+      <if test="requestResult != null">
+        REQUEST_RESULT,
+      </if>
+      <if test="signMsg != null">
+        SIGN_MSG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="requestId != null">
+        #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyCode != null">
+        #{agencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredBeneficialtype != null">
+        #{insuredBeneficialtype,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactName != null">
+        #{emergencyContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyMobile != null">
+        #{emergencyMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="relationship != null">
+        #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="benefName != null">
+        #{benefName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredSex != null">
+        #{insuredSex,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAcctId != null">
+        #{merchantAcctId,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayVersion != null">
+        #{gatewayVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null">
+        #{signType,jdbcType=DECIMAL},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dealId != null">
+        #{dealId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestResult != null">
+        #{requestResult,jdbcType=DECIMAL},
+      </if>
+      <if test="signMsg != null">
+        #{signMsg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.PrlThirdpInterfPolData">
+    update PRL_THIRDP_INTERF_POL_DATA
+    <set>
+      <if test="contractId != null">
+        CONTRACT_ID = #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredBeneficialtype != null">
+        INSURED_BENEFICIALTYPE = #{insuredBeneficialtype,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactName != null">
+        EMERGENCY_CONTACT_NAME = #{emergencyContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyMobile != null">
+        EMERGENCY_MOBILE = #{emergencyMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="relationship != null">
+        RELATIONSHIP = #{relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="benefName != null">
+        BENEF_NAME = #{benefName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredSex != null">
+        INSURED_SEX = #{insuredSex,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantAcctId != null">
+        MERCHANT_ACCT_ID = #{merchantAcctId,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayVersion != null">
+        GATEWAY_VERSION = #{gatewayVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null">
+        SIGN_TYPE = #{signType,jdbcType=DECIMAL},
+      </if>
+      <if test="orderId != null">
+        ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderAmount != null">
+        ORDER_AMOUNT = #{orderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="dealId != null">
+        DEAL_ID = #{dealId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestResult != null">
+        REQUEST_RESULT = #{requestResult,jdbcType=DECIMAL},
+      </if>
+      <if test="signMsg != null">
+        SIGN_MSG = #{signMsg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where REQUEST_ID = #{requestId,jdbcType=VARCHAR}
+      and AGENCY_CODE = #{agencyCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.PrlThirdpInterfPolData">
+    update PRL_THIRDP_INTERF_POL_DATA
+    set CONTRACT_ID = #{contractId,jdbcType=DECIMAL},
+      INSURED_BENEFICIALTYPE = #{insuredBeneficialtype,jdbcType=VARCHAR},
+      EMERGENCY_CONTACT_NAME = #{emergencyContactName,jdbcType=VARCHAR},
+      EMERGENCY_MOBILE = #{emergencyMobile,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      RELATIONSHIP = #{relationship,jdbcType=VARCHAR},
+      BENEF_NAME = #{benefName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      INSURED_SEX = #{insuredSex,jdbcType=VARCHAR},
+      MERCHANT_ACCT_ID = #{merchantAcctId,jdbcType=VARCHAR},
+      GATEWAY_VERSION = #{gatewayVersion,jdbcType=VARCHAR},
+      SIGN_TYPE = #{signType,jdbcType=DECIMAL},
+      ORDER_ID = #{orderId,jdbcType=VARCHAR},
+      ORDER_TIME = #{orderTime,jdbcType=TIMESTAMP},
+      ORDER_AMOUNT = #{orderAmount,jdbcType=DECIMAL},
+      DEAL_ID = #{dealId,jdbcType=VARCHAR},
+      REQUEST_RESULT = #{requestResult,jdbcType=DECIMAL},
+      SIGN_MSG = #{signMsg,jdbcType=VARCHAR}
+    where REQUEST_ID = #{requestId,jdbcType=VARCHAR}
+      and AGENCY_CODE = #{agencyCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

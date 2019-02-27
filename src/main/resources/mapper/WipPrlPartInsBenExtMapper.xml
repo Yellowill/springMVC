@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlPartInsBenExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlPartInsBenExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+    <id column="BEN_ID" jdbcType="DECIMAL" property="benId" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="INSURED_ID" jdbcType="DECIMAL" property="insuredId" />
+    <result column="ID_NO" jdbcType="VARCHAR" property="idNo" />
+    <result column="ID_TYPE" jdbcType="VARCHAR" property="idType" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="MOBILE_NO" jdbcType="VARCHAR" property="mobileNo" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="PART_BEN_ID" jdbcType="VARCHAR" property="partBenId" />
+    <result column="RELATION" jdbcType="VARCHAR" property="relation" />
+    <result column="PERCENT" jdbcType="DECIMAL" property="percent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PARTITION_NO, BEN_ID, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+    PREVIOUS_VERSION, REVERSING_VERSION, INSURED_ID, ID_NO, ID_TYPE, NAME, EMAIL, MOBILE_NO, 
+    SEX, PART_BEN_ID, RELATION, PERCENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartInsBenExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_INS_BEN_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BEN_ID = #{benId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartInsBenExtKey">
+    delete from WIP_PRL_PART_INS_BEN_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BEN_ID = #{benId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlPartInsBenExt">
+    insert into WIP_PRL_PART_INS_BEN_EXT (CONTRACT_ID, PARTITION_NO, BEN_ID, 
+      ACTION_CODE, VERSION_NO, OBJECT_ID, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      INSURED_ID, ID_NO, ID_TYPE, 
+      NAME, EMAIL, MOBILE_NO, 
+      SEX, PART_BEN_ID, RELATION, 
+      PERCENT)
+    values (#{contractId,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}, #{benId,jdbcType=DECIMAL}, 
+      #{actionCode,jdbcType=CHAR}, #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, 
+      #{topIndicator,jdbcType=CHAR}, #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, 
+      #{insuredId,jdbcType=DECIMAL}, #{idNo,jdbcType=VARCHAR}, #{idType,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{partBenId,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, 
+      #{percent,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlPartInsBenExt">
+    insert into WIP_PRL_PART_INS_BEN_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+      <if test="benId != null">
+        BEN_ID,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="insuredId != null">
+        INSURED_ID,
+      </if>
+      <if test="idNo != null">
+        ID_NO,
+      </if>
+      <if test="idType != null">
+        ID_TYPE,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="mobileNo != null">
+        MOBILE_NO,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="partBenId != null">
+        PART_BEN_ID,
+      </if>
+      <if test="relation != null">
+        RELATION,
+      </if>
+      <if test="percent != null">
+        PERCENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="benId != null">
+        #{benId,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredId != null">
+        #{insuredId,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="partBenId != null">
+        #{partBenId,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null">
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="percent != null">
+        #{percent,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlPartInsBenExt">
+    update WIP_PRL_PART_INS_BEN_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredId != null">
+        INSURED_ID = #{insuredId,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null">
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        ID_TYPE = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="partBenId != null">
+        PART_BEN_ID = #{partBenId,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null">
+        RELATION = #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="percent != null">
+        PERCENT = #{percent,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BEN_ID = #{benId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartInsBenExt">
+    update WIP_PRL_PART_INS_BEN_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      INSURED_ID = #{insuredId,jdbcType=DECIMAL},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      ID_TYPE = #{idType,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      PART_BEN_ID = #{partBenId,jdbcType=VARCHAR},
+      RELATION = #{relation,jdbcType=VARCHAR},
+      PERCENT = #{percent,jdbcType=DECIMAL}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and BEN_ID = #{benId,jdbcType=DECIMAL}
+  </update>
+  <insert id="insertByBatch" parameterType="java.util.List">
+    insert into WIP_PRL_PART_INS_BEN_EXT (CONTRACT_ID, PARTITION_NO, BEN_ID, 
+      ACTION_CODE, VERSION_NO, OBJECT_ID, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      INSURED_ID, ID_NO, ID_TYPE, 
+      NAME, EMAIL, MOBILE_NO, 
+      SEX, PART_BEN_ID, RELATION, 
+      PERCENT)
+    <foreach collection="list" item="item" index="index" separator="union all"> 
+    (SELECT
+    	#{item.contractId,jdbcType=DECIMAL}, #{item.partitionNo,jdbcType=DECIMAL}, #{item.benId,jdbcType=DECIMAL}, 
+      #{item.actionCode,jdbcType=CHAR}, #{item.versionNo,jdbcType=DECIMAL}, #{item.objectId,jdbcType=DECIMAL}, 
+      #{item.topIndicator,jdbcType=CHAR}, #{item.previousVersion,jdbcType=DECIMAL}, #{item.reversingVersion,jdbcType=DECIMAL}, 
+      #{item.insuredId,jdbcType=DECIMAL}, #{item.idNo,jdbcType=VARCHAR}, #{item.idType,jdbcType=VARCHAR}, 
+      #{item.name,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, #{item.mobileNo,jdbcType=VARCHAR}, 
+      #{item.sex,jdbcType=VARCHAR}, #{item.partBenId,jdbcType=VARCHAR}, #{item.relation,jdbcType=VARCHAR}, 
+      #{item.percent,jdbcType=DECIMAL}
+ 	FROM DUAL)
+     </foreach>
+  </insert>
+  
+</mapper>

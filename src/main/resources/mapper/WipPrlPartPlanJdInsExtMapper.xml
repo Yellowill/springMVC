@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlPartPlanJdInsExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlPartPlanJdInsExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+    <id column="INSURED_ID" jdbcType="DECIMAL" property="insuredId" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="PLAN_ID" jdbcType="DECIMAL" property="planId" />
+    <result column="PLAN_VERSION_NO" jdbcType="DECIMAL" property="planVersionNo" />
+    <result column="ID_NO" jdbcType="VARCHAR" property="idNo" />
+    <result column="ID_TYPE" jdbcType="VARCHAR" property="idType" />
+    <result column="DOB" jdbcType="TIMESTAMP" property="dob" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="INSURED_TYPE" jdbcType="VARCHAR" property="insuredType" />
+    <result column="MOBILE_NO" jdbcType="VARCHAR" property="mobileNo" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="BENEFICIAL_TYPE" jdbcType="VARCHAR" property="beneficialType" />
+    <result column="PART_INSURED_ID" jdbcType="VARCHAR" property="partInsuredId" />
+    <result column="PREM_TOTAL" jdbcType="DECIMAL" property="premTotal" />
+    <result column="PREM_A" jdbcType="DECIMAL" property="premA" />
+    <result column="PREM_H" jdbcType="DECIMAL" property="premH" />
+    <result column="START_DATE" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="END_DATE" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="POLICY_NO" jdbcType="VARCHAR" property="policyNo" />
+    <result column="JD_ACCOUNT" jdbcType="VARCHAR" property="jdAccount" />
+    <result column="PARTNER_ID" jdbcType="DECIMAL" property="partnerId" />
+    <result column="WTE_START_DATE" jdbcType="TIMESTAMP" property="wteStartDate" />
+    <result column="WTE_END_DATE" jdbcType="TIMESTAMP" property="wteEndDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PARTITION_NO, INSURED_ID, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+    PREVIOUS_VERSION, REVERSING_VERSION, PLAN_ID, PLAN_VERSION_NO, ID_NO, ID_TYPE, DOB, 
+    NAME, EMAIL, INSURED_TYPE, MOBILE_NO, SEX, BENEFICIAL_TYPE, PART_INSURED_ID, PREM_TOTAL, 
+    PREM_A, PREM_H, START_DATE, END_DATE, POLICY_NO, JD_ACCOUNT,PARTNER_ID,WTE_START_DATE,WTE_END_DATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanJdInsExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_PLAN_JD_INS_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanJdInsExtKey">
+    delete from WIP_PRL_PART_PLAN_JD_INS_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlPartPlanJdInsExt">
+    insert into WIP_PRL_PART_PLAN_JD_INS_EXT (CONTRACT_ID, PARTITION_NO, INSURED_ID, 
+      ACTION_CODE, VERSION_NO, OBJECT_ID, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      PLAN_ID, PLAN_VERSION_NO, ID_NO, 
+      ID_TYPE, DOB, NAME, 
+      EMAIL, INSURED_TYPE, MOBILE_NO, 
+      SEX, BENEFICIAL_TYPE, PART_INSURED_ID, 
+      PREM_TOTAL, PREM_A, PREM_H, 
+      START_DATE, END_DATE, POLICY_NO, 
+      JD_ACCOUNT,PARTNER_ID,WTE_START_DATE,WTE_END_DATE)
+    values (#{contractId,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}, #{insuredId,jdbcType=DECIMAL}, 
+      #{actionCode,jdbcType=CHAR}, #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, 
+      #{topIndicator,jdbcType=CHAR}, #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, 
+      #{planId,jdbcType=DECIMAL}, #{planVersionNo,jdbcType=DECIMAL}, #{idNo,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=VARCHAR}, #{dob,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{insuredType,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{beneficialType,jdbcType=VARCHAR}, #{partInsuredId,jdbcType=VARCHAR}, 
+      #{premTotal,jdbcType=DECIMAL}, #{premA,jdbcType=DECIMAL}, #{premH,jdbcType=DECIMAL}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{policyNo,jdbcType=VARCHAR}, 
+      #{jdAccount,jdbcType=VARCHAR},#{partnerId,jdbcType=DECIMAL},
+      #{wteStartDate,jdbcType=TIMESTAMP},#{wteEndDate,jdbcType=TIMESTAMP})
+  </insert>
+  <sql id='InsuredId_SEQUENCE'>prl_part_plan_ins_ext_seq1.nextval</sql>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanJdInsExt">
+<!--<selectKey keyProperty="insured_id_seq_val" resultType="long" order="BEFORE">
+		select <include refid="InsuredId_SEQUENCE" /> from dual
+	</selectKey> -->
+    insert into WIP_PRL_PART_PLAN_JD_INS_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+      <if test="insuredId != null">
+        INSURED_ID,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="planId != null">
+        PLAN_ID,
+      </if>
+      <if test="planVersionNo != null">
+        PLAN_VERSION_NO,
+      </if>
+      <if test="idNo != null">
+        ID_NO,
+      </if>
+      <if test="idType != null">
+        ID_TYPE,
+      </if>
+      <if test="dob != null">
+        DOB,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="insuredType != null">
+        INSURED_TYPE,
+      </if>
+      <if test="mobileNo != null">
+        MOBILE_NO,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="beneficialType != null">
+        BENEFICIAL_TYPE,
+      </if>
+      <if test="partInsuredId != null">
+        PART_INSURED_ID,
+      </if>
+      <if test="premTotal != null">
+        PREM_TOTAL,
+      </if>
+      <if test="premA != null">
+        PREM_A,
+      </if>
+      <if test="premH != null">
+        PREM_H,
+      </if>
+      <if test="startDate != null">
+        START_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="policyNo != null">
+        POLICY_NO,
+      </if>
+      <if test="jdAccount != null">
+        JD_ACCOUNT,
+      </if>
+      <if test="partnerId != null">
+        PARTNER_ID,
+      </if>
+      <if test="wteStartDate != null">
+        WTE_START_DATE,
+      </if>
+      <if test="wteEndDate != null">
+        WTE_END_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+      	<!-- #{insured_id_seq_val}, -->
+	  <if test="insuredId != null">
+        #{insuredId,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="planId != null">
+        #{planId,jdbcType=DECIMAL},
+      </if>
+      <if test="planVersionNo != null">
+        #{planVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        #{dob,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null">
+        #{insuredType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficialType != null">
+        #{beneficialType,jdbcType=VARCHAR},
+      </if>
+      <if test="partInsuredId != null">
+        #{partInsuredId,jdbcType=VARCHAR},
+      </if>
+      <if test="premTotal != null">
+        #{premTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="premA != null">
+        #{premA,jdbcType=DECIMAL},
+      </if>
+      <if test="premH != null">
+        #{premH,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyNo != null">
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="jdAccount != null">
+        #{jdAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        #{partnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="wteStartDate != null">
+        #{wteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wteEndDate != null">
+        #{wteEndDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanJdInsExt">
+    update WIP_PRL_PART_PLAN_JD_INS_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="planId != null">
+        PLAN_ID = #{planId,jdbcType=DECIMAL},
+      </if>
+      <if test="planVersionNo != null">
+        PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null">
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        ID_TYPE = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        DOB = #{dob,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null">
+        INSURED_TYPE = #{insuredType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficialType != null">
+        BENEFICIAL_TYPE = #{beneficialType,jdbcType=VARCHAR},
+      </if>
+      <if test="partInsuredId != null">
+        PART_INSURED_ID = #{partInsuredId,jdbcType=VARCHAR},
+      </if>
+      <if test="premTotal != null">
+        PREM_TOTAL = #{premTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="premA != null">
+        PREM_A = #{premA,jdbcType=DECIMAL},
+      </if>
+      <if test="premH != null">
+        PREM_H = #{premH,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null">
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyNo != null">
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="jdAccount != null">
+        JD_ACCOUNT = #{jdAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        PARTNER_ID = #{partnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="wteStartDate != null">
+        WTE_START_DATE = #{wteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wteEndDate != null">
+        WTE_END_DATE = #{wteEndDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanJdInsExt">
+    update WIP_PRL_PART_PLAN_JD_INS_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      PLAN_ID = #{planId,jdbcType=DECIMAL},
+      PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      ID_TYPE = #{idType,jdbcType=VARCHAR},
+      DOB = #{dob,jdbcType=TIMESTAMP},
+      NAME = #{name,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      INSURED_TYPE = #{insuredType,jdbcType=VARCHAR},
+      MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      BENEFICIAL_TYPE = #{beneficialType,jdbcType=VARCHAR},
+      PART_INSURED_ID = #{partInsuredId,jdbcType=VARCHAR},
+      PREM_TOTAL = #{premTotal,jdbcType=DECIMAL},
+      PREM_A = #{premA,jdbcType=DECIMAL},
+      PREM_H = #{premH,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      JD_ACCOUNT = #{jdAccount,jdbcType=VARCHAR},
+      PARTNER_ID = #{partnerId,jdbcType=DECIMAL},
+      WTE_START_DATE = #{wteStartDate,jdbcType=TIMESTAMP},
+      WTE_END_DATE = #{wteEndDate,jdbcType=TIMESTAMP} 
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </update>
+</mapper>

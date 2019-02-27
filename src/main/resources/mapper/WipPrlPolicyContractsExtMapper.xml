@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlPolicyContractsExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlPolicyContractsExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="CONTRACT_DATE" jdbcType="TIMESTAMP" property="contractDate" />
+    <result column="QUOTE_EXPIRY_DATE" jdbcType="TIMESTAMP" property="quoteExpiryDate" />
+    <result column="MASTER_FLAG" jdbcType="VARCHAR" property="masterFlag" />
+    <result column="BUSINESS_TYPE" jdbcType="VARCHAR" property="businessType" />
+    <result column="PI_PAR_CONTRACT" jdbcType="DECIMAL" property="piParContract" />
+    <result column="RENEWABLE" jdbcType="VARCHAR" property="renewable" />
+    <result column="BUSINESS_CLASS" jdbcType="VARCHAR" property="businessClass" />
+    <result column="QUOTE_SENT_DATE" jdbcType="TIMESTAMP" property="quoteSentDate" />
+    <result column="POLICY_PERIOD" jdbcType="DECIMAL" property="policyPeriod" />
+    <result column="PREV_QUOTE_CONTRACT" jdbcType="DECIMAL" property="prevQuoteContract" />
+    <result column="UW_USERNAME" jdbcType="VARCHAR" property="uwUsername" />
+    <result column="CHILD_SEQ_NO" jdbcType="DECIMAL" property="childSeqNo" />
+    <result column="PREV_POLICY_REF" jdbcType="VARCHAR" property="prevPolicyRef" />
+    <result column="PRE_RN_POLVER" jdbcType="DECIMAL" property="preRnPolver" />
+    <result column="PREVIOUS_CONTRACT" jdbcType="DECIMAL" property="previousContract" />
+    <result column="POLICY_ORIGINATOR" jdbcType="VARCHAR" property="policyOriginator" />
+    <result column="MASTER_QUOTE_REF" jdbcType="VARCHAR" property="masterQuoteRef" />
+    <result column="PREVIOUS_VERSION_NO" jdbcType="DECIMAL" property="previousVersionNo" />
+    <result column="PREVIOUS_SOURCE" jdbcType="VARCHAR" property="previousSource" />
+    <result column="PREVIOUS_GROUP_ID" jdbcType="DECIMAL" property="previousGroupId" />
+    <result column="RI_TYPE" jdbcType="VARCHAR" property="riType" />
+    <result column="RENEWAL_QUOTE_FLAG" jdbcType="VARCHAR" property="renewalQuoteFlag" />
+    <result column="PREM_RATE_WORDINGS" jdbcType="VARCHAR" property="premRateWordings" />
+    <result column="POI_FLAG_UNDO" jdbcType="CHAR" property="poiFlagUndo" />
+    <result column="POI_TEXT_UNDO" jdbcType="VARCHAR" property="poiTextUndo" />
+    <result column="RENEWAL_PERIOD" jdbcType="DECIMAL" property="renewalPeriod" />
+    <result column="COVER_NOTE_REF" jdbcType="VARCHAR" property="coverNoteRef" />
+    <result column="PPR_PRINT_ON_SCH" jdbcType="VARCHAR" property="pprPrintOnSch" />
+    <result column="POLICY_SCH_SEQ_NO" jdbcType="DECIMAL" property="policySchSeqNo" />
+    <result column="CERT_CLAUSE" jdbcType="VARCHAR" property="certClause" />
+    <result column="BACK_DAYS" jdbcType="DECIMAL" property="backDays" />
+    <result column="GROUP_ID" jdbcType="DECIMAL" property="groupId" />
+    <result column="PREV_START_DATE" jdbcType="TIMESTAMP" property="prevStartDate" />
+    <result column="PREV_END_DATE" jdbcType="TIMESTAMP" property="prevEndDate" />
+    <result column="GROUP_MASTER_POLICY" jdbcType="VARCHAR" property="groupMasterPolicy" />
+    <result column="REMINDER_TO" jdbcType="VARCHAR" property="reminderTo" />
+    <result column="REMINDER_ALLIANZ_CC" jdbcType="VARCHAR" property="reminderAllianzCc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, ACTION_CODE, CONTRACT_DATE, QUOTE_EXPIRY_DATE, MASTER_FLAG, BUSINESS_TYPE, 
+    PI_PAR_CONTRACT, RENEWABLE, BUSINESS_CLASS, QUOTE_SENT_DATE, POLICY_PERIOD, PREV_QUOTE_CONTRACT, 
+    UW_USERNAME, CHILD_SEQ_NO, PREV_POLICY_REF, PRE_RN_POLVER, PREVIOUS_CONTRACT, POLICY_ORIGINATOR, 
+    MASTER_QUOTE_REF, PREVIOUS_VERSION_NO, PREVIOUS_SOURCE, PREVIOUS_GROUP_ID, RI_TYPE, 
+    RENEWAL_QUOTE_FLAG, PREM_RATE_WORDINGS, POI_FLAG_UNDO, POI_TEXT_UNDO, RENEWAL_PERIOD, 
+    COVER_NOTE_REF, PPR_PRINT_ON_SCH, POLICY_SCH_SEQ_NO, CERT_CLAUSE, BACK_DAYS, GROUP_ID, 
+    PREV_START_DATE, PREV_END_DATE, GROUP_MASTER_POLICY, REMINDER_TO, REMINDER_ALLIANZ_CC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_POLICY_CONTRACTS_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from WIP_PRL_POLICY_CONTRACTS_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlPolicyContractsExt">
+    insert into WIP_PRL_POLICY_CONTRACTS_EXT (CONTRACT_ID, ACTION_CODE, CONTRACT_DATE, 
+      QUOTE_EXPIRY_DATE, MASTER_FLAG, BUSINESS_TYPE, 
+      PI_PAR_CONTRACT, RENEWABLE, BUSINESS_CLASS, 
+      QUOTE_SENT_DATE, POLICY_PERIOD, PREV_QUOTE_CONTRACT, 
+      UW_USERNAME, CHILD_SEQ_NO, PREV_POLICY_REF, 
+      PRE_RN_POLVER, PREVIOUS_CONTRACT, POLICY_ORIGINATOR, 
+      MASTER_QUOTE_REF, PREVIOUS_VERSION_NO, PREVIOUS_SOURCE, 
+      PREVIOUS_GROUP_ID, RI_TYPE, RENEWAL_QUOTE_FLAG, 
+      PREM_RATE_WORDINGS, POI_FLAG_UNDO, POI_TEXT_UNDO, 
+      RENEWAL_PERIOD, COVER_NOTE_REF, PPR_PRINT_ON_SCH, 
+      POLICY_SCH_SEQ_NO, CERT_CLAUSE, BACK_DAYS, 
+      GROUP_ID, PREV_START_DATE, PREV_END_DATE, 
+      GROUP_MASTER_POLICY, REMINDER_TO, REMINDER_ALLIANZ_CC
+      )
+    values (#{contractId,jdbcType=DECIMAL}, #{actionCode,jdbcType=CHAR}, #{contractDate,jdbcType=TIMESTAMP}, 
+      #{quoteExpiryDate,jdbcType=TIMESTAMP}, #{masterFlag,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, 
+      #{piParContract,jdbcType=DECIMAL}, #{renewable,jdbcType=VARCHAR}, #{businessClass,jdbcType=VARCHAR}, 
+      #{quoteSentDate,jdbcType=TIMESTAMP}, #{policyPeriod,jdbcType=DECIMAL}, #{prevQuoteContract,jdbcType=DECIMAL}, 
+      #{uwUsername,jdbcType=VARCHAR}, #{childSeqNo,jdbcType=DECIMAL}, #{prevPolicyRef,jdbcType=VARCHAR}, 
+      #{preRnPolver,jdbcType=DECIMAL}, #{previousContract,jdbcType=DECIMAL}, #{policyOriginator,jdbcType=VARCHAR}, 
+      #{masterQuoteRef,jdbcType=VARCHAR}, #{previousVersionNo,jdbcType=DECIMAL}, #{previousSource,jdbcType=VARCHAR}, 
+      #{previousGroupId,jdbcType=DECIMAL}, #{riType,jdbcType=VARCHAR}, #{renewalQuoteFlag,jdbcType=VARCHAR}, 
+      #{premRateWordings,jdbcType=VARCHAR}, #{poiFlagUndo,jdbcType=CHAR}, #{poiTextUndo,jdbcType=VARCHAR}, 
+      #{renewalPeriod,jdbcType=DECIMAL}, #{coverNoteRef,jdbcType=VARCHAR}, #{pprPrintOnSch,jdbcType=VARCHAR}, 
+      #{policySchSeqNo,jdbcType=DECIMAL}, #{certClause,jdbcType=VARCHAR}, #{backDays,jdbcType=DECIMAL}, 
+      #{groupId,jdbcType=DECIMAL}, #{prevStartDate,jdbcType=TIMESTAMP}, #{prevEndDate,jdbcType=TIMESTAMP}, 
+      #{groupMasterPolicy,jdbcType=VARCHAR}, #{reminderTo,jdbcType=VARCHAR}, #{reminderAllianzCc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlPolicyContractsExt">
+    insert into WIP_PRL_POLICY_CONTRACTS_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="contractDate != null">
+        CONTRACT_DATE,
+      </if>
+      <if test="quoteExpiryDate != null">
+        QUOTE_EXPIRY_DATE,
+      </if>
+      <if test="masterFlag != null">
+        MASTER_FLAG,
+      </if>
+      <if test="businessType != null">
+        BUSINESS_TYPE,
+      </if>
+      <if test="piParContract != null">
+        PI_PAR_CONTRACT,
+      </if>
+      <if test="renewable != null">
+        RENEWABLE,
+      </if>
+      <if test="businessClass != null">
+        BUSINESS_CLASS,
+      </if>
+      <if test="quoteSentDate != null">
+        QUOTE_SENT_DATE,
+      </if>
+      <if test="policyPeriod != null">
+        POLICY_PERIOD,
+      </if>
+      <if test="prevQuoteContract != null">
+        PREV_QUOTE_CONTRACT,
+      </if>
+      <if test="uwUsername != null">
+        UW_USERNAME,
+      </if>
+      <if test="childSeqNo != null">
+        CHILD_SEQ_NO,
+      </if>
+      <if test="prevPolicyRef != null">
+        PREV_POLICY_REF,
+      </if>
+      <if test="preRnPolver != null">
+        PRE_RN_POLVER,
+      </if>
+      <if test="previousContract != null">
+        PREVIOUS_CONTRACT,
+      </if>
+      <if test="policyOriginator != null">
+        POLICY_ORIGINATOR,
+      </if>
+      <if test="masterQuoteRef != null">
+        MASTER_QUOTE_REF,
+      </if>
+      <if test="previousVersionNo != null">
+        PREVIOUS_VERSION_NO,
+      </if>
+      <if test="previousSource != null">
+        PREVIOUS_SOURCE,
+      </if>
+      <if test="previousGroupId != null">
+        PREVIOUS_GROUP_ID,
+      </if>
+      <if test="riType != null">
+        RI_TYPE,
+      </if>
+      <if test="renewalQuoteFlag != null">
+        RENEWAL_QUOTE_FLAG,
+      </if>
+      <if test="premRateWordings != null">
+        PREM_RATE_WORDINGS,
+      </if>
+      <if test="poiFlagUndo != null">
+        POI_FLAG_UNDO,
+      </if>
+      <if test="poiTextUndo != null">
+        POI_TEXT_UNDO,
+      </if>
+      <if test="renewalPeriod != null">
+        RENEWAL_PERIOD,
+      </if>
+      <if test="coverNoteRef != null">
+        COVER_NOTE_REF,
+      </if>
+      <if test="pprPrintOnSch != null">
+        PPR_PRINT_ON_SCH,
+      </if>
+      <if test="policySchSeqNo != null">
+        POLICY_SCH_SEQ_NO,
+      </if>
+      <if test="certClause != null">
+        CERT_CLAUSE,
+      </if>
+      <if test="backDays != null">
+        BACK_DAYS,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+      <if test="prevStartDate != null">
+        PREV_START_DATE,
+      </if>
+      <if test="prevEndDate != null">
+        PREV_END_DATE,
+      </if>
+      <if test="groupMasterPolicy != null">
+        GROUP_MASTER_POLICY,
+      </if>
+      <if test="reminderTo != null">
+        REMINDER_TO,
+      </if>
+      <if test="reminderAllianzCc != null">
+        REMINDER_ALLIANZ_CC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="contractDate != null">
+        #{contractDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quoteExpiryDate != null">
+        #{quoteExpiryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="masterFlag != null">
+        #{masterFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="piParContract != null">
+        #{piParContract,jdbcType=DECIMAL},
+      </if>
+      <if test="renewable != null">
+        #{renewable,jdbcType=VARCHAR},
+      </if>
+      <if test="businessClass != null">
+        #{businessClass,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteSentDate != null">
+        #{quoteSentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyPeriod != null">
+        #{policyPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="prevQuoteContract != null">
+        #{prevQuoteContract,jdbcType=DECIMAL},
+      </if>
+      <if test="uwUsername != null">
+        #{uwUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="childSeqNo != null">
+        #{childSeqNo,jdbcType=DECIMAL},
+      </if>
+      <if test="prevPolicyRef != null">
+        #{prevPolicyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="preRnPolver != null">
+        #{preRnPolver,jdbcType=DECIMAL},
+      </if>
+      <if test="previousContract != null">
+        #{previousContract,jdbcType=DECIMAL},
+      </if>
+      <if test="policyOriginator != null">
+        #{policyOriginator,jdbcType=VARCHAR},
+      </if>
+      <if test="masterQuoteRef != null">
+        #{masterQuoteRef,jdbcType=VARCHAR},
+      </if>
+      <if test="previousVersionNo != null">
+        #{previousVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="previousSource != null">
+        #{previousSource,jdbcType=VARCHAR},
+      </if>
+      <if test="previousGroupId != null">
+        #{previousGroupId,jdbcType=DECIMAL},
+      </if>
+      <if test="riType != null">
+        #{riType,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalQuoteFlag != null">
+        #{renewalQuoteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="premRateWordings != null">
+        #{premRateWordings,jdbcType=VARCHAR},
+      </if>
+      <if test="poiFlagUndo != null">
+        #{poiFlagUndo,jdbcType=CHAR},
+      </if>
+      <if test="poiTextUndo != null">
+        #{poiTextUndo,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalPeriod != null">
+        #{renewalPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="coverNoteRef != null">
+        #{coverNoteRef,jdbcType=VARCHAR},
+      </if>
+      <if test="pprPrintOnSch != null">
+        #{pprPrintOnSch,jdbcType=VARCHAR},
+      </if>
+      <if test="policySchSeqNo != null">
+        #{policySchSeqNo,jdbcType=DECIMAL},
+      </if>
+      <if test="certClause != null">
+        #{certClause,jdbcType=VARCHAR},
+      </if>
+      <if test="backDays != null">
+        #{backDays,jdbcType=DECIMAL},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="prevStartDate != null">
+        #{prevStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevEndDate != null">
+        #{prevEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupMasterPolicy != null">
+        #{groupMasterPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="reminderTo != null">
+        #{reminderTo,jdbcType=VARCHAR},
+      </if>
+      <if test="reminderAllianzCc != null">
+        #{reminderAllianzCc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlPolicyContractsExt">
+    update WIP_PRL_POLICY_CONTRACTS_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="contractDate != null">
+        CONTRACT_DATE = #{contractDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="quoteExpiryDate != null">
+        QUOTE_EXPIRY_DATE = #{quoteExpiryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="masterFlag != null">
+        MASTER_FLAG = #{masterFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="piParContract != null">
+        PI_PAR_CONTRACT = #{piParContract,jdbcType=DECIMAL},
+      </if>
+      <if test="renewable != null">
+        RENEWABLE = #{renewable,jdbcType=VARCHAR},
+      </if>
+      <if test="businessClass != null">
+        BUSINESS_CLASS = #{businessClass,jdbcType=VARCHAR},
+      </if>
+      <if test="quoteSentDate != null">
+        QUOTE_SENT_DATE = #{quoteSentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyPeriod != null">
+        POLICY_PERIOD = #{policyPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="prevQuoteContract != null">
+        PREV_QUOTE_CONTRACT = #{prevQuoteContract,jdbcType=DECIMAL},
+      </if>
+      <if test="uwUsername != null">
+        UW_USERNAME = #{uwUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="childSeqNo != null">
+        CHILD_SEQ_NO = #{childSeqNo,jdbcType=DECIMAL},
+      </if>
+      <if test="prevPolicyRef != null">
+        PREV_POLICY_REF = #{prevPolicyRef,jdbcType=VARCHAR},
+      </if>
+      <if test="preRnPolver != null">
+        PRE_RN_POLVER = #{preRnPolver,jdbcType=DECIMAL},
+      </if>
+      <if test="previousContract != null">
+        PREVIOUS_CONTRACT = #{previousContract,jdbcType=DECIMAL},
+      </if>
+      <if test="policyOriginator != null">
+        POLICY_ORIGINATOR = #{policyOriginator,jdbcType=VARCHAR},
+      </if>
+      <if test="masterQuoteRef != null">
+        MASTER_QUOTE_REF = #{masterQuoteRef,jdbcType=VARCHAR},
+      </if>
+      <if test="previousVersionNo != null">
+        PREVIOUS_VERSION_NO = #{previousVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="previousSource != null">
+        PREVIOUS_SOURCE = #{previousSource,jdbcType=VARCHAR},
+      </if>
+      <if test="previousGroupId != null">
+        PREVIOUS_GROUP_ID = #{previousGroupId,jdbcType=DECIMAL},
+      </if>
+      <if test="riType != null">
+        RI_TYPE = #{riType,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalQuoteFlag != null">
+        RENEWAL_QUOTE_FLAG = #{renewalQuoteFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="premRateWordings != null">
+        PREM_RATE_WORDINGS = #{premRateWordings,jdbcType=VARCHAR},
+      </if>
+      <if test="poiFlagUndo != null">
+        POI_FLAG_UNDO = #{poiFlagUndo,jdbcType=CHAR},
+      </if>
+      <if test="poiTextUndo != null">
+        POI_TEXT_UNDO = #{poiTextUndo,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalPeriod != null">
+        RENEWAL_PERIOD = #{renewalPeriod,jdbcType=DECIMAL},
+      </if>
+      <if test="coverNoteRef != null">
+        COVER_NOTE_REF = #{coverNoteRef,jdbcType=VARCHAR},
+      </if>
+      <if test="pprPrintOnSch != null">
+        PPR_PRINT_ON_SCH = #{pprPrintOnSch,jdbcType=VARCHAR},
+      </if>
+      <if test="policySchSeqNo != null">
+        POLICY_SCH_SEQ_NO = #{policySchSeqNo,jdbcType=DECIMAL},
+      </if>
+      <if test="certClause != null">
+        CERT_CLAUSE = #{certClause,jdbcType=VARCHAR},
+      </if>
+      <if test="backDays != null">
+        BACK_DAYS = #{backDays,jdbcType=DECIMAL},
+      </if>
+      <if test="groupId != null">
+        GROUP_ID = #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="prevStartDate != null">
+        PREV_START_DATE = #{prevStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevEndDate != null">
+        PREV_END_DATE = #{prevEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="groupMasterPolicy != null">
+        GROUP_MASTER_POLICY = #{groupMasterPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="reminderTo != null">
+        REMINDER_TO = #{reminderTo,jdbcType=VARCHAR},
+      </if>
+      <if test="reminderAllianzCc != null">
+        REMINDER_ALLIANZ_CC = #{reminderAllianzCc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPolicyContractsExt">
+    update WIP_PRL_POLICY_CONTRACTS_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      CONTRACT_DATE = #{contractDate,jdbcType=TIMESTAMP},
+      QUOTE_EXPIRY_DATE = #{quoteExpiryDate,jdbcType=TIMESTAMP},
+      MASTER_FLAG = #{masterFlag,jdbcType=VARCHAR},
+      BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      PI_PAR_CONTRACT = #{piParContract,jdbcType=DECIMAL},
+      RENEWABLE = #{renewable,jdbcType=VARCHAR},
+      BUSINESS_CLASS = #{businessClass,jdbcType=VARCHAR},
+      QUOTE_SENT_DATE = #{quoteSentDate,jdbcType=TIMESTAMP},
+      POLICY_PERIOD = #{policyPeriod,jdbcType=DECIMAL},
+      PREV_QUOTE_CONTRACT = #{prevQuoteContract,jdbcType=DECIMAL},
+      UW_USERNAME = #{uwUsername,jdbcType=VARCHAR},
+      CHILD_SEQ_NO = #{childSeqNo,jdbcType=DECIMAL},
+      PREV_POLICY_REF = #{prevPolicyRef,jdbcType=VARCHAR},
+      PRE_RN_POLVER = #{preRnPolver,jdbcType=DECIMAL},
+      PREVIOUS_CONTRACT = #{previousContract,jdbcType=DECIMAL},
+      POLICY_ORIGINATOR = #{policyOriginator,jdbcType=VARCHAR},
+      MASTER_QUOTE_REF = #{masterQuoteRef,jdbcType=VARCHAR},
+      PREVIOUS_VERSION_NO = #{previousVersionNo,jdbcType=DECIMAL},
+      PREVIOUS_SOURCE = #{previousSource,jdbcType=VARCHAR},
+      PREVIOUS_GROUP_ID = #{previousGroupId,jdbcType=DECIMAL},
+      RI_TYPE = #{riType,jdbcType=VARCHAR},
+      RENEWAL_QUOTE_FLAG = #{renewalQuoteFlag,jdbcType=VARCHAR},
+      PREM_RATE_WORDINGS = #{premRateWordings,jdbcType=VARCHAR},
+      POI_FLAG_UNDO = #{poiFlagUndo,jdbcType=CHAR},
+      POI_TEXT_UNDO = #{poiTextUndo,jdbcType=VARCHAR},
+      RENEWAL_PERIOD = #{renewalPeriod,jdbcType=DECIMAL},
+      COVER_NOTE_REF = #{coverNoteRef,jdbcType=VARCHAR},
+      PPR_PRINT_ON_SCH = #{pprPrintOnSch,jdbcType=VARCHAR},
+      POLICY_SCH_SEQ_NO = #{policySchSeqNo,jdbcType=DECIMAL},
+      CERT_CLAUSE = #{certClause,jdbcType=VARCHAR},
+      BACK_DAYS = #{backDays,jdbcType=DECIMAL},
+      GROUP_ID = #{groupId,jdbcType=DECIMAL},
+      PREV_START_DATE = #{prevStartDate,jdbcType=TIMESTAMP},
+      PREV_END_DATE = #{prevEndDate,jdbcType=TIMESTAMP},
+      GROUP_MASTER_POLICY = #{groupMasterPolicy,jdbcType=VARCHAR},
+      REMINDER_TO = #{reminderTo,jdbcType=VARCHAR},
+      REMINDER_ALLIANZ_CC = #{reminderAllianzCc,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+</mapper>

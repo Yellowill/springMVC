@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPolicyVersionsMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPolicyVersions">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <result column="PRODUCT_ID" jdbcType="DECIMAL" property="productId" />
+    <result column="PROD_VERSION" jdbcType="DECIMAL" property="prodVersion" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="EDI_ROUTE_INFO" jdbcType="VARCHAR" property="ediRouteInfo" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="USER_PARTNER_ID" jdbcType="DECIMAL" property="userPartnerId" />
+    <result column="ADJUSTMENT_COMMISSION" jdbcType="DECIMAL" property="adjustmentCommission" />
+    <result column="ADJUSTMENT_COMMISSION_SWF" jdbcType="VARCHAR" property="adjustmentCommissionSwf" />
+    <result column="BUSINESS_START_DATE" jdbcType="TIMESTAMP" property="businessStartDate" />
+    <result column="BUSINESS_END_DATE" jdbcType="TIMESTAMP" property="businessEndDate" />
+    <result column="OVERRIDE_INDICATOR" jdbcType="VARCHAR" property="overrideIndicator" />
+    <result column="PRO_RATION_FACTOR" jdbcType="DECIMAL" property="proRationFactor" />
+    <result column="MOVE_CODE" jdbcType="VARCHAR" property="moveCode" />
+    <result column="MOVEMENT_REASON_CODE" jdbcType="VARCHAR" property="movementReasonCode" />
+    <result column="MOVEMENT_REASON_TEXT" jdbcType="VARCHAR" property="movementReasonText" />
+    <result column="CHANGE_DESCRIPTION" jdbcType="VARCHAR" property="changeDescription" />
+    <result column="FULL_TERM_PREMIUM" jdbcType="DECIMAL" property="fullTermPremium" />
+    <result column="FULL_TERM_PREMIUM_SWF" jdbcType="VARCHAR" property="fullTermPremiumSwf" />
+    <result column="ADJUSTMENT_PREMIUM" jdbcType="DECIMAL" property="adjustmentPremium" />
+    <result column="ADJUSTMENT_PREMIUM_SWF" jdbcType="VARCHAR" property="adjustmentPremiumSwf" />
+    <result column="UNEARNED_PREMIUM_IN" jdbcType="DECIMAL" property="unearnedPremiumIn" />
+    <result column="UNEARNED_PREMIUM_IN_SWF" jdbcType="VARCHAR" property="unearnedPremiumInSwf" />
+    <result column="UNEARNED_PREMIUM_OUT" jdbcType="DECIMAL" property="unearnedPremiumOut" />
+    <result column="UNEARNED_PREMIUM_OUT_SWF" jdbcType="VARCHAR" property="unearnedPremiumOutSwf" />
+    <result column="SYSTEM_START_DATE" jdbcType="TIMESTAMP" property="systemStartDate" />
+    <result column="SYSTEM_END_DATE" jdbcType="TIMESTAMP" property="systemEndDate" />
+    <result column="INTERNAL_EXTERNAL_INDICATOR" jdbcType="VARCHAR" property="internalExternalIndicator" />
+    <result column="SUB_MOVEMENT_TYPE" jdbcType="VARCHAR" property="subMovementType" />
+    <result column="MANUAL_REINS_COINS_INDICATOR" jdbcType="VARCHAR" property="manualReinsCoinsIndicator" />
+    <result column="CONTRACT_STATUS" jdbcType="VARCHAR" property="contractStatus" />
+    <result column="REGRESS_BATCH_ID" jdbcType="DECIMAL" property="regressBatchId" />
+    <result column="MOVEMENT_BATCH_ID" jdbcType="DECIMAL" property="movementBatchId" />
+    <result column="EXT_USER" jdbcType="VARCHAR" property="extUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PRODUCT_ID, PROD_VERSION, VERSION_NO, PREVIOUS_VERSION, REVERSING_VERSION, 
+    TOP_INDICATOR, EDI_ROUTE_INFO, USERNAME, USER_PARTNER_ID, ADJUSTMENT_COMMISSION, 
+    ADJUSTMENT_COMMISSION_SWF, BUSINESS_START_DATE, BUSINESS_END_DATE, OVERRIDE_INDICATOR, 
+    PRO_RATION_FACTOR, MOVE_CODE, MOVEMENT_REASON_CODE, MOVEMENT_REASON_TEXT, CHANGE_DESCRIPTION, 
+    FULL_TERM_PREMIUM, FULL_TERM_PREMIUM_SWF, ADJUSTMENT_PREMIUM, ADJUSTMENT_PREMIUM_SWF, 
+    UNEARNED_PREMIUM_IN, UNEARNED_PREMIUM_IN_SWF, UNEARNED_PREMIUM_OUT, UNEARNED_PREMIUM_OUT_SWF, 
+    SYSTEM_START_DATE, SYSTEM_END_DATE, INTERNAL_EXTERNAL_INDICATOR, SUB_MOVEMENT_TYPE, 
+    MANUAL_REINS_COINS_INDICATOR, CONTRACT_STATUS, REGRESS_BATCH_ID, MOVEMENT_BATCH_ID, 
+    EXT_USER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_POLICY_VERSIONS
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from WIP_POLICY_VERSIONS
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPolicyVersions">
+    insert into WIP_POLICY_VERSIONS (CONTRACT_ID, PRODUCT_ID, PROD_VERSION, 
+      VERSION_NO, PREVIOUS_VERSION, REVERSING_VERSION, 
+      TOP_INDICATOR, EDI_ROUTE_INFO, USERNAME, 
+      USER_PARTNER_ID, ADJUSTMENT_COMMISSION, ADJUSTMENT_COMMISSION_SWF, 
+      BUSINESS_START_DATE, BUSINESS_END_DATE, 
+      OVERRIDE_INDICATOR, PRO_RATION_FACTOR, MOVE_CODE, 
+      MOVEMENT_REASON_CODE, MOVEMENT_REASON_TEXT, 
+      CHANGE_DESCRIPTION, FULL_TERM_PREMIUM, FULL_TERM_PREMIUM_SWF, 
+      ADJUSTMENT_PREMIUM, ADJUSTMENT_PREMIUM_SWF, 
+      UNEARNED_PREMIUM_IN, UNEARNED_PREMIUM_IN_SWF, 
+      UNEARNED_PREMIUM_OUT, UNEARNED_PREMIUM_OUT_SWF, 
+      SYSTEM_START_DATE, SYSTEM_END_DATE, INTERNAL_EXTERNAL_INDICATOR, 
+      SUB_MOVEMENT_TYPE, MANUAL_REINS_COINS_INDICATOR, 
+      CONTRACT_STATUS, REGRESS_BATCH_ID, MOVEMENT_BATCH_ID, 
+      EXT_USER)
+    values (#{contractId,jdbcType=DECIMAL}, #{productId,jdbcType=DECIMAL}, #{prodVersion,jdbcType=DECIMAL}, 
+      #{versionNo,jdbcType=DECIMAL}, #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, 
+      #{topIndicator,jdbcType=CHAR}, #{ediRouteInfo,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{userPartnerId,jdbcType=DECIMAL}, #{adjustmentCommission,jdbcType=DECIMAL}, #{adjustmentCommissionSwf,jdbcType=VARCHAR}, 
+      #{businessStartDate,jdbcType=TIMESTAMP}, #{businessEndDate,jdbcType=TIMESTAMP}, 
+      #{overrideIndicator,jdbcType=VARCHAR}, #{proRationFactor,jdbcType=DECIMAL}, #{moveCode,jdbcType=VARCHAR}, 
+      #{movementReasonCode,jdbcType=VARCHAR}, #{movementReasonText,jdbcType=VARCHAR}, 
+      #{changeDescription,jdbcType=VARCHAR}, #{fullTermPremium,jdbcType=DECIMAL}, #{fullTermPremiumSwf,jdbcType=VARCHAR}, 
+      #{adjustmentPremium,jdbcType=DECIMAL}, #{adjustmentPremiumSwf,jdbcType=VARCHAR}, 
+      #{unearnedPremiumIn,jdbcType=DECIMAL}, #{unearnedPremiumInSwf,jdbcType=VARCHAR}, 
+      #{unearnedPremiumOut,jdbcType=DECIMAL}, #{unearnedPremiumOutSwf,jdbcType=VARCHAR}, 
+      #{systemStartDate,jdbcType=TIMESTAMP}, #{systemEndDate,jdbcType=TIMESTAMP}, #{internalExternalIndicator,jdbcType=VARCHAR}, 
+      #{subMovementType,jdbcType=VARCHAR}, #{manualReinsCoinsIndicator,jdbcType=VARCHAR}, 
+      #{contractStatus,jdbcType=VARCHAR}, #{regressBatchId,jdbcType=DECIMAL}, #{movementBatchId,jdbcType=DECIMAL}, 
+      #{extUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPolicyVersions">
+    insert into WIP_POLICY_VERSIONS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="productId != null">
+        PRODUCT_ID,
+      </if>
+      <if test="prodVersion != null">
+        PROD_VERSION,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="ediRouteInfo != null">
+        EDI_ROUTE_INFO,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="userPartnerId != null">
+        USER_PARTNER_ID,
+      </if>
+      <if test="adjustmentCommission != null">
+        ADJUSTMENT_COMMISSION,
+      </if>
+      <if test="adjustmentCommissionSwf != null">
+        ADJUSTMENT_COMMISSION_SWF,
+      </if>
+      <if test="businessStartDate != null">
+        BUSINESS_START_DATE,
+      </if>
+      <if test="businessEndDate != null">
+        BUSINESS_END_DATE,
+      </if>
+      <if test="overrideIndicator != null">
+        OVERRIDE_INDICATOR,
+      </if>
+      <if test="proRationFactor != null">
+        PRO_RATION_FACTOR,
+      </if>
+      <if test="moveCode != null">
+        MOVE_CODE,
+      </if>
+      <if test="movementReasonCode != null">
+        MOVEMENT_REASON_CODE,
+      </if>
+      <if test="movementReasonText != null">
+        MOVEMENT_REASON_TEXT,
+      </if>
+      <if test="changeDescription != null">
+        CHANGE_DESCRIPTION,
+      </if>
+      <if test="fullTermPremium != null">
+        FULL_TERM_PREMIUM,
+      </if>
+      <if test="fullTermPremiumSwf != null">
+        FULL_TERM_PREMIUM_SWF,
+      </if>
+      <if test="adjustmentPremium != null">
+        ADJUSTMENT_PREMIUM,
+      </if>
+      <if test="adjustmentPremiumSwf != null">
+        ADJUSTMENT_PREMIUM_SWF,
+      </if>
+      <if test="unearnedPremiumIn != null">
+        UNEARNED_PREMIUM_IN,
+      </if>
+      <if test="unearnedPremiumInSwf != null">
+        UNEARNED_PREMIUM_IN_SWF,
+      </if>
+      <if test="unearnedPremiumOut != null">
+        UNEARNED_PREMIUM_OUT,
+      </if>
+      <if test="unearnedPremiumOutSwf != null">
+        UNEARNED_PREMIUM_OUT_SWF,
+      </if>
+      <if test="systemStartDate != null">
+        SYSTEM_START_DATE,
+      </if>
+      <if test="systemEndDate != null">
+        SYSTEM_END_DATE,
+      </if>
+      <if test="internalExternalIndicator != null">
+        INTERNAL_EXTERNAL_INDICATOR,
+      </if>
+      <if test="subMovementType != null">
+        SUB_MOVEMENT_TYPE,
+      </if>
+      <if test="manualReinsCoinsIndicator != null">
+        MANUAL_REINS_COINS_INDICATOR,
+      </if>
+      <if test="contractStatus != null">
+        CONTRACT_STATUS,
+      </if>
+      <if test="regressBatchId != null">
+        REGRESS_BATCH_ID,
+      </if>
+      <if test="movementBatchId != null">
+        MOVEMENT_BATCH_ID,
+      </if>
+      <if test="extUser != null">
+        EXT_USER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="prodVersion != null">
+        #{prodVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="ediRouteInfo != null">
+        #{ediRouteInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userPartnerId != null">
+        #{userPartnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustmentCommission != null">
+        #{adjustmentCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustmentCommissionSwf != null">
+        #{adjustmentCommissionSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="businessStartDate != null">
+        #{businessStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEndDate != null">
+        #{businessEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overrideIndicator != null">
+        #{overrideIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="proRationFactor != null">
+        #{proRationFactor,jdbcType=DECIMAL},
+      </if>
+      <if test="moveCode != null">
+        #{moveCode,jdbcType=VARCHAR},
+      </if>
+      <if test="movementReasonCode != null">
+        #{movementReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="movementReasonText != null">
+        #{movementReasonText,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDescription != null">
+        #{changeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="fullTermPremium != null">
+        #{fullTermPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="fullTermPremiumSwf != null">
+        #{fullTermPremiumSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustmentPremium != null">
+        #{adjustmentPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustmentPremiumSwf != null">
+        #{adjustmentPremiumSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="unearnedPremiumIn != null">
+        #{unearnedPremiumIn,jdbcType=DECIMAL},
+      </if>
+      <if test="unearnedPremiumInSwf != null">
+        #{unearnedPremiumInSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="unearnedPremiumOut != null">
+        #{unearnedPremiumOut,jdbcType=DECIMAL},
+      </if>
+      <if test="unearnedPremiumOutSwf != null">
+        #{unearnedPremiumOutSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="systemStartDate != null">
+        #{systemStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systemEndDate != null">
+        #{systemEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="internalExternalIndicator != null">
+        #{internalExternalIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="subMovementType != null">
+        #{subMovementType,jdbcType=VARCHAR},
+      </if>
+      <if test="manualReinsCoinsIndicator != null">
+        #{manualReinsCoinsIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStatus != null">
+        #{contractStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="regressBatchId != null">
+        #{regressBatchId,jdbcType=DECIMAL},
+      </if>
+      <if test="movementBatchId != null">
+        #{movementBatchId,jdbcType=DECIMAL},
+      </if>
+      <if test="extUser != null">
+        #{extUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPolicyVersions">
+    update WIP_POLICY_VERSIONS
+    <set>
+      <if test="productId != null">
+        PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="prodVersion != null">
+        PROD_VERSION = #{prodVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="ediRouteInfo != null">
+        EDI_ROUTE_INFO = #{ediRouteInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userPartnerId != null">
+        USER_PARTNER_ID = #{userPartnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustmentCommission != null">
+        ADJUSTMENT_COMMISSION = #{adjustmentCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustmentCommissionSwf != null">
+        ADJUSTMENT_COMMISSION_SWF = #{adjustmentCommissionSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="businessStartDate != null">
+        BUSINESS_START_DATE = #{businessStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessEndDate != null">
+        BUSINESS_END_DATE = #{businessEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overrideIndicator != null">
+        OVERRIDE_INDICATOR = #{overrideIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="proRationFactor != null">
+        PRO_RATION_FACTOR = #{proRationFactor,jdbcType=DECIMAL},
+      </if>
+      <if test="moveCode != null">
+        MOVE_CODE = #{moveCode,jdbcType=VARCHAR},
+      </if>
+      <if test="movementReasonCode != null">
+        MOVEMENT_REASON_CODE = #{movementReasonCode,jdbcType=VARCHAR},
+      </if>
+      <if test="movementReasonText != null">
+        MOVEMENT_REASON_TEXT = #{movementReasonText,jdbcType=VARCHAR},
+      </if>
+      <if test="changeDescription != null">
+        CHANGE_DESCRIPTION = #{changeDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="fullTermPremium != null">
+        FULL_TERM_PREMIUM = #{fullTermPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="fullTermPremiumSwf != null">
+        FULL_TERM_PREMIUM_SWF = #{fullTermPremiumSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustmentPremium != null">
+        ADJUSTMENT_PREMIUM = #{adjustmentPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="adjustmentPremiumSwf != null">
+        ADJUSTMENT_PREMIUM_SWF = #{adjustmentPremiumSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="unearnedPremiumIn != null">
+        UNEARNED_PREMIUM_IN = #{unearnedPremiumIn,jdbcType=DECIMAL},
+      </if>
+      <if test="unearnedPremiumInSwf != null">
+        UNEARNED_PREMIUM_IN_SWF = #{unearnedPremiumInSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="unearnedPremiumOut != null">
+        UNEARNED_PREMIUM_OUT = #{unearnedPremiumOut,jdbcType=DECIMAL},
+      </if>
+      <if test="unearnedPremiumOutSwf != null">
+        UNEARNED_PREMIUM_OUT_SWF = #{unearnedPremiumOutSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="systemStartDate != null">
+        SYSTEM_START_DATE = #{systemStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systemEndDate != null">
+        SYSTEM_END_DATE = #{systemEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="internalExternalIndicator != null">
+        INTERNAL_EXTERNAL_INDICATOR = #{internalExternalIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="subMovementType != null">
+        SUB_MOVEMENT_TYPE = #{subMovementType,jdbcType=VARCHAR},
+      </if>
+      <if test="manualReinsCoinsIndicator != null">
+        MANUAL_REINS_COINS_INDICATOR = #{manualReinsCoinsIndicator,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStatus != null">
+        CONTRACT_STATUS = #{contractStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="regressBatchId != null">
+        REGRESS_BATCH_ID = #{regressBatchId,jdbcType=DECIMAL},
+      </if>
+      <if test="movementBatchId != null">
+        MOVEMENT_BATCH_ID = #{movementBatchId,jdbcType=DECIMAL},
+      </if>
+      <if test="extUser != null">
+        EXT_USER = #{extUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPolicyVersions">
+    update WIP_POLICY_VERSIONS
+    set PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      PROD_VERSION = #{prodVersion,jdbcType=DECIMAL},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      EDI_ROUTE_INFO = #{ediRouteInfo,jdbcType=VARCHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      USER_PARTNER_ID = #{userPartnerId,jdbcType=DECIMAL},
+      ADJUSTMENT_COMMISSION = #{adjustmentCommission,jdbcType=DECIMAL},
+      ADJUSTMENT_COMMISSION_SWF = #{adjustmentCommissionSwf,jdbcType=VARCHAR},
+      BUSINESS_START_DATE = #{businessStartDate,jdbcType=TIMESTAMP},
+      BUSINESS_END_DATE = #{businessEndDate,jdbcType=TIMESTAMP},
+      OVERRIDE_INDICATOR = #{overrideIndicator,jdbcType=VARCHAR},
+      PRO_RATION_FACTOR = #{proRationFactor,jdbcType=DECIMAL},
+      MOVE_CODE = #{moveCode,jdbcType=VARCHAR},
+      MOVEMENT_REASON_CODE = #{movementReasonCode,jdbcType=VARCHAR},
+      MOVEMENT_REASON_TEXT = #{movementReasonText,jdbcType=VARCHAR},
+      CHANGE_DESCRIPTION = #{changeDescription,jdbcType=VARCHAR},
+      FULL_TERM_PREMIUM = #{fullTermPremium,jdbcType=DECIMAL},
+      FULL_TERM_PREMIUM_SWF = #{fullTermPremiumSwf,jdbcType=VARCHAR},
+      ADJUSTMENT_PREMIUM = #{adjustmentPremium,jdbcType=DECIMAL},
+      ADJUSTMENT_PREMIUM_SWF = #{adjustmentPremiumSwf,jdbcType=VARCHAR},
+      UNEARNED_PREMIUM_IN = #{unearnedPremiumIn,jdbcType=DECIMAL},
+      UNEARNED_PREMIUM_IN_SWF = #{unearnedPremiumInSwf,jdbcType=VARCHAR},
+      UNEARNED_PREMIUM_OUT = #{unearnedPremiumOut,jdbcType=DECIMAL},
+      UNEARNED_PREMIUM_OUT_SWF = #{unearnedPremiumOutSwf,jdbcType=VARCHAR},
+      SYSTEM_START_DATE = #{systemStartDate,jdbcType=TIMESTAMP},
+      SYSTEM_END_DATE = #{systemEndDate,jdbcType=TIMESTAMP},
+      INTERNAL_EXTERNAL_INDICATOR = #{internalExternalIndicator,jdbcType=VARCHAR},
+      SUB_MOVEMENT_TYPE = #{subMovementType,jdbcType=VARCHAR},
+      MANUAL_REINS_COINS_INDICATOR = #{manualReinsCoinsIndicator,jdbcType=VARCHAR},
+      CONTRACT_STATUS = #{contractStatus,jdbcType=VARCHAR},
+      REGRESS_BATCH_ID = #{regressBatchId,jdbcType=DECIMAL},
+      MOVEMENT_BATCH_ID = #{movementBatchId,jdbcType=DECIMAL},
+      EXT_USER = #{extUser,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+</mapper>

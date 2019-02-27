@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipIpLinksMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipIpLinks">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="IP_NO" jdbcType="DECIMAL" property="ipNo" />
+    <id column="IP_LINK_NO" jdbcType="DECIMAL" property="ipLinkNo" />
+    <result column="ROLE_TYPE" jdbcType="VARCHAR" property="roleType" />
+    <result column="LINK_TYPE" jdbcType="VARCHAR" property="linkType" />
+    <result column="ACTION_CODE" jdbcType="VARCHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="INTEREST_RANK" jdbcType="VARCHAR" property="interestRank" />
+    <result column="INTEREST_REFERENCE" jdbcType="VARCHAR" property="interestReference" />
+    <result column="INTEREST_AMOUNT" jdbcType="DECIMAL" property="interestAmount" />
+    <result column="TYPE_OF_INTEREST" jdbcType="VARCHAR" property="typeOfInterest" />
+    <result column="COVER_CODE" jdbcType="VARCHAR" property="coverCode" />
+    <result column="COVER_NO" jdbcType="DECIMAL" property="coverNo" />
+    <result column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, IP_NO, IP_LINK_NO, ROLE_TYPE, LINK_TYPE, ACTION_CODE, VERSION_NO, OBJECT_ID, 
+    TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, INTEREST_RANK, INTEREST_REFERENCE, 
+    INTEREST_AMOUNT, TYPE_OF_INTEREST, COVER_CODE, COVER_NO, PARTITION_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipIpLinksKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_IP_LINKS
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+      and IP_LINK_NO = #{ipLinkNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipIpLinksKey">
+    delete from WIP_IP_LINKS
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+      and IP_LINK_NO = #{ipLinkNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipIpLinks">
+    insert into WIP_IP_LINKS (CONTRACT_ID, IP_NO, IP_LINK_NO, 
+      ROLE_TYPE, LINK_TYPE, ACTION_CODE, 
+      VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+      PREVIOUS_VERSION, REVERSING_VERSION, INTEREST_RANK, 
+      INTEREST_REFERENCE, INTEREST_AMOUNT, TYPE_OF_INTEREST, 
+      COVER_CODE, COVER_NO, PARTITION_NO
+      )
+    values (#{contractId,jdbcType=DECIMAL}, #{ipNo,jdbcType=DECIMAL}, #{ipLinkNo,jdbcType=DECIMAL}, 
+      #{roleType,jdbcType=VARCHAR}, #{linkType,jdbcType=VARCHAR}, #{actionCode,jdbcType=VARCHAR}, 
+      #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, #{topIndicator,jdbcType=CHAR}, 
+      #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, #{interestRank,jdbcType=VARCHAR}, 
+      #{interestReference,jdbcType=VARCHAR}, #{interestAmount,jdbcType=DECIMAL}, #{typeOfInterest,jdbcType=VARCHAR}, 
+      #{coverCode,jdbcType=VARCHAR}, #{coverNo,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipIpLinks">
+    insert into WIP_IP_LINKS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="ipNo != null">
+        IP_NO,
+      </if>
+      <if test="ipLinkNo != null">
+        IP_LINK_NO,
+      </if>
+      <if test="roleType != null">
+        ROLE_TYPE,
+      </if>
+      <if test="linkType != null">
+        LINK_TYPE,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="interestRank != null">
+        INTEREST_RANK,
+      </if>
+      <if test="interestReference != null">
+        INTEREST_REFERENCE,
+      </if>
+      <if test="interestAmount != null">
+        INTEREST_AMOUNT,
+      </if>
+      <if test="typeOfInterest != null">
+        TYPE_OF_INTEREST,
+      </if>
+      <if test="coverCode != null">
+        COVER_CODE,
+      </if>
+      <if test="coverNo != null">
+        COVER_NO,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="ipNo != null">
+        #{ipNo,jdbcType=DECIMAL},
+      </if>
+      <if test="ipLinkNo != null">
+        #{ipLinkNo,jdbcType=DECIMAL},
+      </if>
+      <if test="roleType != null">
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null">
+        #{linkType,jdbcType=VARCHAR},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="interestRank != null">
+        #{interestRank,jdbcType=VARCHAR},
+      </if>
+      <if test="interestReference != null">
+        #{interestReference,jdbcType=VARCHAR},
+      </if>
+      <if test="interestAmount != null">
+        #{interestAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="typeOfInterest != null">
+        #{typeOfInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="coverCode != null">
+        #{coverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coverNo != null">
+        #{coverNo,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipIpLinks">
+    update WIP_IP_LINKS
+    <set>
+      <if test="roleType != null">
+        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null">
+        LINK_TYPE = #{linkType,jdbcType=VARCHAR},
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="interestRank != null">
+        INTEREST_RANK = #{interestRank,jdbcType=VARCHAR},
+      </if>
+      <if test="interestReference != null">
+        INTEREST_REFERENCE = #{interestReference,jdbcType=VARCHAR},
+      </if>
+      <if test="interestAmount != null">
+        INTEREST_AMOUNT = #{interestAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="typeOfInterest != null">
+        TYPE_OF_INTEREST = #{typeOfInterest,jdbcType=VARCHAR},
+      </if>
+      <if test="coverCode != null">
+        COVER_CODE = #{coverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="coverNo != null">
+        COVER_NO = #{coverNo,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO = #{partitionNo,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+      and IP_LINK_NO = #{ipLinkNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipIpLinks">
+    update WIP_IP_LINKS
+    set ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      LINK_TYPE = #{linkType,jdbcType=VARCHAR},
+      ACTION_CODE = #{actionCode,jdbcType=VARCHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      INTEREST_RANK = #{interestRank,jdbcType=VARCHAR},
+      INTEREST_REFERENCE = #{interestReference,jdbcType=VARCHAR},
+      INTEREST_AMOUNT = #{interestAmount,jdbcType=DECIMAL},
+      TYPE_OF_INTEREST = #{typeOfInterest,jdbcType=VARCHAR},
+      COVER_CODE = #{coverCode,jdbcType=VARCHAR},
+      COVER_NO = #{coverNo,jdbcType=DECIMAL},
+      PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+      and IP_LINK_NO = #{ipLinkNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

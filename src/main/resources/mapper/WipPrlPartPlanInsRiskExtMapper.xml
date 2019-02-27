@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlPartPlanInsRiskExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlPartPlanInsRiskExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+    <id column="RISK_ID" jdbcType="DECIMAL" property="riskId" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="INSURED_ID" jdbcType="DECIMAL" property="insuredId" />
+    <result column="THIRD_PART_ID" jdbcType="VARCHAR" property="thirdPartId" />
+    <result column="THIRD_PART_NAME" jdbcType="VARCHAR" property="thirdPartName" />
+    <result column="THIRD_PART_ORDER_NO" jdbcType="VARCHAR" property="thirdPartOrderNo" />
+    <result column="THIRD_PART_POLICY_NO" jdbcType="VARCHAR" property="thirdPartPolicyNo" />
+    <result column="APPLY_DATE_TIME" jdbcType="TIMESTAMP" property="applyDateTime" />
+    <result column="EFFECTIVE_DATE_TIME" jdbcType="TIMESTAMP" property="effectiveDateTime" />
+    <result column="POLICY_CREATION_DATE" jdbcType="TIMESTAMP" property="policyCreationDate" />
+    <result column="PREMIUM" jdbcType="DECIMAL" property="premium" />
+    <result column="LOCATION_FROM" jdbcType="VARCHAR" property="locationFrom" />
+    <result column="LOCATION_TO" jdbcType="VARCHAR" property="locationTo" />
+    <result column="THIRD_PART_INSURED_ID" jdbcType="VARCHAR" property="thirdPartInsuredId" />
+    <result column="SUM_INSURED" jdbcType="DECIMAL" property="sumInsured" />
+    <result column="END_DATE_TIME" jdbcType="TIMESTAMP" property="endDateTime" />
+    <result column="UPDATED_DATE" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="MALL_ORDER_ID" jdbcType="VARCHAR" property="mallOrderId" />
+    <result column="MALL_POLICY_ID" jdbcType="VARCHAR" property="mallPolicyId" />
+    <result column="PROD_CATEGORY" jdbcType="VARCHAR" property="prodCategory" />
+    <result column="PROD_BRAND" jdbcType="VARCHAR" property="prodBrand" />
+    <result column="PROD_MODEL" jdbcType="VARCHAR" property="prodModel" />
+    <result column="PROD_SIZE" jdbcType="VARCHAR" property="prodSize" />
+    <result column="ORDER_PRICE" jdbcType="DECIMAL" property="orderPrice" />
+    <result column="POLICY_PRICE" jdbcType="DECIMAL" property="policyPrice" />
+    <result column="EQUIPMENT_ID" jdbcType="VARCHAR" property="equipmentId" />
+    <result column="ORDER_DATE" jdbcType="TIMESTAMP" property="orderDate" />
+    <result column="GUARANTEE_PERIOD_MONTHS" jdbcType="DECIMAL" property="guaranteePeriodMonths" />
+    <result column="POLICY_PERIOD_MONTHS" jdbcType="DECIMAL" property="policyPeriodMonths" />
+    <result column="POLICY_PERIOD_DAYS" jdbcType="DECIMAL" property="policyPeriodDays" />
+    <result column="WHOLE_GT_PERIOD_DAYS" jdbcType="DECIMAL" property="wholeGtPeriodDays" />
+    <result column="MAIN_PART_GT_PERIOD_DAYS" jdbcType="DECIMAL" property="mainPartGtPeriodDays" />
+    <result column="WHOLE_GT_START_DATE" jdbcType="TIMESTAMP" property="wholeGtStartDate" />
+    <result column="WHOLE_GT_END_DATE" jdbcType="TIMESTAMP" property="wholeGtEndDate" />
+    <result column="MAIN_PART_GT_START_DATE" jdbcType="TIMESTAMP" property="mainPartGtStartDate" />
+    <result column="MAIN_PART_GT_END_DATE" jdbcType="TIMESTAMP" property="mainPartGtEndDate" />
+    <result column="WHOLE_WTE_START_DATE" jdbcType="TIMESTAMP" property="wholeWteStartDate" />
+    <result column="WHOLE_WTE_END_DATE" jdbcType="TIMESTAMP" property="wholeWteEndDate" />
+    <result column="MAIN_PART_WTE_START_DATE" jdbcType="TIMESTAMP" property="mainPartWteStartDate" />
+    <result column="MAIN_PART_WTE_END_DATE" jdbcType="TIMESTAMP" property="mainPartWteEndDate" />
+    <result column="WTE_START_DATE" jdbcType="TIMESTAMP" property="wteStartDate" />
+    <result column="WTE_END_DATE" jdbcType="TIMESTAMP" property="wteEndDate" />
+    <result column="THIRD_PART_PIN" jdbcType="VARCHAR" property="thirdPartPin" />
+    <result column="CITY_TO" jdbcType="VARCHAR" property="cityTo" />
+    <result column="ADDRESS_TO" jdbcType="VARCHAR" property="addressTo" />
+    <result column="MALL_SKU" jdbcType="VARCHAR" property="mallSku" />
+    <result column="MALL_POLICY_SKU" jdbcType="VARCHAR" property="mallPolicySku" />
+    <result column="AL_EFFECTIVE_DATE" jdbcType="TIMESTAMP" property="alEffectiveDate" />
+    <result column="AL_END_DATE" jdbcType="TIMESTAMP" property="alEndDate" />
+    <result column="AL_PERIOD_DAYS" jdbcType="DECIMAL" property="alPeriodDays" />
+    <result column="WTE_PERIOD_DAYS" jdbcType="DECIMAL" property="wtePeriodDays" />
+    <result column="WHOLE_WTE_PERIOD_DAYS" jdbcType="DECIMAL" property="wholeWtePeriodDays" />
+    <result column="MAIN_PART_WTE_PERIOD_DAYS" jdbcType="DECIMAL" property="mainPartWtePeriodDays" />
+    <result column="GT_START_DATE" jdbcType="TIMESTAMP" property="gtStartDate" />
+    <result column="GT_END_DATE" jdbcType="TIMESTAMP" property="gtEndDate" />
+    <result column="SERVICE_START_DATE" jdbcType="TIMESTAMP" property="serviceStartDate" />
+    <result column="SERVICE_END_DATE" jdbcType="TIMESTAMP" property="serviceEndDate" />
+    <result column="NAME_OF_CLASS_THREE" jdbcType="VARCHAR" property="nameOfClassThree" />
+    <result column="LICENCE_NO" jdbcType="VARCHAR" property="licenceNo" />
+    <result column="INSTITUTION_NAME" jdbcType="VARCHAR" property="institutionName" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PARTITION_NO, RISK_ID, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+    PREVIOUS_VERSION, REVERSING_VERSION, INSURED_ID, THIRD_PART_ID, THIRD_PART_NAME, 
+    THIRD_PART_ORDER_NO, THIRD_PART_POLICY_NO, APPLY_DATE_TIME, EFFECTIVE_DATE_TIME, 
+    POLICY_CREATION_DATE, PREMIUM, LOCATION_FROM, LOCATION_TO, THIRD_PART_INSURED_ID, 
+    SUM_INSURED, END_DATE_TIME, UPDATED_DATE, MALL_ORDER_ID, MALL_POLICY_ID, PROD_CATEGORY, 
+    PROD_BRAND, PROD_MODEL, PROD_SIZE, ORDER_PRICE, POLICY_PRICE, EQUIPMENT_ID, ORDER_DATE, 
+    GUARANTEE_PERIOD_MONTHS, POLICY_PERIOD_MONTHS, POLICY_PERIOD_DAYS, WHOLE_GT_PERIOD_DAYS, 
+    MAIN_PART_GT_PERIOD_DAYS, WHOLE_GT_START_DATE, WHOLE_GT_END_DATE, MAIN_PART_GT_START_DATE, 
+    MAIN_PART_GT_END_DATE, WHOLE_WTE_START_DATE, WHOLE_WTE_END_DATE, MAIN_PART_WTE_START_DATE, 
+    MAIN_PART_WTE_END_DATE, WTE_START_DATE, WTE_END_DATE, THIRD_PART_PIN, CITY_TO, ADDRESS_TO,MALL_SKU,MALL_POLICY_SKU,
+    AL_EFFECTIVE_DATE,AL_END_DATE,AL_PERIOD_DAYS,WTE_PERIOD_DAYS,WHOLE_WTE_PERIOD_DAYS,MAIN_PART_WTE_PERIOD_DAYS,
+    GT_START_DATE,GT_END_DATE,SERVICE_START_DATE,SERVICE_END_DATE, 
+    NAME_OF_CLASS_THREE, LICENCE_NO, INSTITUTION_NAME 
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsRiskExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_PLAN_INS_RISK_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and RISK_ID = #{riskId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="selectByBusinessPK" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_PLAN_INS_RISK_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = 1
+      and THIRD_PART_POLICY_NO = #{thirdPartPolicyNo,jdbcType=VARCHAR}
+  </select>
+  
+  <sql id='RISK_ID_SEQUENCE'>PRL_PART_PLAN_INS_RISK_ID_SEQ.nextval</sql>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsRiskExtKey">
+    delete from WIP_PRL_PART_PLAN_INS_RISK_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and RISK_ID = #{riskId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsRiskExt">
+    insert into WIP_PRL_PART_PLAN_INS_RISK_EXT (CONTRACT_ID, PARTITION_NO, RISK_ID, 
+      ACTION_CODE, VERSION_NO, OBJECT_ID, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      INSURED_ID, THIRD_PART_ID, THIRD_PART_NAME, 
+      THIRD_PART_ORDER_NO, THIRD_PART_POLICY_NO, APPLY_DATE_TIME, 
+      EFFECTIVE_DATE_TIME, POLICY_CREATION_DATE, 
+      PREMIUM, LOCATION_FROM, LOCATION_TO, 
+      THIRD_PART_INSURED_ID, SUM_INSURED, END_DATE_TIME, 
+      UPDATED_DATE, MALL_ORDER_ID, MALL_POLICY_ID, 
+      PROD_CATEGORY, PROD_BRAND, PROD_MODEL, 
+      PROD_SIZE, ORDER_PRICE, POLICY_PRICE, 
+      EQUIPMENT_ID, ORDER_DATE, GUARANTEE_PERIOD_MONTHS, 
+      POLICY_PERIOD_MONTHS, POLICY_PERIOD_DAYS, WHOLE_GT_PERIOD_DAYS, 
+      MAIN_PART_GT_PERIOD_DAYS, WHOLE_GT_START_DATE, 
+      WHOLE_GT_END_DATE, MAIN_PART_GT_START_DATE, 
+      MAIN_PART_GT_END_DATE, WHOLE_WTE_START_DATE, 
+      WHOLE_WTE_END_DATE, MAIN_PART_WTE_START_DATE, 
+      MAIN_PART_WTE_END_DATE, WTE_START_DATE, WTE_END_DATE, 
+      THIRD_PART_PIN, CITY_TO, ADDRESS_TO,MALL_SKU,MALL_POLICY_SKU,
+      AL_EFFECTIVE_DATE,AL_END_DATE,AL_PERIOD_DAYS,WTE_PERIOD_DAYS,WHOLE_WTE_PERIOD_DAYS,
+      MAIN_PART_WTE_PERIOD_DAYS,GT_START_DATE,GT_END_DATE,SERVICE_START_DATE,SERVICE_END_DATE,
+      NAME_OF_CLASS_THREE, LICENCE_NO, INSTITUTION_NAME 
+      )
+    values (#{contractId,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}, #{riskId,jdbcType=DECIMAL}, 
+      #{actionCode,jdbcType=CHAR}, #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, 
+      #{topIndicator,jdbcType=CHAR}, #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, 
+      #{insuredId,jdbcType=DECIMAL}, #{thirdPartId,jdbcType=VARCHAR}, #{thirdPartName,jdbcType=VARCHAR}, 
+      #{thirdPartOrderNo,jdbcType=VARCHAR}, #{thirdPartPolicyNo,jdbcType=VARCHAR}, #{applyDateTime,jdbcType=TIMESTAMP}, 
+      #{effectiveDateTime,jdbcType=TIMESTAMP}, #{policyCreationDate,jdbcType=TIMESTAMP}, 
+      #{premium,jdbcType=DECIMAL}, #{locationFrom,jdbcType=VARCHAR}, #{locationTo,jdbcType=VARCHAR}, 
+      #{thirdPartInsuredId,jdbcType=VARCHAR}, #{sumInsured,jdbcType=DECIMAL}, #{endDateTime,jdbcType=TIMESTAMP}, 
+      #{updatedDate,jdbcType=TIMESTAMP}, #{mallOrderId,jdbcType=VARCHAR}, #{mallPolicyId,jdbcType=VARCHAR}, 
+      #{prodCategory,jdbcType=VARCHAR}, #{prodBrand,jdbcType=VARCHAR}, #{prodModel,jdbcType=VARCHAR}, 
+      #{prodSize,jdbcType=VARCHAR}, #{orderPrice,jdbcType=DECIMAL}, #{policyPrice,jdbcType=DECIMAL}, 
+      #{equipmentId,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, #{guaranteePeriodMonths,jdbcType=DECIMAL}, 
+      #{policyPeriodMonths,jdbcType=DECIMAL}, #{policyPeriodDays,jdbcType=DECIMAL}, #{wholeGtPeriodDays,jdbcType=DECIMAL}, 
+      #{mainPartGtPeriodDays,jdbcType=DECIMAL}, #{wholeGtStartDate,jdbcType=TIMESTAMP}, 
+      #{wholeGtEndDate,jdbcType=TIMESTAMP}, #{mainPartGtStartDate,jdbcType=TIMESTAMP}, 
+      #{mainPartGtEndDate,jdbcType=TIMESTAMP}, #{wholeWteStartDate,jdbcType=TIMESTAMP}, 
+      #{wholeWteEndDate,jdbcType=TIMESTAMP}, #{mainPartWteStartDate,jdbcType=TIMESTAMP}, 
+      #{mainPartWteEndDate,jdbcType=TIMESTAMP}, #{wteStartDate,jdbcType=TIMESTAMP}, #{wteEndDate,jdbcType=TIMESTAMP}, 
+      #{thirdPartPin,jdbcType=VARCHAR}, #{cityTo,jdbcType=VARCHAR}, #{addressTo,jdbcType=VARCHAR}, 
+      #{MALL_SKU,jdbcType=VARCHAR}, #{MALL_POLICY_SKU,jdbcType=VARCHAR},
+      #{alEffectiveDate,jdbcType=TIMESTAMP}, #{alEndDate,jdbcType=TIMESTAMP}, #{alPeriodDays,jdbcType=DECIMAL}, 
+      #{wtePeriodDays,jdbcType=DECIMAL}, #{wholeWtePeriodDays,jdbcType=DECIMAL}, #{mainPartWtePeriodDays,jdbcType=DECIMAL}, 
+      #{gtStartDate,jdbcType=TIMESTAMP}, #{gtEndDate,jdbcType=TIMESTAMP}, #{serviceStartDate,jdbcType=TIMESTAMP}, 
+      #{serviceEndDate,jdbcType=TIMESTAMP}, 
+      #{nameOfClassThree,jdbcType=VARCHAR}, #{licenceNo,jdbcType=VARCHAR}, #{institutionName,jdbcType=VARCHAR} 
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsRiskExt">
+    insert into WIP_PRL_PART_PLAN_INS_RISK_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+      <!-- <if test="riskId != null"> -->
+        RISK_ID,
+      <!-- </if> -->
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="insuredId != null">
+        INSURED_ID,
+      </if>
+      <if test="thirdPartId != null">
+        THIRD_PART_ID,
+      </if>
+      <if test="thirdPartName != null">
+        THIRD_PART_NAME,
+      </if>
+      <if test="thirdPartOrderNo != null">
+        THIRD_PART_ORDER_NO,
+      </if>
+      <if test="thirdPartPolicyNo != null">
+        THIRD_PART_POLICY_NO,
+      </if>
+      <if test="applyDateTime != null">
+        APPLY_DATE_TIME,
+      </if>
+      <if test="effectiveDateTime != null">
+        EFFECTIVE_DATE_TIME,
+      </if>
+      <if test="policyCreationDate != null">
+        POLICY_CREATION_DATE,
+      </if>
+      <if test="premium != null">
+        PREMIUM,
+      </if>
+      <if test="locationFrom != null">
+        LOCATION_FROM,
+      </if>
+      <if test="locationTo != null">
+        LOCATION_TO,
+      </if>
+      <if test="thirdPartInsuredId != null">
+        THIRD_PART_INSURED_ID,
+      </if>
+      <if test="sumInsured != null">
+        SUM_INSURED,
+      </if>
+      <if test="endDateTime != null">
+        END_DATE_TIME,
+      </if>
+      <if test="updatedDate != null">
+        UPDATED_DATE,
+      </if>
+      <if test="mallOrderId != null">
+        MALL_ORDER_ID,
+      </if>
+      <if test="mallPolicyId != null">
+        MALL_POLICY_ID,
+      </if>
+      <if test="prodCategory != null">
+        PROD_CATEGORY,
+      </if>
+      <if test="prodBrand != null">
+        PROD_BRAND,
+      </if>
+      <if test="prodModel != null">
+        PROD_MODEL,
+      </if>
+      <if test="prodSize != null">
+        PROD_SIZE,
+      </if>
+      <if test="orderPrice != null">
+        ORDER_PRICE,
+      </if>
+      <if test="policyPrice != null">
+        POLICY_PRICE,
+      </if>
+      <if test="equipmentId != null">
+        EQUIPMENT_ID,
+      </if>
+      <if test="orderDate != null">
+        ORDER_DATE,
+      </if>
+      <if test="guaranteePeriodMonths != null">
+        GUARANTEE_PERIOD_MONTHS,
+      </if>
+      <if test="policyPeriodMonths != null">
+        POLICY_PERIOD_MONTHS,
+      </if>
+      <if test="policyPeriodDays != null">
+        POLICY_PERIOD_DAYS,
+      </if>
+      <if test="wholeGtPeriodDays != null">
+        WHOLE_GT_PERIOD_DAYS,
+      </if>
+      <if test="mainPartGtPeriodDays != null">
+        MAIN_PART_GT_PERIOD_DAYS,
+      </if>
+      <if test="wholeGtStartDate != null">
+        WHOLE_GT_START_DATE,
+      </if>
+      <if test="wholeGtEndDate != null">
+        WHOLE_GT_END_DATE,
+      </if>
+      <if test="mainPartGtStartDate != null">
+        MAIN_PART_GT_START_DATE,
+      </if>
+      <if test="mainPartGtEndDate != null">
+        MAIN_PART_GT_END_DATE,
+      </if>
+      <if test="wholeWteStartDate != null">
+        WHOLE_WTE_START_DATE,
+      </if>
+      <if test="wholeWteEndDate != null">
+        WHOLE_WTE_END_DATE,
+      </if>
+      <if test="mainPartWteStartDate != null">
+        MAIN_PART_WTE_START_DATE,
+      </if>
+      <if test="mainPartWteEndDate != null">
+        MAIN_PART_WTE_END_DATE,
+      </if>
+      <if test="wteStartDate != null">
+        WTE_START_DATE,
+      </if>
+      <if test="wteEndDate != null">
+        WTE_END_DATE,
+      </if>
+      <if test="thirdPartPin != null">
+        THIRD_PART_PIN,
+      </if>
+      <if test="cityTo != null">
+        CITY_TO,
+      </if>
+      <if test="addressTo != null">
+        ADDRESS_TO,
+      </if>
+      <if test="mallSku != null">
+        MALL_SKU,
+      </if>
+      <if test="mallPolicySku != null">
+        MALL_POLICY_SKU,
+      </if>
+      <if test="alEffectiveDate != null">
+        AL_EFFECTIVE_DATE,
+      </if>
+      <if test="alEndDate != null">
+        AL_END_DATE,
+      </if>
+      <if test="alPeriodDays != null">
+        AL_PERIOD_DAYS,
+      </if>
+      <if test="wtePeriodDays != null">
+        WTE_PERIOD_DAYS,
+      </if>
+      <if test="wholeWtePeriodDays != null">
+        WHOLE_WTE_PERIOD_DAYS,
+      </if>
+      <if test="mainPartWtePeriodDays != null">
+        MAIN_PART_WTE_PERIOD_DAYS,
+      </if>
+      <if test="gtStartDate != null">
+        GT_START_DATE,
+      </if>
+      <if test="gtEndDate != null">
+        GT_END_DATE,
+      </if>
+      <if test="serviceStartDate != null">
+        SERVICE_START_DATE,
+      </if>
+      <if test="serviceEndDate != null">
+        SERVICE_END_DATE,
+      </if>
+      <if test="nameOfClassThree != null">
+        NAME_OF_CLASS_THREE,
+      </if>
+      <if test="licenceNo != null">
+        LICENCE_NO,
+      </if>
+      <if test="institutionName != null">
+        INSTITUTION_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+<!--       <if test="riskId != null">
+        #{riskId,jdbcType=DECIMAL},
+      </if> -->
+      <include refid="RISK_ID_SEQUENCE" /> ,
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredId != null">
+        #{insuredId,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdPartId != null">
+        #{thirdPartId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartName != null">
+        #{thirdPartName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartOrderNo != null">
+        #{thirdPartOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartPolicyNo != null">
+        #{thirdPartPolicyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDateTime != null">
+        #{applyDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDateTime != null">
+        #{effectiveDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyCreationDate != null">
+        #{policyCreationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="premium != null">
+        #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="locationFrom != null">
+        #{locationFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="locationTo != null">
+        #{locationTo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartInsuredId != null">
+        #{thirdPartInsuredId,jdbcType=VARCHAR},
+      </if>
+      <if test="sumInsured != null">
+        #{sumInsured,jdbcType=DECIMAL},
+      </if>
+      <if test="endDateTime != null">
+        #{endDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mallOrderId != null">
+        #{mallOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="mallPolicyId != null">
+        #{mallPolicyId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodCategory != null">
+        #{prodCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="prodBrand != null">
+        #{prodBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="prodModel != null">
+        #{prodModel,jdbcType=VARCHAR},
+      </if>
+      <if test="prodSize != null">
+        #{prodSize,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null">
+        #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="policyPrice != null">
+        #{policyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="equipmentId != null">
+        #{equipmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="guaranteePeriodMonths != null">
+        #{guaranteePeriodMonths,jdbcType=DECIMAL},
+      </if>
+      <if test="policyPeriodMonths != null">
+        #{policyPeriodMonths,jdbcType=DECIMAL},
+      </if>
+      <if test="policyPeriodDays != null">
+        #{policyPeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="wholeGtPeriodDays != null">
+        #{wholeGtPeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="mainPartGtPeriodDays != null">
+        #{mainPartGtPeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="wholeGtStartDate != null">
+        #{wholeGtStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wholeGtEndDate != null">
+        #{wholeGtEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartGtStartDate != null">
+        #{mainPartGtStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartGtEndDate != null">
+        #{mainPartGtEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wholeWteStartDate != null">
+        #{wholeWteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wholeWteEndDate != null">
+        #{wholeWteEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartWteStartDate != null">
+        #{mainPartWteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartWteEndDate != null">
+        #{mainPartWteEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wteStartDate != null">
+        #{wteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wteEndDate != null">
+        #{wteEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thirdPartPin != null">
+        #{thirdPartPin,jdbcType=VARCHAR},
+      </if>
+      <if test="cityTo != null">
+        #{cityTo,jdbcType=VARCHAR},
+      </if>
+      <if test="addressTo != null">
+        #{addressTo,jdbcType=VARCHAR},
+      </if>
+      <if test="mallSku != null">
+        #{mallSku,jdbcType=VARCHAR},
+      </if>
+      <if test="mallPolicySku != null">
+        #{mallPolicySku,jdbcType=VARCHAR},
+      </if>
+      <if test="alEffectiveDate != null">
+        #{alEffectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alEndDate != null">
+        #{alEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alPeriodDays != null">
+        #{alPeriodDays,jdbcType=DECIMAL}, 
+      </if>
+      <if test="wtePeriodDays != null">
+        #{wtePeriodDays,jdbcType=DECIMAL}, 
+      </if>
+      <if test="wholeWtePeriodDays != null">
+        #{wholeWtePeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="mainPartWtePeriodDays != null">
+        #{mainPartWtePeriodDays,jdbcType=DECIMAL}, 
+      </if>
+      <if test="gtStartDate != null">
+        #{gtStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gtEndDate != null">
+        #{gtEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceStartDate != null">
+        #{serviceStartDate,jdbcType=TIMESTAMP}, 
+      </if>
+      <if test="serviceEndDate != null">
+        #{serviceEndDate,jdbcType=TIMESTAMP},
+      </if>
+      
+      <if test="nameOfClassThree != null">
+        #{nameOfClassThree,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNo != null">
+        #{licenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="institutionName != null">
+        #{institutionName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsRiskExt">
+    update WIP_PRL_PART_PLAN_INS_RISK_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredId != null">
+        INSURED_ID = #{insuredId,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdPartId != null">
+        THIRD_PART_ID = #{thirdPartId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartName != null">
+        THIRD_PART_NAME = #{thirdPartName,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartOrderNo != null">
+        THIRD_PART_ORDER_NO = #{thirdPartOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartPolicyNo != null">
+        THIRD_PART_POLICY_NO = #{thirdPartPolicyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDateTime != null">
+        APPLY_DATE_TIME = #{applyDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="effectiveDateTime != null">
+        EFFECTIVE_DATE_TIME = #{effectiveDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyCreationDate != null">
+        POLICY_CREATION_DATE = #{policyCreationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="premium != null">
+        PREMIUM = #{premium,jdbcType=DECIMAL},
+      </if>
+      <if test="locationFrom != null">
+        LOCATION_FROM = #{locationFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="locationTo != null">
+        LOCATION_TO = #{locationTo,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdPartInsuredId != null">
+        THIRD_PART_INSURED_ID = #{thirdPartInsuredId,jdbcType=VARCHAR},
+      </if>
+      <if test="sumInsured != null">
+        SUM_INSURED = #{sumInsured,jdbcType=DECIMAL},
+      </if>
+      <if test="endDateTime != null">
+        END_DATE_TIME = #{endDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mallOrderId != null">
+        MALL_ORDER_ID = #{mallOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="mallPolicyId != null">
+        MALL_POLICY_ID = #{mallPolicyId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodCategory != null">
+        PROD_CATEGORY = #{prodCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="prodBrand != null">
+        PROD_BRAND = #{prodBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="prodModel != null">
+        PROD_MODEL = #{prodModel,jdbcType=VARCHAR},
+      </if>
+      <if test="prodSize != null">
+        PROD_SIZE = #{prodSize,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null">
+        ORDER_PRICE = #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="policyPrice != null">
+        POLICY_PRICE = #{policyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="equipmentId != null">
+        EQUIPMENT_ID = #{equipmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="guaranteePeriodMonths != null">
+        GUARANTEE_PERIOD_MONTHS = #{guaranteePeriodMonths,jdbcType=DECIMAL},
+      </if>
+      <if test="policyPeriodMonths != null">
+        POLICY_PERIOD_MONTHS = #{policyPeriodMonths,jdbcType=DECIMAL},
+      </if>
+      <if test="policyPeriodDays != null">
+        POLICY_PERIOD_DAYS = #{policyPeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="wholeGtPeriodDays != null">
+        WHOLE_GT_PERIOD_DAYS = #{wholeGtPeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="mainPartGtPeriodDays != null">
+        MAIN_PART_GT_PERIOD_DAYS = #{mainPartGtPeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="wholeGtStartDate != null">
+        WHOLE_GT_START_DATE = #{wholeGtStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wholeGtEndDate != null">
+        WHOLE_GT_END_DATE = #{wholeGtEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartGtStartDate != null">
+        MAIN_PART_GT_START_DATE = #{mainPartGtStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartGtEndDate != null">
+        MAIN_PART_GT_END_DATE = #{mainPartGtEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wholeWteStartDate != null">
+        WHOLE_WTE_START_DATE = #{wholeWteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wholeWteEndDate != null">
+        WHOLE_WTE_END_DATE = #{wholeWteEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartWteStartDate != null">
+        MAIN_PART_WTE_START_DATE = #{mainPartWteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mainPartWteEndDate != null">
+        MAIN_PART_WTE_END_DATE = #{mainPartWteEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wteStartDate != null">
+        WTE_START_DATE = #{wteStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wteEndDate != null">
+        WTE_END_DATE = #{wteEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="thirdPartPin != null">
+        THIRD_PART_PIN = #{thirdPartPin,jdbcType=VARCHAR},
+      </if>
+      <if test="cityTo != null">
+        CITY_TO = #{cityTo,jdbcType=VARCHAR},
+      </if>
+      <if test="addressTo != null">
+        ADDRESS_TO = #{addressTo,jdbcType=VARCHAR},
+      </if>
+      <if test="mallSku != null">
+        MALL_SKU = #{mallSku,jdbcType=VARCHAR},
+      </if>
+      <if test="mallPolicySku != null">
+        MALL_POLICY_SKU = #{mallPolicySku,jdbcType=VARCHAR},
+      </if>
+      <if test="alEffectiveDate != null">
+        AL_EFFECTIVE_DATE = #{alEffectiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alEndDate != null">
+        AL_END_DATE = #{alEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="alPeriodDays != null">
+        AL_PERIOD_DAYS = #{alPeriodDays,jdbcType=DECIMAL}, 
+      </if>
+      <if test="wtePeriodDays != null">
+        WTE_PERIOD_DAYS = #{wtePeriodDays,jdbcType=DECIMAL}, 
+      </if>
+      <if test="wholeWtePeriodDays != null">
+        WHOLE_WTE_PERIOD_DAYS = #{wholeWtePeriodDays,jdbcType=DECIMAL},
+      </if>
+      <if test="mainPartWtePeriodDays != null">
+        MAIN_PART_WTE_PERIOD_DAYS = #{mainPartWtePeriodDays,jdbcType=DECIMAL}, 
+      </if>
+      <if test="gtStartDate != null">
+        GT_START_DATE = #{gtStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gtEndDate != null">
+        GT_END_DATE = #{gtEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceStartDate != null">
+        SERVICE_START_DATE = #{serviceStartDate,jdbcType=TIMESTAMP}, 
+      </if>
+      <if test="serviceEndDate != null">
+        SERVICE_END_DATE = #{serviceEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nameOfClassThree != null">
+        NAME_OF_CLASS_THREE = #{nameOfClassThree,jdbcType=VARCHAR},
+      </if>
+      <if test="licenceNo != null">
+        LICENCE_NO = #{licenceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="institutionName != null">
+        INSTITUTION_NAME = #{institutionName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and RISK_ID = #{riskId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsRiskExt">
+    update WIP_PRL_PART_PLAN_INS_RISK_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      INSURED_ID = #{insuredId,jdbcType=DECIMAL},
+      THIRD_PART_ID = #{thirdPartId,jdbcType=VARCHAR},
+      THIRD_PART_NAME = #{thirdPartName,jdbcType=VARCHAR},
+      THIRD_PART_ORDER_NO = #{thirdPartOrderNo,jdbcType=VARCHAR},
+      THIRD_PART_POLICY_NO = #{thirdPartPolicyNo,jdbcType=VARCHAR},
+      APPLY_DATE_TIME = #{applyDateTime,jdbcType=TIMESTAMP},
+      EFFECTIVE_DATE_TIME = #{effectiveDateTime,jdbcType=TIMESTAMP},
+      POLICY_CREATION_DATE = #{policyCreationDate,jdbcType=TIMESTAMP},
+      PREMIUM = #{premium,jdbcType=DECIMAL},
+      LOCATION_FROM = #{locationFrom,jdbcType=VARCHAR},
+      LOCATION_TO = #{locationTo,jdbcType=VARCHAR},
+      THIRD_PART_INSURED_ID = #{thirdPartInsuredId,jdbcType=VARCHAR},
+      SUM_INSURED = #{sumInsured,jdbcType=DECIMAL},
+      END_DATE_TIME = #{endDateTime,jdbcType=TIMESTAMP},
+      UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      MALL_ORDER_ID = #{mallOrderId,jdbcType=VARCHAR},
+      MALL_POLICY_ID = #{mallPolicyId,jdbcType=VARCHAR},
+      PROD_CATEGORY = #{prodCategory,jdbcType=VARCHAR},
+      PROD_BRAND = #{prodBrand,jdbcType=VARCHAR},
+      PROD_MODEL = #{prodModel,jdbcType=VARCHAR},
+      PROD_SIZE = #{prodSize,jdbcType=VARCHAR},
+      ORDER_PRICE = #{orderPrice,jdbcType=DECIMAL},
+      POLICY_PRICE = #{policyPrice,jdbcType=DECIMAL},
+      EQUIPMENT_ID = #{equipmentId,jdbcType=VARCHAR},
+      ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      GUARANTEE_PERIOD_MONTHS = #{guaranteePeriodMonths,jdbcType=DECIMAL},
+      POLICY_PERIOD_MONTHS = #{policyPeriodMonths,jdbcType=DECIMAL},
+      POLICY_PERIOD_DAYS = #{policyPeriodDays,jdbcType=DECIMAL},
+      WHOLE_GT_PERIOD_DAYS = #{wholeGtPeriodDays,jdbcType=DECIMAL},
+      MAIN_PART_GT_PERIOD_DAYS = #{mainPartGtPeriodDays,jdbcType=DECIMAL},
+      WHOLE_GT_START_DATE = #{wholeGtStartDate,jdbcType=TIMESTAMP},
+      WHOLE_GT_END_DATE = #{wholeGtEndDate,jdbcType=TIMESTAMP},
+      MAIN_PART_GT_START_DATE = #{mainPartGtStartDate,jdbcType=TIMESTAMP},
+      MAIN_PART_GT_END_DATE = #{mainPartGtEndDate,jdbcType=TIMESTAMP},
+      WHOLE_WTE_START_DATE = #{wholeWteStartDate,jdbcType=TIMESTAMP},
+      WHOLE_WTE_END_DATE = #{wholeWteEndDate,jdbcType=TIMESTAMP},
+      MAIN_PART_WTE_START_DATE = #{mainPartWteStartDate,jdbcType=TIMESTAMP},
+      MAIN_PART_WTE_END_DATE = #{mainPartWteEndDate,jdbcType=TIMESTAMP},
+      WTE_START_DATE = #{wteStartDate,jdbcType=TIMESTAMP},
+      WTE_END_DATE = #{wteEndDate,jdbcType=TIMESTAMP},
+      THIRD_PART_PIN = #{thirdPartPin,jdbcType=VARCHAR},
+      CITY_TO = #{cityTo,jdbcType=VARCHAR},
+      ADDRESS_TO = #{addressTo,jdbcType=VARCHAR},
+      MALL_SKU = #{mallSku,jdbcType=VARCHAR},
+      MALL_POLICY_SKU = #{mallPolicySku,jdbcType=VARCHAR},
+		AL_EFFECTIVE_DATE=	#{alEffectiveDate,jdbcType=TIMESTAMP},
+		AL_END_DATE=	#{alEndDate,jdbcType=TIMESTAMP}, 
+		AL_PERIOD_DAYS=	#{alPeriodDays,jdbcType=DECIMAL}, 
+		WTE_PERIOD_DAYS=	#{wtePeriodDays,jdbcType=DECIMAL},
+		WHOLE_WTE_PERIOD_DAYS=	#{wholeWtePeriodDays,jdbcType=DECIMAL},
+		MAIN_PART_WTE_PERIOD_DAYS=	#{mainPartWtePeriodDays,jdbcType=DECIMAL}, 
+		GT_START_DATE=	#{gtStartDate,jdbcType=TIMESTAMP},
+		GT_END_DATE=	#{gtEndDate,jdbcType=TIMESTAMP}, 
+		SERVICE_START_DATE=	#{serviceStartDate,jdbcType=TIMESTAMP}, 
+		SERVICE_END_DATE=	#{serviceEndDate,jdbcType=TIMESTAMP}, 
+		NAME_OF_CLASS_THREE=	#{nameOfClassThree,jdbcType=VARCHAR}, 
+		LICENCE_NO=	#{licenceNo,jdbcType=VARCHAR}, 
+		INSTITUTION_NAME=	#{institutionName,jdbcType=VARCHAR}    
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and RISK_ID = #{riskId,jdbcType=DECIMAL}
+  </update>
+</mapper>

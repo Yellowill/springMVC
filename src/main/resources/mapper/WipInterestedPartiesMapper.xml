@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipInterestedPartiesMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipInterestedParties">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="IP_NO" jdbcType="DECIMAL" property="ipNo" />
+    <result column="ACTION_CODE" jdbcType="VARCHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="CUSTOMER_NAME_TEXT" jdbcType="VARCHAR" property="customerNameText" />
+    <result column="PARTNER_ID" jdbcType="DECIMAL" property="partnerId" />
+    <result column="MAILING_ADDRESS_ID" jdbcType="DECIMAL" property="mailingAddressId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, IP_NO, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, PREVIOUS_VERSION, 
+    REVERSING_VERSION, CUSTOMER_NAME_TEXT, PARTNER_ID, MAILING_ADDRESS_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipInterestedPartiesKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_INTERESTED_PARTIES
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipInterestedPartiesKey">
+    delete from WIP_INTERESTED_PARTIES
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipInterestedParties">
+    insert into WIP_INTERESTED_PARTIES (CONTRACT_ID, IP_NO, ACTION_CODE, 
+      VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+      PREVIOUS_VERSION, REVERSING_VERSION, CUSTOMER_NAME_TEXT, 
+      PARTNER_ID, MAILING_ADDRESS_ID)
+    values (#{contractId,jdbcType=DECIMAL}, #{ipNo,jdbcType=DECIMAL}, #{actionCode,jdbcType=VARCHAR}, 
+      #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, #{topIndicator,jdbcType=CHAR}, 
+      #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, #{customerNameText,jdbcType=VARCHAR}, 
+      #{partnerId,jdbcType=DECIMAL}, #{mailingAddressId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipInterestedParties">
+    insert into WIP_INTERESTED_PARTIES
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="ipNo != null">
+        IP_NO,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="customerNameText != null">
+        CUSTOMER_NAME_TEXT,
+      </if>
+      <if test="partnerId != null">
+        PARTNER_ID,
+      </if>
+      <if test="mailingAddressId != null">
+        MAILING_ADDRESS_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="ipNo != null">
+        #{ipNo,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="customerNameText != null">
+        #{customerNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        #{partnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="mailingAddressId != null">
+        #{mailingAddressId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipInterestedParties">
+    update WIP_INTERESTED_PARTIES
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="customerNameText != null">
+        CUSTOMER_NAME_TEXT = #{customerNameText,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerId != null">
+        PARTNER_ID = #{partnerId,jdbcType=DECIMAL},
+      </if>
+      <if test="mailingAddressId != null">
+        MAILING_ADDRESS_ID = #{mailingAddressId,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipInterestedParties">
+    update WIP_INTERESTED_PARTIES
+    set ACTION_CODE = #{actionCode,jdbcType=VARCHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      CUSTOMER_NAME_TEXT = #{customerNameText,jdbcType=VARCHAR},
+      PARTNER_ID = #{partnerId,jdbcType=DECIMAL},
+      MAILING_ADDRESS_ID = #{mailingAddressId,jdbcType=DECIMAL}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and IP_NO = #{ipNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

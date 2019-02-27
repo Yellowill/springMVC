@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPrlPartPlanInsExtMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPrlPartPlanInsExt">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="PARTITION_NO" jdbcType="DECIMAL" property="partitionNo" />
+    <id column="INSURED_ID" jdbcType="DECIMAL" property="insuredId" />
+    <result column="ACTION_CODE" jdbcType="CHAR" property="actionCode" />
+    <result column="VERSION_NO" jdbcType="DECIMAL" property="versionNo" />
+    <result column="OBJECT_ID" jdbcType="DECIMAL" property="objectId" />
+    <result column="TOP_INDICATOR" jdbcType="CHAR" property="topIndicator" />
+    <result column="PREVIOUS_VERSION" jdbcType="DECIMAL" property="previousVersion" />
+    <result column="REVERSING_VERSION" jdbcType="DECIMAL" property="reversingVersion" />
+    <result column="PLAN_ID" jdbcType="DECIMAL" property="planId" />
+    <result column="PLAN_VERSION_NO" jdbcType="DECIMAL" property="planVersionNo" />
+    <result column="ID_NO" jdbcType="VARCHAR" property="idNo" />
+    <result column="ID_TYPE" jdbcType="VARCHAR" property="idType" />
+    <result column="DOB" jdbcType="TIMESTAMP" property="dob" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="INSURED_TYPE" jdbcType="VARCHAR" property="insuredType" />
+    <result column="MOBILE_NO" jdbcType="VARCHAR" property="mobileNo" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+    <result column="BENEFICIAL_TYPE" jdbcType="VARCHAR" property="beneficialType" />
+    <result column="PRINT_FLAG" jdbcType="VARCHAR" property="printFlag" />
+    <result column="PART_INSURED_ID" jdbcType="VARCHAR" property="partInsuredId" />
+    <result column="TRAVEL_CODE" jdbcType="VARCHAR" property="travelCode" />
+    <result column="PREM_TOTAL" jdbcType="DECIMAL" property="premTotal" />
+    <result column="PREM_A" jdbcType="DECIMAL" property="premA" />
+    <result column="PREM_H" jdbcType="DECIMAL" property="premH" />
+    <result column="START_DATE" jdbcType="TIMESTAMP" property="startDate" />
+    <result column="END_DATE" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="POLICY_NO" jdbcType="VARCHAR" property="policyNo" />
+    <result column="FLIGHT_ID" jdbcType="DECIMAL" property="flightId" />
+    <result column="ALIPAY_ACCOUNT" jdbcType="VARCHAR" property="alipayAccount" />
+    <result column="BANK_NAME" jdbcType="VARCHAR" property="bankName" />
+    <result column="BANK_ACCOUNT_NO" jdbcType="VARCHAR" property="bankAccountNo" />
+    <result column="BANK_ACCOUNT_NAME" jdbcType="VARCHAR" property="bankAccountName" />
+    <result column="OCCUPATION" jdbcType="VARCHAR" property="occupation" />
+    <result column="OCCUPATION_CLS" jdbcType="VARCHAR" property="occupationCls" />
+    <result column="POLICYHOLDER_RELATION" jdbcType="VARCHAR" property="policyholderRelation" />
+    <result column="RESIDE_PROVINCE" jdbcType="VARCHAR" property="resideProvince" />
+    <result column="RESIDE_CITY" jdbcType="VARCHAR" property="resideCity" />
+    <result column="RESIDE_ADDRESS" jdbcType="VARCHAR" property="resideAddress" />
+    <result column="SETTLE_COMPANY" jdbcType="VARCHAR" property="settleCompany" />
+    <result column="UW_FACTOR_ITEMS" jdbcType="VARCHAR" property="uwFactorItems" />
+    <result column="EMPLOYEE_STAFF_CODE" jdbcType="VARCHAR" property="employeeStaffCode" />
+    <result column="REMARK_1" jdbcType="VARCHAR" property="remark1" />
+    <result column="REMARK_2" jdbcType="VARCHAR" property="remark2" />
+    <result column="BODY_MASS_INDEX" jdbcType="DECIMAL" property="bodyMassIndex" />
+    <result column="DAILY_AVERAGE_CIGARETTES" jdbcType="VARCHAR" property="dailyAverageCigarettes" />
+    <result column="DAILY_AVERAGE_ALCOHOLS" jdbcType="VARCHAR" property="dailyAverageAlcohols" />
+    <result column="RELATIVES_DIAGNOSE_CANCER_YN" jdbcType="VARCHAR" property="relativesDiagnoseCancerYn" />
+    <result column="HIGHEST_EDUCATION" jdbcType="VARCHAR" property="highestEducation" />
+    <result column="ANNUAL_INCOME" jdbcType="VARCHAR" property="annualIncome" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PARTITION_NO, INSURED_ID, ACTION_CODE, VERSION_NO, OBJECT_ID, TOP_INDICATOR, 
+    PREVIOUS_VERSION, REVERSING_VERSION, PLAN_ID, PLAN_VERSION_NO, ID_NO, ID_TYPE, DOB, 
+    NAME, EMAIL, INSURED_TYPE, MOBILE_NO, SEX, BENEFICIAL_TYPE, PRINT_FLAG, PART_INSURED_ID, 
+    TRAVEL_CODE, PREM_TOTAL, PREM_A, PREM_H, START_DATE, END_DATE, POLICY_NO, FLIGHT_ID, 
+    ALIPAY_ACCOUNT, BANK_NAME, BANK_ACCOUNT_NO, BANK_ACCOUNT_NAME, OCCUPATION, OCCUPATION_CLS, 
+    POLICYHOLDER_RELATION, RESIDE_PROVINCE, RESIDE_CITY, RESIDE_ADDRESS, SETTLE_COMPANY, 
+    UW_FACTOR_ITEMS, EMPLOYEE_STAFF_CODE, REMARK_1, REMARK_2, BODY_MASS_INDEX, DAILY_AVERAGE_CIGARETTES, 
+    DAILY_AVERAGE_ALCOHOLS, RELATIVES_DIAGNOSE_CANCER_YN, HIGHEST_EDUCATION, ANNUAL_INCOME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsExtKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_PRL_PART_PLAN_INS_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsExtKey">
+    delete from WIP_PRL_PART_PLAN_INS_EXT
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsExt">
+    insert into WIP_PRL_PART_PLAN_INS_EXT (CONTRACT_ID, PARTITION_NO, INSURED_ID, 
+      ACTION_CODE, VERSION_NO, OBJECT_ID, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      PLAN_ID, PLAN_VERSION_NO, ID_NO, 
+      ID_TYPE, DOB, NAME, 
+      EMAIL, INSURED_TYPE, MOBILE_NO, 
+      SEX, BENEFICIAL_TYPE, PRINT_FLAG, 
+      PART_INSURED_ID, TRAVEL_CODE, PREM_TOTAL, 
+      PREM_A, PREM_H, START_DATE, 
+      END_DATE, POLICY_NO, FLIGHT_ID, 
+      ALIPAY_ACCOUNT, BANK_NAME, BANK_ACCOUNT_NO, 
+      BANK_ACCOUNT_NAME, OCCUPATION, OCCUPATION_CLS, 
+      POLICYHOLDER_RELATION, RESIDE_PROVINCE, RESIDE_CITY, 
+      RESIDE_ADDRESS, SETTLE_COMPANY, UW_FACTOR_ITEMS, 
+      EMPLOYEE_STAFF_CODE, REMARK_1, REMARK_2, 
+      BODY_MASS_INDEX, DAILY_AVERAGE_CIGARETTES, 
+      DAILY_AVERAGE_ALCOHOLS, RELATIVES_DIAGNOSE_CANCER_YN, 
+      HIGHEST_EDUCATION, ANNUAL_INCOME)
+    values (#{contractId,jdbcType=DECIMAL}, #{partitionNo,jdbcType=DECIMAL}, #{insuredId,jdbcType=DECIMAL}, 
+      #{actionCode,jdbcType=CHAR}, #{versionNo,jdbcType=DECIMAL}, #{objectId,jdbcType=DECIMAL}, 
+      #{topIndicator,jdbcType=CHAR}, #{previousVersion,jdbcType=DECIMAL}, #{reversingVersion,jdbcType=DECIMAL}, 
+      #{planId,jdbcType=DECIMAL}, #{planVersionNo,jdbcType=DECIMAL}, #{idNo,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=VARCHAR}, #{dob,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{insuredType,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{beneficialType,jdbcType=VARCHAR}, #{printFlag,jdbcType=VARCHAR}, 
+      #{partInsuredId,jdbcType=VARCHAR}, #{travelCode,jdbcType=VARCHAR}, #{premTotal,jdbcType=DECIMAL}, 
+      #{premA,jdbcType=DECIMAL}, #{premH,jdbcType=DECIMAL}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{policyNo,jdbcType=VARCHAR}, #{flightId,jdbcType=DECIMAL}, 
+      #{alipayAccount,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankAccountNo,jdbcType=VARCHAR}, 
+      #{bankAccountName,jdbcType=VARCHAR}, #{occupation,jdbcType=VARCHAR}, #{occupationCls,jdbcType=VARCHAR}, 
+      #{policyholderRelation,jdbcType=VARCHAR}, #{resideProvince,jdbcType=VARCHAR}, #{resideCity,jdbcType=VARCHAR}, 
+      #{resideAddress,jdbcType=VARCHAR}, #{settleCompany,jdbcType=VARCHAR}, #{uwFactorItems,jdbcType=VARCHAR}, 
+      #{employeeStaffCode,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{bodyMassIndex,jdbcType=DECIMAL}, #{dailyAverageCigarettes,jdbcType=VARCHAR}, 
+      #{dailyAverageAlcohols,jdbcType=VARCHAR}, #{relativesDiagnoseCancerYn,jdbcType=VARCHAR}, 
+      #{highestEducation,jdbcType=VARCHAR}, #{annualIncome,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsExt">
+    insert into WIP_PRL_PART_PLAN_INS_EXT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="partitionNo != null">
+        PARTITION_NO,
+      </if>
+      <if test="insuredId != null">
+        INSURED_ID,
+      </if>
+      <if test="actionCode != null">
+        ACTION_CODE,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID,
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR,
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION,
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION,
+      </if>
+      <if test="planId != null">
+        PLAN_ID,
+      </if>
+      <if test="planVersionNo != null">
+        PLAN_VERSION_NO,
+      </if>
+      <if test="idNo != null">
+        ID_NO,
+      </if>
+      <if test="idType != null">
+        ID_TYPE,
+      </if>
+      <if test="dob != null">
+        DOB,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="insuredType != null">
+        INSURED_TYPE,
+      </if>
+      <if test="mobileNo != null">
+        MOBILE_NO,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="beneficialType != null">
+        BENEFICIAL_TYPE,
+      </if>
+      <if test="printFlag != null">
+        PRINT_FLAG,
+      </if>
+      <if test="partInsuredId != null">
+        PART_INSURED_ID,
+      </if>
+      <if test="travelCode != null">
+        TRAVEL_CODE,
+      </if>
+      <if test="premTotal != null">
+        PREM_TOTAL,
+      </if>
+      <if test="premA != null">
+        PREM_A,
+      </if>
+      <if test="premH != null">
+        PREM_H,
+      </if>
+      <if test="startDate != null">
+        START_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="policyNo != null">
+        POLICY_NO,
+      </if>
+      <if test="flightId != null">
+        FLIGHT_ID,
+      </if>
+      <if test="alipayAccount != null">
+        ALIPAY_ACCOUNT,
+      </if>
+      <if test="bankName != null">
+        BANK_NAME,
+      </if>
+      <if test="bankAccountNo != null">
+        BANK_ACCOUNT_NO,
+      </if>
+      <if test="bankAccountName != null">
+        BANK_ACCOUNT_NAME,
+      </if>
+      <if test="occupation != null">
+        OCCUPATION,
+      </if>
+      <if test="occupationCls != null">
+        OCCUPATION_CLS,
+      </if>
+      <if test="policyholderRelation != null">
+        POLICYHOLDER_RELATION,
+      </if>
+      <if test="resideProvince != null">
+        RESIDE_PROVINCE,
+      </if>
+      <if test="resideCity != null">
+        RESIDE_CITY,
+      </if>
+      <if test="resideAddress != null">
+        RESIDE_ADDRESS,
+      </if>
+      <if test="settleCompany != null">
+        SETTLE_COMPANY,
+      </if>
+      <if test="uwFactorItems != null">
+        UW_FACTOR_ITEMS,
+      </if>
+      <if test="employeeStaffCode != null">
+        EMPLOYEE_STAFF_CODE,
+      </if>
+      <if test="remark1 != null">
+        REMARK_1,
+      </if>
+      <if test="remark2 != null">
+        REMARK_2,
+      </if>
+      <if test="bodyMassIndex != null">
+        BODY_MASS_INDEX,
+      </if>
+      <if test="dailyAverageCigarettes != null">
+        DAILY_AVERAGE_CIGARETTES,
+      </if>
+      <if test="dailyAverageAlcohols != null">
+        DAILY_AVERAGE_ALCOHOLS,
+      </if>
+      <if test="relativesDiagnoseCancerYn != null">
+        RELATIVES_DIAGNOSE_CANCER_YN,
+      </if>
+      <if test="highestEducation != null">
+        HIGHEST_EDUCATION,
+      </if>
+      <if test="annualIncome != null">
+        ANNUAL_INCOME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="partitionNo != null">
+        #{partitionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="insuredId != null">
+        #{insuredId,jdbcType=DECIMAL},
+      </if>
+      <if test="actionCode != null">
+        #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="planId != null">
+        #{planId,jdbcType=DECIMAL},
+      </if>
+      <if test="planVersionNo != null">
+        #{planVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        #{dob,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null">
+        #{insuredType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficialType != null">
+        #{beneficialType,jdbcType=VARCHAR},
+      </if>
+      <if test="printFlag != null">
+        #{printFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="partInsuredId != null">
+        #{partInsuredId,jdbcType=VARCHAR},
+      </if>
+      <if test="travelCode != null">
+        #{travelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="premTotal != null">
+        #{premTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="premA != null">
+        #{premA,jdbcType=DECIMAL},
+      </if>
+      <if test="premH != null">
+        #{premH,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyNo != null">
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="flightId != null">
+        #{flightId,jdbcType=DECIMAL},
+      </if>
+      <if test="alipayAccount != null">
+        #{alipayAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null">
+        #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationCls != null">
+        #{occupationCls,jdbcType=VARCHAR},
+      </if>
+      <if test="policyholderRelation != null">
+        #{policyholderRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="resideProvince != null">
+        #{resideProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="resideCity != null">
+        #{resideCity,jdbcType=VARCHAR},
+      </if>
+      <if test="resideAddress != null">
+        #{resideAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="settleCompany != null">
+        #{settleCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="uwFactorItems != null">
+        #{uwFactorItems,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStaffCode != null">
+        #{employeeStaffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyMassIndex != null">
+        #{bodyMassIndex,jdbcType=DECIMAL},
+      </if>
+      <if test="dailyAverageCigarettes != null">
+        #{dailyAverageCigarettes,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyAverageAlcohols != null">
+        #{dailyAverageAlcohols,jdbcType=VARCHAR},
+      </if>
+      <if test="relativesDiagnoseCancerYn != null">
+        #{relativesDiagnoseCancerYn,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="annualIncome != null">
+        #{annualIncome,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsExt">
+    update WIP_PRL_PART_PLAN_INS_EXT
+    <set>
+      <if test="actionCode != null">
+        ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="objectId != null">
+        OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      </if>
+      <if test="topIndicator != null">
+        TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      </if>
+      <if test="previousVersion != null">
+        PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="reversingVersion != null">
+        REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      </if>
+      <if test="planId != null">
+        PLAN_ID = #{planId,jdbcType=DECIMAL},
+      </if>
+      <if test="planVersionNo != null">
+        PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null">
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        ID_TYPE = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        DOB = #{dob,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredType != null">
+        INSURED_TYPE = #{insuredType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null">
+        MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="beneficialType != null">
+        BENEFICIAL_TYPE = #{beneficialType,jdbcType=VARCHAR},
+      </if>
+      <if test="printFlag != null">
+        PRINT_FLAG = #{printFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="partInsuredId != null">
+        PART_INSURED_ID = #{partInsuredId,jdbcType=VARCHAR},
+      </if>
+      <if test="travelCode != null">
+        TRAVEL_CODE = #{travelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="premTotal != null">
+        PREM_TOTAL = #{premTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="premA != null">
+        PREM_A = #{premA,jdbcType=DECIMAL},
+      </if>
+      <if test="premH != null">
+        PREM_H = #{premH,jdbcType=DECIMAL},
+      </if>
+      <if test="startDate != null">
+        START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="policyNo != null">
+        POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="flightId != null">
+        FLIGHT_ID = #{flightId,jdbcType=DECIMAL},
+      </if>
+      <if test="alipayAccount != null">
+        ALIPAY_ACCOUNT = #{alipayAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null">
+        BANK_ACCOUNT_NO = #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountName != null">
+        BANK_ACCOUNT_NAME = #{bankAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        OCCUPATION = #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="occupationCls != null">
+        OCCUPATION_CLS = #{occupationCls,jdbcType=VARCHAR},
+      </if>
+      <if test="policyholderRelation != null">
+        POLICYHOLDER_RELATION = #{policyholderRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="resideProvince != null">
+        RESIDE_PROVINCE = #{resideProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="resideCity != null">
+        RESIDE_CITY = #{resideCity,jdbcType=VARCHAR},
+      </if>
+      <if test="resideAddress != null">
+        RESIDE_ADDRESS = #{resideAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="settleCompany != null">
+        SETTLE_COMPANY = #{settleCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="uwFactorItems != null">
+        UW_FACTOR_ITEMS = #{uwFactorItems,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeStaffCode != null">
+        EMPLOYEE_STAFF_CODE = #{employeeStaffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        REMARK_1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        REMARK_2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyMassIndex != null">
+        BODY_MASS_INDEX = #{bodyMassIndex,jdbcType=DECIMAL},
+      </if>
+      <if test="dailyAverageCigarettes != null">
+        DAILY_AVERAGE_CIGARETTES = #{dailyAverageCigarettes,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyAverageAlcohols != null">
+        DAILY_AVERAGE_ALCOHOLS = #{dailyAverageAlcohols,jdbcType=VARCHAR},
+      </if>
+      <if test="relativesDiagnoseCancerYn != null">
+        RELATIVES_DIAGNOSE_CANCER_YN = #{relativesDiagnoseCancerYn,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        HIGHEST_EDUCATION = #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="annualIncome != null">
+        ANNUAL_INCOME = #{annualIncome,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPrlPartPlanInsExt">
+    update WIP_PRL_PART_PLAN_INS_EXT
+    set ACTION_CODE = #{actionCode,jdbcType=CHAR},
+      VERSION_NO = #{versionNo,jdbcType=DECIMAL},
+      OBJECT_ID = #{objectId,jdbcType=DECIMAL},
+      TOP_INDICATOR = #{topIndicator,jdbcType=CHAR},
+      PREVIOUS_VERSION = #{previousVersion,jdbcType=DECIMAL},
+      REVERSING_VERSION = #{reversingVersion,jdbcType=DECIMAL},
+      PLAN_ID = #{planId,jdbcType=DECIMAL},
+      PLAN_VERSION_NO = #{planVersionNo,jdbcType=DECIMAL},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      ID_TYPE = #{idType,jdbcType=VARCHAR},
+      DOB = #{dob,jdbcType=TIMESTAMP},
+      NAME = #{name,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      INSURED_TYPE = #{insuredType,jdbcType=VARCHAR},
+      MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      BENEFICIAL_TYPE = #{beneficialType,jdbcType=VARCHAR},
+      PRINT_FLAG = #{printFlag,jdbcType=VARCHAR},
+      PART_INSURED_ID = #{partInsuredId,jdbcType=VARCHAR},
+      TRAVEL_CODE = #{travelCode,jdbcType=VARCHAR},
+      PREM_TOTAL = #{premTotal,jdbcType=DECIMAL},
+      PREM_A = #{premA,jdbcType=DECIMAL},
+      PREM_H = #{premH,jdbcType=DECIMAL},
+      START_DATE = #{startDate,jdbcType=TIMESTAMP},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      POLICY_NO = #{policyNo,jdbcType=VARCHAR},
+      FLIGHT_ID = #{flightId,jdbcType=DECIMAL},
+      ALIPAY_ACCOUNT = #{alipayAccount,jdbcType=VARCHAR},
+      BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      BANK_ACCOUNT_NO = #{bankAccountNo,jdbcType=VARCHAR},
+      BANK_ACCOUNT_NAME = #{bankAccountName,jdbcType=VARCHAR},
+      OCCUPATION = #{occupation,jdbcType=VARCHAR},
+      OCCUPATION_CLS = #{occupationCls,jdbcType=VARCHAR},
+      POLICYHOLDER_RELATION = #{policyholderRelation,jdbcType=VARCHAR},
+      RESIDE_PROVINCE = #{resideProvince,jdbcType=VARCHAR},
+      RESIDE_CITY = #{resideCity,jdbcType=VARCHAR},
+      RESIDE_ADDRESS = #{resideAddress,jdbcType=VARCHAR},
+      SETTLE_COMPANY = #{settleCompany,jdbcType=VARCHAR},
+      UW_FACTOR_ITEMS = #{uwFactorItems,jdbcType=VARCHAR},
+      EMPLOYEE_STAFF_CODE = #{employeeStaffCode,jdbcType=VARCHAR},
+      REMARK_1 = #{remark1,jdbcType=VARCHAR},
+      REMARK_2 = #{remark2,jdbcType=VARCHAR},
+      BODY_MASS_INDEX = #{bodyMassIndex,jdbcType=DECIMAL},
+      DAILY_AVERAGE_CIGARETTES = #{dailyAverageCigarettes,jdbcType=VARCHAR},
+      DAILY_AVERAGE_ALCOHOLS = #{dailyAverageAlcohols,jdbcType=VARCHAR},
+      RELATIVES_DIAGNOSE_CANCER_YN = #{relativesDiagnoseCancerYn,jdbcType=VARCHAR},
+      HIGHEST_EDUCATION = #{highestEducation,jdbcType=VARCHAR},
+      ANNUAL_INCOME = #{annualIncome,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and PARTITION_NO = #{partitionNo,jdbcType=DECIMAL}
+      and INSURED_ID = #{insuredId,jdbcType=DECIMAL}
+  </update>
+  <insert id="insertByBatch" parameterType="java.util.List">
+  	insert into WIP_PRL_PART_PLAN_INS_EXT (CONTRACT_ID, PARTITION_NO, INSURED_ID, 
+      ACTION_CODE, VERSION_NO, OBJECT_ID, 
+      TOP_INDICATOR, PREVIOUS_VERSION, REVERSING_VERSION, 
+      PLAN_ID, PLAN_VERSION_NO, ID_NO, 
+      ID_TYPE, DOB, NAME, 
+      EMAIL, INSURED_TYPE, MOBILE_NO, 
+      SEX, BENEFICIAL_TYPE, PRINT_FLAG, 
+      PART_INSURED_ID, TRAVEL_CODE, PREM_TOTAL, 
+      PREM_A, PREM_H, START_DATE, 
+      END_DATE, POLICY_NO, FLIGHT_ID, 
+      ALIPAY_ACCOUNT, BANK_NAME, BANK_ACCOUNT_NO, 
+      BANK_ACCOUNT_NAME, OCCUPATION, OCCUPATION_CLS, 
+      POLICYHOLDER_RELATION, RESIDE_PROVINCE, RESIDE_CITY, 
+      RESIDE_ADDRESS, SETTLE_COMPANY, UW_FACTOR_ITEMS, 
+      EMPLOYEE_STAFF_CODE, REMARK_1, REMARK_2, 
+      BODY_MASS_INDEX, DAILY_AVERAGE_CIGARETTES, 
+      DAILY_AVERAGE_ALCOHOLS, RELATIVES_DIAGNOSE_CANCER_YN, 
+      HIGHEST_EDUCATION, ANNUAL_INCOME)
+    <foreach collection="list" item="item" index="index" separator="union all">
+    (SELECT
+    	#{item.contractId,jdbcType=DECIMAL}, #{item.partitionNo,jdbcType=DECIMAL}, #{item.insuredId,jdbcType=DECIMAL}, 
+      #{item.actionCode,jdbcType=CHAR}, #{item.versionNo,jdbcType=DECIMAL}, #{item.objectId,jdbcType=DECIMAL}, 
+      #{item.topIndicator,jdbcType=CHAR}, #{item.previousVersion,jdbcType=DECIMAL}, #{item.reversingVersion,jdbcType=DECIMAL}, 
+      #{item.planId,jdbcType=DECIMAL}, #{item.planVersionNo,jdbcType=DECIMAL}, #{item.idNo,jdbcType=VARCHAR}, 
+      #{item.idType,jdbcType=VARCHAR}, #{item.dob,jdbcType=TIMESTAMP}, #{item.name,jdbcType=VARCHAR}, 
+      #{item.email,jdbcType=VARCHAR}, #{item.insuredType,jdbcType=VARCHAR}, #{item.mobileNo,jdbcType=VARCHAR}, 
+      #{item.sex,jdbcType=VARCHAR}, #{item.beneficialType,jdbcType=VARCHAR}, #{item.printFlag,jdbcType=VARCHAR}, 
+      #{item.partInsuredId,jdbcType=VARCHAR}, #{item.travelCode,jdbcType=VARCHAR}, #{item.premTotal,jdbcType=DECIMAL}, 
+      #{item.premA,jdbcType=DECIMAL}, #{item.premH,jdbcType=DECIMAL}, #{item.startDate,jdbcType=TIMESTAMP}, 
+      #{item.endDate,jdbcType=TIMESTAMP}, #{item.policyNo,jdbcType=VARCHAR}, #{item.flightId,jdbcType=DECIMAL}, 
+      #{item.alipayAccount,jdbcType=VARCHAR}, #{item.bankName,jdbcType=VARCHAR}, #{item.bankAccountNo,jdbcType=VARCHAR}, 
+      #{item.bankAccountName,jdbcType=VARCHAR}, #{item.occupation,jdbcType=VARCHAR}, #{item.occupationCls,jdbcType=VARCHAR}, 
+      #{item.policyholderRelation,jdbcType=VARCHAR}, #{item.resideProvince,jdbcType=VARCHAR}, #{item.resideCity,jdbcType=VARCHAR}, 
+      #{item.resideAddress,jdbcType=VARCHAR}, #{item.settleCompany,jdbcType=VARCHAR}, #{item.uwFactorItems,jdbcType=VARCHAR}, 
+      #{item.employeeStaffCode,jdbcType=VARCHAR}, #{item.remark1,jdbcType=VARCHAR}, #{item.remark2,jdbcType=VARCHAR}, 
+      #{item.bodyMassIndex,jdbcType=DECIMAL}, #{item.dailyAverageCigarettes,jdbcType=VARCHAR}, 
+      #{item.dailyAverageAlcohols,jdbcType=VARCHAR}, #{item.relativesDiagnoseCancerYn,jdbcType=VARCHAR}, 
+      #{item.highestEducation,jdbcType=VARCHAR}, #{item.annualIncome,jdbcType=VARCHAR}
+       FROM DUAL)
+    </foreach>
+  </insert>
+  <update id="updateByBatchSelective" parameterType="java.util.List">
+  	<foreach collection="list" item="item" index="index" open="begin" close=";end;" separator=";">
+	    update WIP_PRL_PART_PLAN_INS_EXT
+	    <set>
+	      <if test="item.actionCode != null">
+	        ACTION_CODE = #{item.actionCode,jdbcType=CHAR},
+	      </if>
+	      <if test="item.versionNo != null">
+	        VERSION_NO = #{item.versionNo,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.objectId != null">
+	        OBJECT_ID = #{item.objectId,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.topIndicator != null">
+	        TOP_INDICATOR = #{item.topIndicator,jdbcType=CHAR},
+	      </if>
+	      <if test="item.previousVersion != null">
+	        PREVIOUS_VERSION = #{item.previousVersion,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.reversingVersion != null">
+	        REVERSING_VERSION = #{item.reversingVersion,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.planVersionNo != null">
+	        PLAN_VERSION_NO = #{item.planVersionNo,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.idNo != null">
+	        ID_NO = #{item.idNo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.idType != null">
+	        ID_TYPE = #{item.idType,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.dob != null">
+	        DOB = #{item.dob,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="item.name != null">
+	        NAME = #{item.name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.email != null">
+	        EMAIL = #{item.email,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.insuredType != null">
+	        INSURED_TYPE = #{item.insuredType,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.mobileNo != null">
+	        MOBILE_NO = #{item.mobileNo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.sex != null">
+	        SEX = #{item.sex,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.beneficialType != null">
+	        BENEFICIAL_TYPE = #{item.beneficialType,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.printFlag != null">
+	        PRINT_FLAG = #{item.printFlag,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.travelCode != null">
+	        TRAVEL_CODE = #{item.travelCode,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.premTotal != null">
+	        PREM_TOTAL = #{item.premTotal,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.premA != null">
+	        PREM_A = #{item.premA,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.premH != null">
+	        PREM_H = #{item.premH,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.startDate != null">
+	        START_DATE = #{item.startDate,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="item.endDate != null">
+	        END_DATE = #{item.endDate,jdbcType=TIMESTAMP},
+	      </if>
+	      <if test="item.policyNo != null">
+	        POLICY_NO = #{item.policyNo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.flightId != null">
+	        FLIGHT_ID = #{item.flightId,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.alipayAccount != null">
+	        ALIPAY_ACCOUNT = #{item.alipayAccount,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.bankName != null">
+	        BANK_NAME = #{item.bankName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.bankAccountNo != null">
+	        BANK_ACCOUNT_NO = #{item.bankAccountNo,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.bankAccountName != null">
+	        BANK_ACCOUNT_NAME = #{item.bankAccountName,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.occupation != null">
+	        OCCUPATION = #{item.occupation,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.occupationCls != null">
+	        OCCUPATION_CLS = #{item.occupationCls,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.policyholderRelation != null">
+	        POLICYHOLDER_RELATION = #{item.policyholderRelation,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.resideProvince != null">
+	        RESIDE_PROVINCE = #{item.resideProvince,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.resideCity != null">
+	        RESIDE_CITY = #{item.resideCity,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.resideAddress != null">
+	        RESIDE_ADDRESS = #{item.resideAddress,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.settleCompany != null">
+	        SETTLE_COMPANY = #{item.settleCompany,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.uwFactorItems != null">
+	        UW_FACTOR_ITEMS = #{item.uwFactorItems,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.employeeStaffCode != null">
+	        EMPLOYEE_STAFF_CODE = #{item.employeeStaffCode,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.remark1 != null">
+	        REMARK_1 = #{item.remark1,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.remark2 != null">
+	        REMARK_2 = #{item.remark2,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.bodyMassIndex != null">
+	        BODY_MASS_INDEX = #{item.bodyMassIndex,jdbcType=DECIMAL},
+	      </if>
+	      <if test="item.dailyAverageCigarettes != null">
+	        DAILY_AVERAGE_CIGARETTES = #{item.dailyAverageCigarettes,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.dailyAverageAlcohols != null">
+	        DAILY_AVERAGE_ALCOHOLS = #{item.dailyAverageAlcohols,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.relativesDiagnoseCancerYn != null">
+	        RELATIVES_DIAGNOSE_CANCER_YN = #{item.relativesDiagnoseCancerYn,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.highestEducation != null">
+	        HIGHEST_EDUCATION = #{item.highestEducation,jdbcType=VARCHAR},
+	      </if>
+	      <if test="item.annualIncome != null">
+	        ANNUAL_INCOME = #{item.annualIncome,jdbcType=VARCHAR},
+	      </if>
+	    </set>
+	    where PLAN_ID = #{item.planId,jdbcType=DECIMAL}
+	      and PART_INSURED_ID = #{item.partInsuredId,jdbcType=VARCHAR}
+	 </foreach>
+  </update>
+</mapper>

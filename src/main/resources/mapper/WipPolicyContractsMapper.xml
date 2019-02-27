@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.WipPolicyContractsMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.WipPolicyContracts">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <result column="PRODUCT_ID" jdbcType="DECIMAL" property="productId" />
+    <result column="CONTRACT_STATUS" jdbcType="VARCHAR" property="contractStatus" />
+    <result column="CONVERSION_STATUS" jdbcType="VARCHAR" property="conversionStatus" />
+    <result column="CONTRACT_LANGUAGE" jdbcType="VARCHAR" property="contractLanguage" />
+    <result column="CONTRACT_CURRENCY" jdbcType="VARCHAR" property="contractCurrency" />
+    <result column="DATE_PROCESSED_TO" jdbcType="TIMESTAMP" property="dateProcessedTo" />
+    <result column="NEXT_ACTIVITY_DATE" jdbcType="TIMESTAMP" property="nextActivityDate" />
+    <result column="PROCESS_STATUS" jdbcType="VARCHAR" property="processStatus" />
+    <result column="DIRECT_ASSUMED" jdbcType="VARCHAR" property="directAssumed" />
+    <result column="DATE_PREMIUMS_PAID_TO" jdbcType="TIMESTAMP" property="datePremiumsPaidTo" />
+    <result column="DATE_PREMIUMS_BILLED_TO" jdbcType="TIMESTAMP" property="datePremiumsBilledTo" />
+    <result column="DATE_PREMIUMS_DUE_TO" jdbcType="TIMESTAMP" property="datePremiumsDueTo" />
+    <result column="END_OF_TERM_ACTION" jdbcType="VARCHAR" property="endOfTermAction" />
+    <result column="GEOGRAPHIC_SCOPE" jdbcType="VARCHAR" property="geographicScope" />
+    <result column="ENTRY_DATE" jdbcType="TIMESTAMP" property="entryDate" />
+    <result column="INCEPTION_DATE" jdbcType="TIMESTAMP" property="inceptionDate" />
+    <result column="ACCUMULATED_TERM_PREMIUM" jdbcType="DECIMAL" property="accumulatedTermPremium" />
+    <result column="ACCUMULATED_TERM_PREMIUM_SWF" jdbcType="VARCHAR" property="accumulatedTermPremiumSwf" />
+    <result column="AMOUNT_PAID" jdbcType="DECIMAL" property="amountPaid" />
+    <result column="AMOUNT_PAID_SWF" jdbcType="VARCHAR" property="amountPaidSwf" />
+    <result column="AMOUNT_PAID_DATE" jdbcType="TIMESTAMP" property="amountPaidDate" />
+    <result column="NEXT_ANNIVERSARY_DATE" jdbcType="TIMESTAMP" property="nextAnniversaryDate" />
+    <result column="SUSPENSE_BALANCE" jdbcType="DECIMAL" property="suspenseBalance" />
+    <result column="SUSPENSE_BALANCE_SWF" jdbcType="VARCHAR" property="suspenseBalanceSwf" />
+    <result column="LUA_VALUE_1" jdbcType="VARCHAR" property="luaValue1" />
+    <result column="LUA_VALUE_2" jdbcType="VARCHAR" property="luaValue2" />
+    <result column="LUA_VALUE_3" jdbcType="VARCHAR" property="luaValue3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, PRODUCT_ID, CONTRACT_STATUS, CONVERSION_STATUS, CONTRACT_LANGUAGE, CONTRACT_CURRENCY, 
+    DATE_PROCESSED_TO, NEXT_ACTIVITY_DATE, PROCESS_STATUS, DIRECT_ASSUMED, DATE_PREMIUMS_PAID_TO, 
+    DATE_PREMIUMS_BILLED_TO, DATE_PREMIUMS_DUE_TO, END_OF_TERM_ACTION, GEOGRAPHIC_SCOPE, 
+    ENTRY_DATE, INCEPTION_DATE, ACCUMULATED_TERM_PREMIUM, ACCUMULATED_TERM_PREMIUM_SWF, 
+    AMOUNT_PAID, AMOUNT_PAID_SWF, AMOUNT_PAID_DATE, NEXT_ANNIVERSARY_DATE, SUSPENSE_BALANCE, 
+    SUSPENSE_BALANCE_SWF, LUA_VALUE_1, LUA_VALUE_2, LUA_VALUE_3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WIP_POLICY_CONTRACTS
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from WIP_POLICY_CONTRACTS
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.WipPolicyContracts">
+    insert into WIP_POLICY_CONTRACTS (CONTRACT_ID, PRODUCT_ID, CONTRACT_STATUS, 
+      CONVERSION_STATUS, CONTRACT_LANGUAGE, CONTRACT_CURRENCY, 
+      DATE_PROCESSED_TO, NEXT_ACTIVITY_DATE, 
+      PROCESS_STATUS, DIRECT_ASSUMED, DATE_PREMIUMS_PAID_TO, 
+      DATE_PREMIUMS_BILLED_TO, DATE_PREMIUMS_DUE_TO, 
+      END_OF_TERM_ACTION, GEOGRAPHIC_SCOPE, ENTRY_DATE, 
+      INCEPTION_DATE, ACCUMULATED_TERM_PREMIUM, 
+      ACCUMULATED_TERM_PREMIUM_SWF, AMOUNT_PAID, 
+      AMOUNT_PAID_SWF, AMOUNT_PAID_DATE, NEXT_ANNIVERSARY_DATE, 
+      SUSPENSE_BALANCE, SUSPENSE_BALANCE_SWF, LUA_VALUE_1, 
+      LUA_VALUE_2, LUA_VALUE_3)
+    values (#{contractId,jdbcType=DECIMAL}, #{productId,jdbcType=DECIMAL}, #{contractStatus,jdbcType=VARCHAR}, 
+      #{conversionStatus,jdbcType=VARCHAR}, #{contractLanguage,jdbcType=VARCHAR}, #{contractCurrency,jdbcType=VARCHAR}, 
+      #{dateProcessedTo,jdbcType=TIMESTAMP}, #{nextActivityDate,jdbcType=TIMESTAMP}, 
+      #{processStatus,jdbcType=VARCHAR}, #{directAssumed,jdbcType=VARCHAR}, #{datePremiumsPaidTo,jdbcType=TIMESTAMP}, 
+      #{datePremiumsBilledTo,jdbcType=TIMESTAMP}, #{datePremiumsDueTo,jdbcType=TIMESTAMP}, 
+      #{endOfTermAction,jdbcType=VARCHAR}, #{geographicScope,jdbcType=VARCHAR}, #{entryDate,jdbcType=TIMESTAMP}, 
+      #{inceptionDate,jdbcType=TIMESTAMP}, #{accumulatedTermPremium,jdbcType=DECIMAL}, 
+      #{accumulatedTermPremiumSwf,jdbcType=VARCHAR}, #{amountPaid,jdbcType=DECIMAL}, 
+      #{amountPaidSwf,jdbcType=VARCHAR}, #{amountPaidDate,jdbcType=TIMESTAMP}, #{nextAnniversaryDate,jdbcType=TIMESTAMP}, 
+      #{suspenseBalance,jdbcType=DECIMAL}, #{suspenseBalanceSwf,jdbcType=VARCHAR}, #{luaValue1,jdbcType=VARCHAR}, 
+      #{luaValue2,jdbcType=VARCHAR}, #{luaValue3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.WipPolicyContracts">
+    insert into WIP_POLICY_CONTRACTS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="productId != null">
+        PRODUCT_ID,
+      </if>
+      <if test="contractStatus != null">
+        CONTRACT_STATUS,
+      </if>
+      <if test="conversionStatus != null">
+        CONVERSION_STATUS,
+      </if>
+      <if test="contractLanguage != null">
+        CONTRACT_LANGUAGE,
+      </if>
+      <if test="contractCurrency != null">
+        CONTRACT_CURRENCY,
+      </if>
+      <if test="dateProcessedTo != null">
+        DATE_PROCESSED_TO,
+      </if>
+      <if test="nextActivityDate != null">
+        NEXT_ACTIVITY_DATE,
+      </if>
+      <if test="processStatus != null">
+        PROCESS_STATUS,
+      </if>
+      <if test="directAssumed != null">
+        DIRECT_ASSUMED,
+      </if>
+      <if test="datePremiumsPaidTo != null">
+        DATE_PREMIUMS_PAID_TO,
+      </if>
+      <if test="datePremiumsBilledTo != null">
+        DATE_PREMIUMS_BILLED_TO,
+      </if>
+      <if test="datePremiumsDueTo != null">
+        DATE_PREMIUMS_DUE_TO,
+      </if>
+      <if test="endOfTermAction != null">
+        END_OF_TERM_ACTION,
+      </if>
+      <if test="geographicScope != null">
+        GEOGRAPHIC_SCOPE,
+      </if>
+      <if test="entryDate != null">
+        ENTRY_DATE,
+      </if>
+      <if test="inceptionDate != null">
+        INCEPTION_DATE,
+      </if>
+      <if test="accumulatedTermPremium != null">
+        ACCUMULATED_TERM_PREMIUM,
+      </if>
+      <if test="accumulatedTermPremiumSwf != null">
+        ACCUMULATED_TERM_PREMIUM_SWF,
+      </if>
+      <if test="amountPaid != null">
+        AMOUNT_PAID,
+      </if>
+      <if test="amountPaidSwf != null">
+        AMOUNT_PAID_SWF,
+      </if>
+      <if test="amountPaidDate != null">
+        AMOUNT_PAID_DATE,
+      </if>
+      <if test="nextAnniversaryDate != null">
+        NEXT_ANNIVERSARY_DATE,
+      </if>
+      <if test="suspenseBalance != null">
+        SUSPENSE_BALANCE,
+      </if>
+      <if test="suspenseBalanceSwf != null">
+        SUSPENSE_BALANCE_SWF,
+      </if>
+      <if test="luaValue1 != null">
+        LUA_VALUE_1,
+      </if>
+      <if test="luaValue2 != null">
+        LUA_VALUE_2,
+      </if>
+      <if test="luaValue3 != null">
+        LUA_VALUE_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="contractStatus != null">
+        #{contractStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="conversionStatus != null">
+        #{conversionStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="contractLanguage != null">
+        #{contractLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="contractCurrency != null">
+        #{contractCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="dateProcessedTo != null">
+        #{dateProcessedTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextActivityDate != null">
+        #{nextActivityDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processStatus != null">
+        #{processStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="directAssumed != null">
+        #{directAssumed,jdbcType=VARCHAR},
+      </if>
+      <if test="datePremiumsPaidTo != null">
+        #{datePremiumsPaidTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datePremiumsBilledTo != null">
+        #{datePremiumsBilledTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datePremiumsDueTo != null">
+        #{datePremiumsDueTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endOfTermAction != null">
+        #{endOfTermAction,jdbcType=VARCHAR},
+      </if>
+      <if test="geographicScope != null">
+        #{geographicScope,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null">
+        #{entryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inceptionDate != null">
+        #{inceptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accumulatedTermPremium != null">
+        #{accumulatedTermPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="accumulatedTermPremiumSwf != null">
+        #{accumulatedTermPremiumSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPaid != null">
+        #{amountPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="amountPaidSwf != null">
+        #{amountPaidSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPaidDate != null">
+        #{amountPaidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextAnniversaryDate != null">
+        #{nextAnniversaryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suspenseBalance != null">
+        #{suspenseBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="suspenseBalanceSwf != null">
+        #{suspenseBalanceSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="luaValue1 != null">
+        #{luaValue1,jdbcType=VARCHAR},
+      </if>
+      <if test="luaValue2 != null">
+        #{luaValue2,jdbcType=VARCHAR},
+      </if>
+      <if test="luaValue3 != null">
+        #{luaValue3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.WipPolicyContracts">
+    update WIP_POLICY_CONTRACTS
+    <set>
+      <if test="productId != null">
+        PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      </if>
+      <if test="contractStatus != null">
+        CONTRACT_STATUS = #{contractStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="conversionStatus != null">
+        CONVERSION_STATUS = #{conversionStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="contractLanguage != null">
+        CONTRACT_LANGUAGE = #{contractLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="contractCurrency != null">
+        CONTRACT_CURRENCY = #{contractCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="dateProcessedTo != null">
+        DATE_PROCESSED_TO = #{dateProcessedTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextActivityDate != null">
+        NEXT_ACTIVITY_DATE = #{nextActivityDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processStatus != null">
+        PROCESS_STATUS = #{processStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="directAssumed != null">
+        DIRECT_ASSUMED = #{directAssumed,jdbcType=VARCHAR},
+      </if>
+      <if test="datePremiumsPaidTo != null">
+        DATE_PREMIUMS_PAID_TO = #{datePremiumsPaidTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datePremiumsBilledTo != null">
+        DATE_PREMIUMS_BILLED_TO = #{datePremiumsBilledTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datePremiumsDueTo != null">
+        DATE_PREMIUMS_DUE_TO = #{datePremiumsDueTo,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endOfTermAction != null">
+        END_OF_TERM_ACTION = #{endOfTermAction,jdbcType=VARCHAR},
+      </if>
+      <if test="geographicScope != null">
+        GEOGRAPHIC_SCOPE = #{geographicScope,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null">
+        ENTRY_DATE = #{entryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inceptionDate != null">
+        INCEPTION_DATE = #{inceptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accumulatedTermPremium != null">
+        ACCUMULATED_TERM_PREMIUM = #{accumulatedTermPremium,jdbcType=DECIMAL},
+      </if>
+      <if test="accumulatedTermPremiumSwf != null">
+        ACCUMULATED_TERM_PREMIUM_SWF = #{accumulatedTermPremiumSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPaid != null">
+        AMOUNT_PAID = #{amountPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="amountPaidSwf != null">
+        AMOUNT_PAID_SWF = #{amountPaidSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPaidDate != null">
+        AMOUNT_PAID_DATE = #{amountPaidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextAnniversaryDate != null">
+        NEXT_ANNIVERSARY_DATE = #{nextAnniversaryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suspenseBalance != null">
+        SUSPENSE_BALANCE = #{suspenseBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="suspenseBalanceSwf != null">
+        SUSPENSE_BALANCE_SWF = #{suspenseBalanceSwf,jdbcType=VARCHAR},
+      </if>
+      <if test="luaValue1 != null">
+        LUA_VALUE_1 = #{luaValue1,jdbcType=VARCHAR},
+      </if>
+      <if test="luaValue2 != null">
+        LUA_VALUE_2 = #{luaValue2,jdbcType=VARCHAR},
+      </if>
+      <if test="luaValue3 != null">
+        LUA_VALUE_3 = #{luaValue3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.WipPolicyContracts">
+    update WIP_POLICY_CONTRACTS
+    set PRODUCT_ID = #{productId,jdbcType=DECIMAL},
+      CONTRACT_STATUS = #{contractStatus,jdbcType=VARCHAR},
+      CONVERSION_STATUS = #{conversionStatus,jdbcType=VARCHAR},
+      CONTRACT_LANGUAGE = #{contractLanguage,jdbcType=VARCHAR},
+      CONTRACT_CURRENCY = #{contractCurrency,jdbcType=VARCHAR},
+      DATE_PROCESSED_TO = #{dateProcessedTo,jdbcType=TIMESTAMP},
+      NEXT_ACTIVITY_DATE = #{nextActivityDate,jdbcType=TIMESTAMP},
+      PROCESS_STATUS = #{processStatus,jdbcType=VARCHAR},
+      DIRECT_ASSUMED = #{directAssumed,jdbcType=VARCHAR},
+      DATE_PREMIUMS_PAID_TO = #{datePremiumsPaidTo,jdbcType=TIMESTAMP},
+      DATE_PREMIUMS_BILLED_TO = #{datePremiumsBilledTo,jdbcType=TIMESTAMP},
+      DATE_PREMIUMS_DUE_TO = #{datePremiumsDueTo,jdbcType=TIMESTAMP},
+      END_OF_TERM_ACTION = #{endOfTermAction,jdbcType=VARCHAR},
+      GEOGRAPHIC_SCOPE = #{geographicScope,jdbcType=VARCHAR},
+      ENTRY_DATE = #{entryDate,jdbcType=TIMESTAMP},
+      INCEPTION_DATE = #{inceptionDate,jdbcType=TIMESTAMP},
+      ACCUMULATED_TERM_PREMIUM = #{accumulatedTermPremium,jdbcType=DECIMAL},
+      ACCUMULATED_TERM_PREMIUM_SWF = #{accumulatedTermPremiumSwf,jdbcType=VARCHAR},
+      AMOUNT_PAID = #{amountPaid,jdbcType=DECIMAL},
+      AMOUNT_PAID_SWF = #{amountPaidSwf,jdbcType=VARCHAR},
+      AMOUNT_PAID_DATE = #{amountPaidDate,jdbcType=TIMESTAMP},
+      NEXT_ANNIVERSARY_DATE = #{nextAnniversaryDate,jdbcType=TIMESTAMP},
+      SUSPENSE_BALANCE = #{suspenseBalance,jdbcType=DECIMAL},
+      SUSPENSE_BALANCE_SWF = #{suspenseBalanceSwf,jdbcType=VARCHAR},
+      LUA_VALUE_1 = #{luaValue1,jdbcType=VARCHAR},
+      LUA_VALUE_2 = #{luaValue2,jdbcType=VARCHAR},
+      LUA_VALUE_3 = #{luaValue3,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+  </update>
+   <select id="getWipPolicyContracts" resultMap="getWipPolicyContractsMap" parameterType="long">
+		SELECT pc.contract_id,
+		       pc.inception_date,
+		       pc.contract_language,
+		       pc.contract_currency,
+		       ip_prp.contract_id        prp_contract_id,
+		       ip_prp.ip_no              prp_ip_no,
+		       ip_prp.customer_name_text prp_customer_name_text,
+		       ip_prp.action_code        prp_action_code,
+		       ip_prp.partner_id         prp_partner_id,
+		       ip_prp.mailing_address_id prp_mailing_address_id,
+		       ip_ins.contract_id        ins_contract_id,
+		       ip_ins.ip_no              ins_ip_no,
+		       ip_ins.customer_name_text ins_customer_name_text,
+		       ip_ins.action_code        ins_action_code,
+		       ip_ins.partner_id         ins_partner_id,
+		       ip_ins.mailing_address_id ins_mailing_address_id,
+		       ip_agn.contract_id        agn_contract_id,
+		       ip_agn.ip_no              agn_ip_no,
+		       ip_agn.customer_name_text agn_customer_name_text,
+		       ip_agn.action_code        agn_action_code,
+		       ip_agn.partner_id         agn_partner_id,
+		       ip_agn.mailing_address_id agn_mailing_address_id,
+		       pb.CONTRACT_ID            pb_CONTRACT_ID,
+		       pb.POLICY_REF,
+		       pb.TERM_START_DATE,
+		       pb.TERM_END_DATE,
+		       pb.COMPANY_ORG_UNIT,
+		       pb.GEOGRAPHIC_SCOPE,
+		       pb.VERSION_NO,
+		       pb.BOOKING_FREQUENCY,
+		       ppce.ACTION_CODE          ppce_ACTION_CODE,
+		       ppce.CONTRACT_ID          ppce_CONTRACT_ID,
+		       ppce.POLICY_ORIGINATOR,
+		       ppce.UW_USERNAME,
+		       ppce.BACK_DAYS,
+		       pv.CONTRACT_ID            pv_CONTRACT_ID,
+		       pv.BUSINESS_START_DATE
+		  FROM wip_policy_contracts         pc,
+		       wip_interested_parties       ip_prp,
+		       wip_interested_parties       ip_ins,
+		       wip_interested_parties       ip_agn,
+		       WIP_POLICY_BASES             pb,
+		       WIP_PRL_POLICY_CONTRACTS_EXT ppce,
+		       WIP_POLICY_VERSIONS          pv
+		 where pc.contract_id = ip_prp.contract_id(+)
+		   and pc.contract_id = ip_ins.contract_id(+)
+		   and pc.contract_id = ip_agn.contract_id
+		   and pc.contract_id = pb.contract_id
+		   and pc.contract_id = ppce.contract_id
+		   and pc.contract_id = pv.contract_id
+		   and ip_ins.ip_no(+) = 1
+		   and ip_prp.ip_no(+) = 2
+		   and ip_agn.ip_no = 3
+		   and pc.contract_id=#{contractId}
+   </select>
+   <resultMap type="com.allianz.pa.entity.WipPolicyContracts" id="getWipPolicyContractsMap">
+        <id column="contract_id" property="contractId"/>
+        <result column="inception_date" property="inceptionDate"/>
+        <result column="contract_language" property="contractLanguage"/>
+        <result column="contract_currency" property="contractCurrency"/>
+        <association property="wipInterestedParties4PRP" javaType="com.allianz.pa.entity.WipInterestedParties" fetchType="lazy">
+            <id column="prp_CONTRACT_ID" property="contractId"></id>
+            <id column="prp_IP_NO" property="ipNo"></id>
+            <result column="prp_ACTION_CODE"  property="actionCode" />
+		    <result column="prp_CUSTOMER_NAME_TEXT" property="customerNameText" />
+    		<result column="prp_PARTNER_ID" property="partnerId" />
+    		<result column="prp_MAILING_ADDRESS_ID" property="mailingAddressId" />
+        </association>
+        <association property="WipInterestedParties4INS" javaType="com.allianz.pa.entity.WipInterestedParties" fetchType="lazy">
+            <id column="ins_CONTRACT_ID" property="contractId"></id>
+            <id column="ins_IP_NO" property="ipNo"></id>
+            <result column="ins_ACTION_CODE"  property="actionCode" />
+		    <result column="ins_CUSTOMER_NAME_TEXT" property="customerNameText" />
+    		<result column="ins_PARTNER_ID" property="partnerId" />
+    		<result column="ins_MAILING_ADDRESS_ID" property="mailingAddressId" />
+        </association>
+        <association property="wipInterestedParties4AGN" javaType="com.allianz.pa.entity.WipInterestedParties" fetchType="lazy">
+            <id column="agn_CONTRACT_ID" property="contractId"></id>
+            <id column="agn_IP_NO" property="ipNo"></id>
+            <result column="agn_ACTION_CODE"  property="actionCode" />
+		    <result column="agn_CUSTOMER_NAME_TEXT" property="customerNameText" />
+    		<result column="agn_PARTNER_ID" property="partnerId" />
+    		<result column="agn_MAILING_ADDRESS_ID" property="mailingAddressId" />
+        </association>
+        <association property="wipPolicyBases" javaType="com.allianz.pa.entity.WipPolicyBases" fetchType="lazy">
+            <id column="pb_CONTRACT_ID" property="contractId"></id>
+            <result column="POLICY_REF" property="policyRef" />
+            <result column="TERM_START_DATE"  property="termStartDate" />
+		    <result column="TERM_END_DATE" property="termEndDate" />
+    		<result column="COMPANY_ORG_UNIT" property="companyOrgUnit" />
+    		<result column="GEOGRAPHIC_SCOPE" property="geographicScope" />
+    		<result column="VERSION_NO" property="versionNo" />
+    		<result column="BOOKING_FREQUENCY" property="bookingFrequency" />
+        </association>
+        <association property="wipPrlPolicyContractsExt" javaType="com.allianz.pa.entity.WipPrlPolicyContractsExt" fetchType="lazy">
+            <id column="ppce_CONTRACT_ID" property="contractId"></id>
+            <result column="ppce_ACTION_CODE"  property="actionCode" />
+		    <result column="POLICY_ORIGINATOR" property="policyOriginator" />
+    		<result column="UW_USERNAME" property="uwUsername" />
+    		<result column="BACK_DAYS" property="backDays" />
+        </association>
+        <association property="wipPolicyVersions" javaType="com.allianz.pa.entity.WipPolicyVersions" fetchType="lazy">
+            <id column="pv_CONTRACT_ID" property="contractId"></id>
+            <result column="BUSINESS_START_DATE"  property="businessStartDate" />
+        </association>
+   </resultMap>
+  
+</mapper>

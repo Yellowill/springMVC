@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.PrlEndorsementInfoMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.PrlEndorsementInfo">
+    <id column="CONTRACT_ID" jdbcType="DECIMAL" property="contractId" />
+    <id column="GPA_CODE" jdbcType="VARCHAR" property="gpaCode" />
+    <result column="ENDOR_DATE" jdbcType="TIMESTAMP" property="endorDate" />
+    <result column="CHANGE_DESC" jdbcType="VARCHAR" property="changeDesc" />
+    <result column="PARTNER_REF" jdbcType="VARCHAR" property="partnerRef" />
+    <result column="INSURED_NAME" jdbcType="VARCHAR" property="insuredName" />
+    <result column="ACC_BANK_NO" jdbcType="VARCHAR" property="accBankNo" />
+    <result column="ACC_BANK" jdbcType="VARCHAR" property="accBank" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONTRACT_ID, GPA_CODE, ENDOR_DATE, CHANGE_DESC, PARTNER_REF, INSURED_NAME, ACC_BANK_NO, 
+    ACC_BANK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEndorsementInfoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRL_ENDORSEMENT_INFO
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and GPA_CODE = #{gpaCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEndorsementInfoKey">
+    delete from PRL_ENDORSEMENT_INFO
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and GPA_CODE = #{gpaCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.PrlEndorsementInfo">
+    insert into PRL_ENDORSEMENT_INFO (CONTRACT_ID, GPA_CODE, ENDOR_DATE, 
+      CHANGE_DESC, PARTNER_REF, INSURED_NAME, 
+      ACC_BANK_NO, ACC_BANK)
+    values (#{contractId,jdbcType=DECIMAL}, #{gpaCode,jdbcType=VARCHAR}, #{endorDate,jdbcType=TIMESTAMP}, 
+      #{changeDesc,jdbcType=VARCHAR}, #{partnerRef,jdbcType=VARCHAR}, #{insuredName,jdbcType=VARCHAR}, 
+      #{accBankNo,jdbcType=VARCHAR}, #{accBank,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.PrlEndorsementInfo">
+    insert into PRL_ENDORSEMENT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        CONTRACT_ID,
+      </if>
+      <if test="gpaCode != null">
+        GPA_CODE,
+      </if>
+      <if test="endorDate != null">
+        ENDOR_DATE,
+      </if>
+      <if test="changeDesc != null">
+        CHANGE_DESC,
+      </if>
+      <if test="partnerRef != null">
+        PARTNER_REF,
+      </if>
+      <if test="insuredName != null">
+        INSURED_NAME,
+      </if>
+      <if test="accBankNo != null">
+        ACC_BANK_NO,
+      </if>
+      <if test="accBank != null">
+        ACC_BANK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=DECIMAL},
+      </if>
+      <if test="gpaCode != null">
+        #{gpaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="endorDate != null">
+        #{endorDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeDesc != null">
+        #{changeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerRef != null">
+        #{partnerRef,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null">
+        #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="accBankNo != null">
+        #{accBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accBank != null">
+        #{accBank,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.PrlEndorsementInfo">
+    update PRL_ENDORSEMENT_INFO
+    <set>
+      <if test="endorDate != null">
+        ENDOR_DATE = #{endorDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeDesc != null">
+        CHANGE_DESC = #{changeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="partnerRef != null">
+        PARTNER_REF = #{partnerRef,jdbcType=VARCHAR},
+      </if>
+      <if test="insuredName != null">
+        INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      </if>
+      <if test="accBankNo != null">
+        ACC_BANK_NO = #{accBankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accBank != null">
+        ACC_BANK = #{accBank,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and GPA_CODE = #{gpaCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEndorsementInfo">
+    update PRL_ENDORSEMENT_INFO
+    set ENDOR_DATE = #{endorDate,jdbcType=TIMESTAMP},
+      CHANGE_DESC = #{changeDesc,jdbcType=VARCHAR},
+      PARTNER_REF = #{partnerRef,jdbcType=VARCHAR},
+      INSURED_NAME = #{insuredName,jdbcType=VARCHAR},
+      ACC_BANK_NO = #{accBankNo,jdbcType=VARCHAR},
+      ACC_BANK = #{accBank,jdbcType=VARCHAR}
+    where CONTRACT_ID = #{contractId,jdbcType=DECIMAL}
+      and GPA_CODE = #{gpaCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

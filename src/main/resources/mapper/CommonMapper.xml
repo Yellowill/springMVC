@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.CommonMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.allianz.pa.common.bean.QueryResultObject">
+		<id column="contract_id" property="contractId" />
+		<result column="policy_ref" property="policyRef" />
+		<result column="agn_sales_name" property="salesName" />
+		<result column="agn_sales_license_no" property="salesLicenseNo" />
+		<result column="sequence_value" property="sequenceValue" />
+		<result column="policy_originator" property="policyOriginator" />
+		<result column="contract_status" property="policyStatus" />
+		<result column="total_premium" property="totalPremium" />
+		<result column="adjustment_premium" property="adjustmentPremium" />
+		<result column="sum_insured" property="sumInsured" />
+		<result column="term_start_date" property="effectiveDate" />
+		<result column="term_end_date" property="expireDate" />
+		<result column="endorse_effective_date" property="endorseEffectiveDate" />
+		<result column="version_no" property="versionNo" />
+	</resultMap>
+	<select id="getPolicyInfoBycontractId" resultMap="BaseResultMap" parameterType="long">
+		SELECT policy_ref,
+			contract_status,
+			premium total_premium,
+			sum_insured,
+			term_start_date,
+			term_end_date 
+		  FROM prl_common_quote_policy_all
+		 where contract_id = #{contractId}
+	</select>
+	<select id="getAgencySalesInfo" resultMap="BaseResultMap">
+		SELECT nvl((psp.FIRST_NAME_ZHS_EXT || psp.SURNAME_ZHS_EXT),
+		           (psp.FIRST_NAME_EXT || psp.SURNAME_EXT)) agn_sales_name,
+		       psl.license_no agn_sales_license_no
+		  FROM prl_sales_rel             psr,
+		       prl_sales_license         psl,
+		       prl_sales_personal        psp,
+		       PRL_INTERMEDIARY_V_SEARCH PCPE
+		 WHERE psr.license_id = psl.license_id
+		   AND psr.sales_personal_id = psp.sales_personal_id
+		   AND PCPE.part_id = psp.EXTERNAL_PART_ID
+		   and psp.SCOPE_CODE = 'E'
+		   and pcpe.STATUS = 'Q'
+		   and nvl(psl.expire_date, sysdate) >= trunc(sysdate)
+		   and (psp.status = 'A' or
+		       psl.license_no in
+		       (select b.occupation license_no
+		           from ocp_ip_links a, prl_ip_ext b, ocp_interested_parties c
+		          where a.contract_id = b.contract_id
+		            and a.contract_id = c.contract_id
+		            and a.ip_no = c.ip_no
+		            and a.ip_no = b.ip_no
+		            and a.role_type = 'AGN'
+		            and a.contract_id = #{1}))
+		   and pcpe.part_id = #{0}
+	</select>
+	
+	<resultMap id="UserResultMap" type="com.allianz.pa.common.bean.UserInfo">
+		<id column="user_code" property="userCode" />
+		<result column="user_name" property="userName" />
+		<result column="partner_id" property="partnerId" />
+		<result column="partner_role" property="parterRole" />
+		<result column="branch_code" property="branchCode" />
+		<result column="lua_handler_enabled" property="luaHandlerEnabled" />
+		<result column="staff_code" property="staffCode" />
+	</resultMap>
+	<select id="getUserInfo" resultMap="UserResultMap" parameterType="String">
+		SELECT ut.user_code,
+		       ut.user_name,
+		       ut.partner_id,
+		       ut.partner_role,
+		       ut.branch_code,
+		       ut.lua_handler_enabled,
+		       ut.staff_code 
+		  FROM prl_ext_user_extn ut
+		 where ut.user_code = #{userCode}
+	</select>
+	
+	<resultMap id="PartnerResultMap" type="com.allianz.pa.common.bean.PartnerInfo">
+		<id column="Int_id" property="intId" />
+		<result column="Part_id" property="partId" />
+		<result column="Partner_ref" property="partnerRef" />
+		<result column="Name_zhs" property="nameZhs" />
+		<result column="Status" property="status" />
+		<result column="staff_code" property="staffCode" />
+		<result column="business_unit" property="businessUnit" />
+		<result column="business_source" property="businessSource" />
+		<result column="PARTNER_TYPE" property="partnerType" />
+		<result column="REG_NO" property="regNo" />
+		<result column="SOURCE" property="source" />
+		<result column="ID_TYPE" property="idType" />
+		<result column="id_no" property="idNo" />
+		<result column="phone_no" property="phoneNo" />
+		<result column="company_rank" property="companyRank" />
+		<result column="settle_indicator" property="settleIndicator" />
+	</resultMap>
+	<select id="getAgencyInfo" resultMap="PartnerResultMap" parameterType="String">
+		 SELECT piv.Int_id,
+		        piv.Part_id,
+		        piv.Partner_ref,
+		        piv.Name_zhs,
+		        piv.Status,
+		        dae.app_insurer2 staff_code,
+		        dae.app_insurer3 business_unit,
+		        dae.app_insurer4 business_source
+		   FROM prl_intermediary_v_search piv, prl_dmt_agents_ext dae
+		  where piv.Int_id = dae.int_id(+)
+		    and piv.Part_id = dae.part_id(+)
+		    and piv.Partner_ref = #{agencyCode}
+	</select>
+	
+	<select id="getTPAInfo" resultMap="PartnerResultMap" parameterType="int">
+		select cpe.part_id
+		  from cp_partners cp, prl_cp_partners_ext cpe
+		 where cpe.gst_registration_number = cp.partner_ref
+		   and cp.part_id = #{partId}
+	</select>
+	
+	<select  id="getCustomerInfo" resultMap="PartnerResultMap" parameterType="String">
+		select customer.PART_ID,
+		       customer.PARTNER_REF,
+		       full_name_zhs Name_zhs, 
+		       customer.PARTNER_TYPE,
+		       customer.SOURCE,
+		       decode(customer.identify_type,
+		              'ID',
+		              '1',
+		              decode(customer.identify_type,
+		                     'PA',
+		                     '2',
+		                     decode(customer.identify_type,
+		                            'OT',
+		                            '3',
+		                            decode(customer.identify_type,
+		                                   null,
+		                                   '3',
+		                                   identify_type)))) ID_TYPE,
+		       customer.REG_NO id_no,
+		       customer.TELEPHONE1 phone_no,
+		       customer.company_rank,
+		       customer.settlement_indi settle_indicator
+		  from prl_cp_v_search customer
+		  where customer.Partner_ref = #{customerCode}
+	</select>
+	
+	<resultMap id="PlanResultMap" type="com.allianz.pa.common.bean.PlanInfo">
+		<id column="plan_id" property="planId" />
+		<id column="version_no" property="versionNo" />
+		<result column="plan_code" property="planCode" />
+		<result column="name_zhs" property="nameZhs" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="product_code" property="productCode" />
+		<result column="cal_method" property="calMethod" />
+		<result column="destination" property="destination" />
+		<result column="contract_currency" property="contractCurrency" />
+		<result column="accident_perc" property="accidentPerc" />
+		<result column="payCount" property="payCount" />
+		<result column="plan_type" property="planType" />
+		<result column="partition_no" property="partitionNo" />
+	</resultMap>
+	<select id="getAssignedPlanInfoByPlanCode" resultMap="PlanResultMap">
+		select p.plan_id,
+		       p.version_no,
+		       p.plan_code,
+		       p.name_zhs,
+		       p.start_date,
+		       p.end_date,
+		       p.product_code,
+		       p.cal_method,
+		       p.destination,
+		       p.contract_currency,
+		       p.accident_perc 
+		  from prl_eopus_plans p
+		 where #{4} between p.start_date and nvl(p.end_date, #{4} + 1)
+		   and p.status = '1'
+		   and p.plan_code = #{3}
+		   and exists
+		 (select 1
+		          from prl_plan_branch_assign p
+		         where p.plan_id = p.plan_id
+		           and p.status = 1
+		           and p.branch_code = #{2})
+		   and (exists((select 1
+		                 from prl_eopus_plan_assignment pa
+		                where pa.plan_id = p.plan_id
+		                  and pa.status = 1
+		                  and pa.int_id in
+		                      (select piv.int_id
+		                         from prl_intermediary_v_search piv
+		                        where piv.Part_id = #{1})
+		                  and exists (select 1
+		                         from prl_ext_user_extn ue
+		                        where nvl(ue.lua_handler_enabled, 'N') != 'Y'
+		                          and ue.user_code = #{0} ))) or exists
+		        (select 1
+		           from PRL_EOPUS_PLAN_USER_ASSIGNMENT pua, prl_ext_user_extn ue
+		          where pua.plan_id = p.plan_id
+		            and pua.user_code = ue.user_code
+		            and ue.lua_handler_enabled = 'Y'
+		            and pua.status = '1'
+		            and ue.user_code = #{0}))
+		 ORDER BY p.VERSION_NO desc
+	</select>
+	
+	<select id="getPlanInfoByPlanIdAndVersionNo" resultMap="PlanResultMap">
+		select p.plan_id,
+		       p.version_no,
+		       p.plan_code,
+		       p.name_zhs,
+		       p.start_date,
+		       p.end_date,
+		       p.product_code,
+		       p.cal_method,
+		       p.destination,
+		       p.contract_currency,
+		       p.accident_perc 
+		  from prl_eopus_plans p
+		 where p.plan_id = #{0}
+		   and p.version_no = #{1}
+	</select>
+	
+	<select id="customQuery" parameterType="java.lang.String"  resultMap="BaseResultMap" useCache="false" flushCache="true">
+	   ${_parameter}
+	 </select>
+	
+	<!-- MyBatis调用存储过程 -->  
+    <select id="newBusiness4Others" parameterType="map" statementType="CALLABLE" >
+      {
+         call prl_pk2_rf.new_business(
+               #{p_contract_id,mode=OUT,jdbcType=BIGINT},
+               #{p_result,mode=OUT,jdbcType=INTEGER},
+               #{p_username,mode=IN,jdbcType=VARCHAR},
+               #{p_term_start_date,mode=IN,jdbcType=DATE},
+               #{p_agency_id,mode=IN,jdbcType=NUMERIC},
+               #{p_phi_id,mode=IN,jdbcType=NUMERIC},
+               #{p_staff_code,mode=IN,jdbcType=VARCHAR},
+               #{p_business_source,mode=IN,jdbcType=VARCHAR},
+               #{p_branch_code,mode=IN,jdbcType=VARCHAR},
+               #{p_business_unit,mode=IN,jdbcType=VARCHAR},
+               #{p_product_code,mode=IN,jdbcType=VARCHAR},
+               #{p_application_type,mode=IN,jdbcType=VARCHAR} 
+         )
+      }
+  </select>
+  <select id="getCommissionRate" parameterType="map" statementType="CALLABLE" >
+      {
+         call prl_pk2_rf.get_commission_rate(
+               #{p_agent_id,mode=IN,jdbcType=NUMERIC},
+               #{p_plan_id,mode=IN,jdbcType=NUMERIC},
+               #{p_start_date,mode=IN,jdbcType=DATE},
+               #{p_comm_rate,mode=OUT,jdbcType=NUMERIC},
+               #{p_int_id,mode=OUT,jdbcType=NUMERIC},
+               #{p_error_code,mode=OUT,jdbcType=VARCHAR}
+         )
+      }
+  </select>
+  
+  <select id="preIssuePolicy4Others" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_rf.preissuepolicy(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC},
+               #{p_userid,mode=IN,jdbcType=VARCHAR},
+               #{p_policy_ref,mode=OUT,jdbcType=VARCHAR},
+               #{p_cbc_flag,mode=OUT,jdbcType=NUMERIC},
+               #{p_adjust_prem,mode=OUT,jdbcType=NUMERIC},
+               #{p_error_message,mode=IN,jdbcType=VARCHAR},
+               #{p_fix_cbc,mode=IN,jdbcType=NUMERIC},
+               #{p_old_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+    <select id="preIssuePolicyForOTI" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_oti.preissuepolicy(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC},
+               #{p_userid,mode=IN,jdbcType=VARCHAR},
+               #{p_policy_ref,mode=OUT,jdbcType=VARCHAR},
+               #{p_cbc_flag,mode=OUT,jdbcType=NUMERIC},
+               #{p_adjust_prem,mode=OUT,jdbcType=NUMERIC},
+               #{p_error_message,mode=IN,jdbcType=VARCHAR},
+               #{p_fix_cbc,mode=IN,jdbcType=NUMERIC},
+               #{p_old_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+  <select id="issuePolicy4Others" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_rf.issuepolicy(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC},
+               #{p_userid,mode=IN,jdbcType=VARCHAR},  
+               #{p_adjust_prem,mode=IN,jdbcType=NUMERIC},
+               #{p_error_message,mode=IN,jdbcType=VARCHAR},
+               #{p_booking_settle_flag,mode=IN,jdbcType=VARCHAR}
+         )
+      }
+  </select>
+  
+    <select id="issuePolicyForOTI" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_oti.issuepolicy(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC},
+               #{p_userid,mode=IN,jdbcType=VARCHAR},  
+               #{p_adjust_prem,mode=IN,jdbcType=NUMERIC},
+               #{p_error_message,mode=IN,jdbcType=VARCHAR},
+               #{p_booking_settle_flag,mode=IN,jdbcType=VARCHAR}
+         )
+      }
+  </select>
+  
+  <select id="doBookingSettle4Others" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_rf.rf_do_booking_settle(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+  <select id="doBookingSettleForOTI" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_oti.oti_do_booking_settle(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+  <select id="getExchRate" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk7_utils.Convert(
+               #{PFM_CURR,mode=IN,jdbcType=VARCHAR},
+               #{PTO_CURR,mode=IN,jdbcType=VARCHAR},  
+               #{PEFF_DATE,mode=IN,jdbcType=DATE},
+               #{PAMOUNT,mode=IN,jdbcType=NUMERIC},
+               #{PEXCH_RATE,mode=OUT,jdbcType=NUMERIC},
+               #{PCONVERTED_AMT,mode=OUT,jdbcType=NUMERIC} 
+         )
+      }
+  </select>
+  
+  <select id="validateUserPassword" parameterType="map" statementType="CALLABLE" >
+      {
+         call PRL_PK0_EOPUS.LOG_ON(
+               #{p_user_name,mode=IN,jdbcType=VARCHAR},
+               #{p_password,mode=IN,jdbcType=VARCHAR},
+               #{p_ret_status,mode=OUT,jdbcType=NUMERIC},
+               #{p_fail_attempts,mode=IN,jdbcType=NUMERIC},
+               #{p_client_ip_address,mode=IN,jdbcType=VARCHAR} 
+         )
+      }
+  </select>
+  
+  <select id="abortEndorsement" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_rf.endorsment_wip_abort(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+   <select id="deleteErrorData" parameterType="map" statementType="CALLABLE" >
+      {
+         call prl_pk2_rf.wip_abort(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+    <select id="abortOTIEndorsement" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_oti.endorsment_wip_abort(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+   <select id="deleteOTIErrorData" parameterType="map" statementType="CALLABLE" >
+      {
+         call prl_pk2_oti.wip_abort(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+  
+  <select id="invokeUpdate4OP" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_rf.rf_invoke_update(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC},
+               #{p_username,mode=IN,jdbcType=VARCHAR},  
+               #{p_update_type,mode=IN,jdbcType=VARCHAR},
+               #{p_effective_date,mode=IN,jdbcType=DATE}
+         )
+      }
+  </select>
+  
+  <select id="getBackDateFlag4OP" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_rf.rf_back_date_flag(
+               #{p_username,mode=IN,jdbcType=VARCHAR}
+         )
+      }
+  </select>
+  
+  <select id="checkBranchEffective" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = prl_pk2_validation.check_branch_status(
+               #{branchCode,mode=IN,jdbcType=VARCHAR}
+         )
+      }
+  </select>
+  
+  <resultMap id="BenefitResultMap" type="com.allianz.pa.common.bean.BenefitInfo">
+		<id column="benefit_id" property="benefitId" />
+		<result column="benefit_code" property="benefitCode" />
+		<result column="benefit_name" property="benefitName" />
+		<result column="sum_insured" property="sumInsured" />
+		<result column="limit" property="limit" />
+		<result column="policy_si_flag" property="policySiFlag" />
+		<result column="sub_limit_type" property="subLimitType" />
+		<result column="sub_limit" property="subLimit" />
+		<result column="deductible_days" property="deductibleDays" />
+		<result column="max_payment_days" property="maxPaymentDays" />
+		<result column="Daily_payment_amt" property="dailyPaymentAmt" />
+	</resultMap>
+	<select id="getPlanBenefitInfo" resultMap="BenefitResultMap" resultType="java.util.List">
+		SELECT a.benefit_id,
+		       b.benefit_code,
+		       b.name_zhs benefit_name,
+		       a.sum_insured,
+		       a.limit,
+		       DECODE(a.policy_si_flag, '1', a.sum_insured, TO_NUMBER(NULL)) policy_si_flag,
+		       a.sub_limit_type,
+		       a.sub_limit,
+		       a.deductible_days,
+		       a.max_payment_days,
+		       a.Daily_payment_amt
+		  FROM prl_eopus_plan_benefits a, prl_eopus_benefits b
+		 WHERE a.benefit_id = b.benefit_id
+		   AND a.plan_id = #{0}
+		   AND a.plan_version_no = #{1}
+	</select>
+	
+	<select id="getPolicyOriginator" resultMap="BaseResultMap" parameterType="long">
+		SELECT policy_originator
+		  FROM prl_policy_contracts_ext
+		 where contract_id = #{contractId}
+		union
+		SELECT policy_originator
+		  FROM wip_prl_policy_contracts_ext
+		 where contract_id = #{contractId}
+	</select>
+	
+	<select id="getAllreadySuccessPolicyInfo" resultMap="BaseResultMap" parameterType="long">
+		select a.policy_ref,
+		       a.contract_status,
+		       a.premium total_premium,
+		       a.sum_insured,
+		       a.term_start_date,
+		       a.term_end_date,
+		       b.adjustment_premium,
+		       (SELECT t.policy_originator
+		          FROM prl_policy_contracts_ext t
+		         where t.contract_id = a.contract_id
+		        union
+		        SELECT t.policy_originator
+		          FROM wip_prl_policy_contracts_ext t
+		         where t.contract_id = a.contract_id) policy_originator
+		  from prl_common_quote_policy_all a,prl_group_policy_versions b
+     	where a.contract_id = b.contract_id and b.top_indicator='Y'
+		 and a.contract_id = #{contractId}
+	</select>
+	
+	<select id="validatePolicyIsExist" resultMap="BaseResultMap" >
+		SELECT distinct contract_id
+		  FROM (SELECT a.contract_id 
+		          FROM prl_policy_contracts_ext a, prl_common_quote_policy_all b
+		         WHERE a.policy_originator = #{1}
+		           AND a.contract_id = b.contract_id
+		           AND b.created_by = #{0}
+		        UNION
+		        SELECT a.contract_id 
+		          FROM wip_prl_policy_contracts_ext a, prl_common_quote_policy_all b
+		         WHERE a.policy_originator = #{1}
+		           AND a.contract_id = b.contract_id
+		           AND b.created_by = #{0}) where rownum=1 
+	</select>
+	
+    <select id="getPolicyInfoByPolicyRefAndUserCode" resultMap="BaseResultMap">
+		SELECT p.contract_id,
+		       (SELECT MAX(business_start_date)
+		          FROM ocp_policy_versions
+		         WHERE contract_id = p.contract_id) endorse_effective_date,
+		       p.contract_status,
+		       p.term_start_date 
+		  FROM prl_common_quote_policy_all p
+		 where p.created_by = #{1}
+		   and p.contract_id =
+		       (SELECT distinct pgv.contract_id
+		          FROM prl_group_policy_versions pgv 
+		         where pgv.policy_ref = #{0})
+	</select>
+	
+	<select id="getMaxVersionPolicyNo" resultType="String" parameterType="String">
+		select a.policy_ref from prl_group_policy_versions a ,prl_common_quote_policy_all b 
+		where  a.contract_id= b.contract_id
+		 and a.top_indicator='Y' 
+		 and b.contract_id = (select distinct t.contract_id from prl_group_policy_versions t where t.policy_ref= #{policyRef})
+	</select>
+	
+	<resultMap id="AppParameterResultMap" type="com.allianz.pa.common.bean.AppParameterInfo">
+		<result column="app_name" property="appName" />
+		<result column="key" property="key" />
+		<result column="value" property="value" />
+		<result column="descript" property="descript" />
+		<result column="status" property="status" />
+		<result column="value_type" property="valueType" />
+	</resultMap>
+	<select id="getAppParameter" resultMap="AppParameterResultMap" parameterType="String">
+		select t.app_name, t.key, t.value, t.descript, t.status, t.value_type
+		  from prpl_app_parameter t
+		 where t.status = '1' 
+		   and t.app_name = #{0}
+		   and t.key = #{1}
+	</select>
+	
+	<select id="validateOTIPolicyExist" resultType="java.lang.Long" parameterType="map">
+		SELECT distinct contractId FROM (SELECT a.contract_id contractId FROM prl_policy_contracts_ext a,prl_common_quote_policy_all b
+		 WHERE a.policy_originator = #{agentPolicyRef} AND a.contract_id = b.contract_id AND b.created_by = #{userCode}
+		 UNION
+		 SELECT a.contract_id contractId FROM wip_prl_policy_contracts_ext a,prl_common_quote_policy_all b
+		 WHERE a.policy_originator = #{agentPolicyRef}  
+		 AND a.contract_id = b.contract_id AND b.created_by = #{userCode} )
+	</select>
+	
+	<resultMap id="InsuredPremiumMap" type="com.allianz.pa.dto.common.standard.InsuredPremium">
+		<result column="part_insured_id" property="insuredId" />
+		<result column="name" property="insuredName" />
+		<result column="prem_total" property="premium" />
+		<result column="insured_id" property="insId" />
+	</resultMap>
+	<select id="getInsuredListByContractId" resultMap="InsuredPremiumMap" parameterType="long">
+		select a.part_insured_id,a.name,a.prem_total, a.insured_id
+		from wip_prl_part_plan_ins_ext a where a.contract_id = #{contractId}
+		UNION
+		select b.part_insured_id,b.name,b.prem_total, b.insured_id
+		from prl_part_plan_ins_ext b where b.contract_id = #{contractId}
+		and b.top_indicator='Y' and b.action_code <![CDATA[<>]]> 'D'
+	</select>
+	
+	<resultMap id="UnderwritingDecisionMap" type="com.allianz.pa.dto.common.standard.UnderwritingDecision">
+		<result column="disease_code" property="diseaseCode" />
+		<result column="underwriting_decision" property="underwritingDecision" />
+	</resultMap>
+	<select id="getUnderwritingDecisionList" resultMap="UnderwritingDecisionMap" parameterType="map">
+		select a.disease_code diseaseCode,a.underwriting_decision underwritingDecision
+		from wip_prl_part_ins_underwriting a
+		where a.contract_id = #{contractId} and a.insured_id = #{insId}
+		union 
+		select b.disease_code diseaseCode,b.underwriting_decision underwritingDecision 
+		from prl_part_ins_underwriting b
+		where b.contract_id = #{contractId} and b.insured_id = #{insId} 
+		and b.top_indicator = 'Y' and b.action_code <![CDATA[<>]]> 'D'
+	</select>
+	
+	<select id="getInsuredTypes" resultType="map" >
+		select insured_type, age_from, age_to from prl_eopus_insured_type
+	</select>
+	
+	<select id="getAgeScopeOfPlan" resultType="map" parameterType="String">
+		SELECT s.age_from,s.age_to,pegp.renewable_max_age max_age FROM PRL_EOPUS_PLANS s,prl_eopus_group_plans pegp
+		where s.version_no = (select MAX(version_no) from prl_eopus_plans where plan_code = s.plan_code)
+		and s.plan_code = #{planCode} and s.group_plan_code = pegp.group_plan_code(+)
+	</select>
+	
+	<select id="getInsuredType" parameterType="map" resultType="string">
+		select distinct itype.insured_type 
+		from prl_eopus_plans plans, 
+		prl_eopus_plan_ben_rate rate, 
+		prl_eopus_insured_type itype 
+		where plans.status = '1' 
+		and plans.plan_id = rate.plan_id 
+		and plans.version_no = rate.plan_version_no 
+		and (plans.plan_type is null or plans.plan_type = rate.plan_type) 
+		and rate.insured_type = itype.insured_type  
+		and plans.plan_code = #{planCode} 
+		and plans.version_no = 1 
+		and itype.age_from <![CDATA[<=]]> #{age}   
+		and itype.age_to <![CDATA[>=]]> #{age}
+	</select>
+	
+	<select id="getPolicyInfoByRef" resultMap="BaseResultMap" parameterType="String">
+		  SELECT pc.policy_ref,
+			pc.contract_status,
+			pc.premium total_premium,
+			pc.sum_insured,
+			pc.term_start_date,
+			pc.term_end_date,
+      		pc.contract_id,
+          	pb.version_no
+		  FROM prl_common_quote_policy_all pc,OCP_POLICY_BASES pb
+		 where pc.contract_id = pb.contract_id and pb.top_indicator = 'Y'
+     	and pb.policy_ref = pc.policy_ref 
+     	and pc.policy_ref = #{policyRef}
+	</select>
+	
+	<select id="getPlanInfo" resultMap="PlanResultMap" parameterType="map">
+		SELECT distinct plan_id ,version_no, cal_method 
+		FROM prl_eopus_plans 
+		WHERE plan_code = #{policyRef} 
+		AND nvl(status,0) = 1
+		AND trunc(to_date(#{effectDate},'yyyy-MM-dd HH24:mi:ss')) <![CDATA[>=]]> start_date
+		AND (trunc(to_date(#{effectDate},'yyyy-MM-dd HH24:mi:ss')) <![CDATA[<=]]> end_date or end_date is null)
+	</select>
+	
+	<select id="getPlanInfoByContractId" resultMap="PlanResultMap" parameterType="map">
+		 SELECT ps.plan_code,
+		 		ps.plan_type,
+		 		ps.cal_method,
+		 		pe.plan_id,
+		 		pe.version_no,
+		 		ps.product_code,
+		 		ps.accident_perc,
+		 		pe.partition_no,
+		 		pc.maintenance_period payCount
+		 FROM prl_part_plan_ext pe, 
+		      prl_eopus_plans ps,
+		      prl_cen_base_ext pc
+		WHERE pe.plan_id = ps.plan_id 
+		and pe.version_no = ps.version_no 
+		and pe.top_indicator = 'Y' and pc.top_indicator='Y'
+		and pc.contract_id = #{contractId}
+		and ps.plan_code = #{planCode}
+		and pe.contract_id = #{contractId}
+	</select>
+	
+	<select id="commonQueryCount" parameterType="string" resultType="decimal">
+		${_parameter}
+	</select>
+	
+	<select id="getBlacklistByPolicy" parameterType="long" resultType="String">
+		 SELECT to_char(wm_concat(distinct name)) || '/' || to_char(wm_concat(distinct id_no)) FROM (
+ 		 select distinct pie.name,pie.id_no
+ 		 from prl_blacklist pbl, wip_prl_part_plan_ins_ext pie
+ 		 where upper(regexp_replace(pbl.id_no,'[ , ]','')) =
+ 		 upper(regexp_replace(pie.id_no,'[ , ]', ''))
+		 and pbl.id_type = pie.id_type
+		 and upper(regexp_replace(pie.name,'[ , ]','')) like '%' || upper(regexp_replace(pbl.name,'[ , ]', '')) || '%'
+		 and trunc(sysdate) between pbl.active_start_date and 
+		 nvl(pbl.active_end_date, trunc(sysdate) + 1)
+		 and pie.action_code not in ('U', 'D')
+		 and pie.contract_id = #{contractId}
+		 union 
+		 SELECT distinct pie.name, pie.id_no
+		 FROM prl_blacklist pbl, wip_prl_part_plan_ins_ext pie
+		 WHERE upper(regexp_replace(pie.name,'[ ,]','')) LIKE '%' || upper(regexp_replace(pbl.name,'[ , ]','')) || '%'
+		 AND trunc(SYSDATE) BETWEEN pbl.active_start_date AND
+		 nvl(pbl.active_end_date, trunc(SYSDATE) + 1)
+		 AND pie.action_code NOT IN ('U', 'D')
+		 AND pie.contract_id = #{contractId} 
+		 AND (pbl.id_no = '999999' OR pbl.id_type = '9')
+		 )
+	</select>
+	
+	<select id="getClientRef" parameterType="long" resultType="String">
+		 select t.client_ref
+		  from Prl_Ip_Ext t 
+		  where t.contract_id = #{contractId}  
+		  and t.ip_no = 2 and t.top_indicator = 'Y'
+	</select>
+	
+	<select id="getPartnerId" parameterType="long" resultType="java.lang.Long">
+		  SELECT t.partner_id 
+		  FROM ocp_interested_parties t 
+		  where t.contract_id = #{contractId} 
+		  and t.ip_no = 2 and t.top_indicator = 'Y'
+	</select>
+	
+	<select id="getPrpCode" parameterType="long" resultType="String">
+		 SELECT cp.partner_ref FROM cp_partners cp where cp.part_id=#{prpPartId}
+	</select>
+	
+	<select id="getACheckId" resultType="string" parameterType="hashmap">
+		select t.part_insured_id from prl_part_plan_ins_ext t
+		where t.contract_id = #{contractId} and t.plan_id = #{planId} and t.top_indicator='Y'
+		<if test="ids != null">
+		and 
+		<foreach collection="ids" index="index" item="idsItem" open="(" separator="or" close=")" >
+			t.part_insured_id in
+			<foreach collection="idsItem" index="index" item="id" open="(" separator="," close=")" >
+				#{id}
+			</foreach>
+		</foreach>
+		</if>
+	</select>
+	
+	<select id="getCDCheckId" parameterType="map" resultType="string">
+		 select id from (${sqlTable} minus
+ 		select t.part_insured_id as id from prl_part_plan_ins_ext t
+		where t.contract_id = #{contractId} and t.plan_id = #{planId} and t.action_code <![CDATA[<>]]> 'D'
+		<if test="ids != null">
+		and 
+		<foreach collection="ids" index="index" item="idsItem" open="(" separator="or" close=")" >
+			t.part_insured_id in
+			<foreach collection="idsItem" index="index" item="id" open="(" separator="," close=")" >
+				#{id}
+			</foreach>
+		</foreach>
+		</if>
+		)
+	</select>
+	
+	<select id="getOccupationByCode" parameterType="string" resultType="map">
+	select t.industry_code,t.occupation_type_code,t.occupation_code,t.occupation_class from prl_ins_occupation_ref t
+	where t.occupation_code = #{occupationCode}
+	</select>
+	
+	<select id="findEndorseEffectiveDate" parameterType="long" resultType="date">
+	SELECT MAX(business_start_date) effective_date FROM ocp_policy_versions where contract_id = #{contractId}
+	</select>
+	
+	<select id="invokeUpdateOTI" parameterType="map" statementType="CALLABLE" >
+      {
+         #{p_result,mode=OUT,jdbcType=NUMERIC} = call prl_pk2_oti.oti_invoke_update(
+               #{p_contract_id,mode=IN,jdbcType=NUMERIC},
+               #{p_username,mode=IN,jdbcType=VARCHAR},  
+               #{p_update_type,mode=IN,jdbcType=VARCHAR},
+               #{p_effective_date,mode=IN,jdbcType=DATE}
+         )
+      }
+   </select>
+   
+   <select id="getCheckTotalPremium" parameterType="map" resultType="decimal">
+	    SELECT sum(t.prem_total) FROM prl_part_plan_ins_ext t 
+     	where t.contract_id = #{contractId}
+     	 and t.action_code <![CDATA[<>]]> 'D'
+     	  and t.top_indicator = 'Y' 
+     	  <if test="ids != null and ids.size > 0">
+ 			AND t.part_insured_id not in 
+			<!-- 处理in的集合超过1000条时Oracle不支持的情况 -->
+			<trim suffixOverrides=" OR t.part_insured_id not in ()">	<!-- 表示删除最后一个条件 -->
+				<foreach collection="ids" item="Id" index="index" open="(" close=")">
+					<if test="index != 0">
+						<choose>
+							<when test="index % 1000 == 999">) OR t.part_insured_id not in (</when>
+							<otherwise>,</otherwise>
+						</choose>
+					</if>
+					#{Id}
+				</foreach>
+			</trim>
+ 		</if>
+	</select>
+</mapper>
+    

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allianz.pa.dao.PrlEopusRenewalNoticeRuleMapper">
+  <resultMap id="BaseResultMap" type="com.allianz.pa.entity.PrlEopusRenewalNoticeRule">
+    <id column="RENEWAL_NOTICE_RULE_ID" jdbcType="DECIMAL" property="renewalNoticeRuleId" />
+    <result column="RENEWAL_NOTICE_RULE_NAME" jdbcType="VARCHAR" property="renewalNoticeRuleName" />
+    <result column="AGENCY_CODE" jdbcType="VARCHAR" property="agencyCode" />
+    <result column="GROUP_PLAN_CODE" jdbcType="VARCHAR" property="groupPlanCode" />
+    <result column="RENEWAL_NOTICE_YN" jdbcType="VARCHAR" property="renewalNoticeYn" />
+    <result column="NOTICE_TEMPLATE" jdbcType="VARCHAR" property="noticeTemplate" />
+    <result column="FIRST_NE_BEFORE_ENDDATE_DAYS" jdbcType="DECIMAL" property="firstNeBeforeEnddateDays" />
+    <result column="SECOND_NE_BEFORE_ENDDATE_DAYS" jdbcType="DECIMAL" property="secondNeBeforeEnddateDays" />
+    <result column="THIRD_NE_BEFORE_ENDDATE_DAYS" jdbcType="DECIMAL" property="thirdNeBeforeEnddateDays" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="CREATED_USER" jdbcType="VARCHAR" property="createdUser" />
+    <result column="LAST_UPDATED_USER" jdbcType="VARCHAR" property="lastUpdatedUser" />
+    <result column="CREATED_DATE" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="LAST_UPDATED_DATE" jdbcType="TIMESTAMP" property="lastUpdatedDate" />
+    <result column="FOURTH_NE_BEFORE_ENDDATE_DAYS" jdbcType="DECIMAL" property="fourthNeBeforeEnddateDays" />
+    <result column="FIFTH_NE_BEFORE_ENDDATE_DAYS" jdbcType="DECIMAL" property="fifthNeBeforeEnddateDays" />
+    <result column="AUTO_RENEWAL_NOTICE_YN" jdbcType="VARCHAR" property="autoRenewalNoticeYn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RENEWAL_NOTICE_RULE_ID, RENEWAL_NOTICE_RULE_NAME, AGENCY_CODE, GROUP_PLAN_CODE, RENEWAL_NOTICE_YN, 
+    NOTICE_TEMPLATE, FIRST_NE_BEFORE_ENDDATE_DAYS, SECOND_NE_BEFORE_ENDDATE_DAYS, THIRD_NE_BEFORE_ENDDATE_DAYS, 
+    STATUS, REMARK, CREATED_USER, LAST_UPDATED_USER, CREATED_DATE, LAST_UPDATED_DATE, 
+    FOURTH_NE_BEFORE_ENDDATE_DAYS, FIFTH_NE_BEFORE_ENDDATE_DAYS, AUTO_RENEWAL_NOTICE_YN
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PRL_EOPUS_RENEWAL_NOTICE_RULE
+    where RENEWAL_NOTICE_RULE_ID = #{renewalNoticeRuleId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from PRL_EOPUS_RENEWAL_NOTICE_RULE
+    where RENEWAL_NOTICE_RULE_ID = #{renewalNoticeRuleId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeRule">
+    insert into PRL_EOPUS_RENEWAL_NOTICE_RULE (RENEWAL_NOTICE_RULE_ID, RENEWAL_NOTICE_RULE_NAME, 
+      AGENCY_CODE, GROUP_PLAN_CODE, RENEWAL_NOTICE_YN, 
+      NOTICE_TEMPLATE, FIRST_NE_BEFORE_ENDDATE_DAYS, 
+      SECOND_NE_BEFORE_ENDDATE_DAYS, THIRD_NE_BEFORE_ENDDATE_DAYS, 
+      STATUS, REMARK, CREATED_USER, 
+      LAST_UPDATED_USER, CREATED_DATE, LAST_UPDATED_DATE, 
+      FOURTH_NE_BEFORE_ENDDATE_DAYS, FIFTH_NE_BEFORE_ENDDATE_DAYS, 
+      AUTO_RENEWAL_NOTICE_YN)
+    values (#{renewalNoticeRuleId,jdbcType=DECIMAL}, #{renewalNoticeRuleName,jdbcType=VARCHAR}, 
+      #{agencyCode,jdbcType=VARCHAR}, #{groupPlanCode,jdbcType=VARCHAR}, #{renewalNoticeYn,jdbcType=VARCHAR}, 
+      #{noticeTemplate,jdbcType=VARCHAR}, #{firstNeBeforeEnddateDays,jdbcType=DECIMAL}, 
+      #{secondNeBeforeEnddateDays,jdbcType=DECIMAL}, #{thirdNeBeforeEnddateDays,jdbcType=DECIMAL}, 
+      #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createdUser,jdbcType=VARCHAR}, 
+      #{lastUpdatedUser,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{lastUpdatedDate,jdbcType=TIMESTAMP}, 
+      #{fourthNeBeforeEnddateDays,jdbcType=DECIMAL}, #{fifthNeBeforeEnddateDays,jdbcType=DECIMAL}, 
+      #{autoRenewalNoticeYn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeRule">
+    insert into PRL_EOPUS_RENEWAL_NOTICE_RULE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="renewalNoticeRuleId != null">
+        RENEWAL_NOTICE_RULE_ID,
+      </if>
+      <if test="renewalNoticeRuleName != null">
+        RENEWAL_NOTICE_RULE_NAME,
+      </if>
+      <if test="agencyCode != null">
+        AGENCY_CODE,
+      </if>
+      <if test="groupPlanCode != null">
+        GROUP_PLAN_CODE,
+      </if>
+      <if test="renewalNoticeYn != null">
+        RENEWAL_NOTICE_YN,
+      </if>
+      <if test="noticeTemplate != null">
+        NOTICE_TEMPLATE,
+      </if>
+      <if test="firstNeBeforeEnddateDays != null">
+        FIRST_NE_BEFORE_ENDDATE_DAYS,
+      </if>
+      <if test="secondNeBeforeEnddateDays != null">
+        SECOND_NE_BEFORE_ENDDATE_DAYS,
+      </if>
+      <if test="thirdNeBeforeEnddateDays != null">
+        THIRD_NE_BEFORE_ENDDATE_DAYS,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="createdUser != null">
+        CREATED_USER,
+      </if>
+      <if test="lastUpdatedUser != null">
+        LAST_UPDATED_USER,
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE,
+      </if>
+      <if test="lastUpdatedDate != null">
+        LAST_UPDATED_DATE,
+      </if>
+      <if test="fourthNeBeforeEnddateDays != null">
+        FOURTH_NE_BEFORE_ENDDATE_DAYS,
+      </if>
+      <if test="fifthNeBeforeEnddateDays != null">
+        FIFTH_NE_BEFORE_ENDDATE_DAYS,
+      </if>
+      <if test="autoRenewalNoticeYn != null">
+        AUTO_RENEWAL_NOTICE_YN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="renewalNoticeRuleId != null">
+        #{renewalNoticeRuleId,jdbcType=DECIMAL},
+      </if>
+      <if test="renewalNoticeRuleName != null">
+        #{renewalNoticeRuleName,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyCode != null">
+        #{agencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPlanCode != null">
+        #{groupPlanCode,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalNoticeYn != null">
+        #{renewalNoticeYn,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTemplate != null">
+        #{noticeTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstNeBeforeEnddateDays != null">
+        #{firstNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="secondNeBeforeEnddateDays != null">
+        #{secondNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdNeBeforeEnddateDays != null">
+        #{thirdNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUser != null">
+        #{createdUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedUser != null">
+        #{lastUpdatedUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedDate != null">
+        #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fourthNeBeforeEnddateDays != null">
+        #{fourthNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="fifthNeBeforeEnddateDays != null">
+        #{fifthNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="autoRenewalNoticeYn != null">
+        #{autoRenewalNoticeYn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeRule">
+    update PRL_EOPUS_RENEWAL_NOTICE_RULE
+    <set>
+      <if test="renewalNoticeRuleName != null">
+        RENEWAL_NOTICE_RULE_NAME = #{renewalNoticeRuleName,jdbcType=VARCHAR},
+      </if>
+      <if test="agencyCode != null">
+        AGENCY_CODE = #{agencyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="groupPlanCode != null">
+        GROUP_PLAN_CODE = #{groupPlanCode,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalNoticeYn != null">
+        RENEWAL_NOTICE_YN = #{renewalNoticeYn,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeTemplate != null">
+        NOTICE_TEMPLATE = #{noticeTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="firstNeBeforeEnddateDays != null">
+        FIRST_NE_BEFORE_ENDDATE_DAYS = #{firstNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="secondNeBeforeEnddateDays != null">
+        SECOND_NE_BEFORE_ENDDATE_DAYS = #{secondNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="thirdNeBeforeEnddateDays != null">
+        THIRD_NE_BEFORE_ENDDATE_DAYS = #{thirdNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdUser != null">
+        CREATED_USER = #{createdUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedUser != null">
+        LAST_UPDATED_USER = #{lastUpdatedUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedDate != null">
+        LAST_UPDATED_DATE = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fourthNeBeforeEnddateDays != null">
+        FOURTH_NE_BEFORE_ENDDATE_DAYS = #{fourthNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="fifthNeBeforeEnddateDays != null">
+        FIFTH_NE_BEFORE_ENDDATE_DAYS = #{fifthNeBeforeEnddateDays,jdbcType=DECIMAL},
+      </if>
+      <if test="autoRenewalNoticeYn != null">
+        AUTO_RENEWAL_NOTICE_YN = #{autoRenewalNoticeYn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RENEWAL_NOTICE_RULE_ID = #{renewalNoticeRuleId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allianz.pa.entity.PrlEopusRenewalNoticeRule">
+    update PRL_EOPUS_RENEWAL_NOTICE_RULE
+    set RENEWAL_NOTICE_RULE_NAME = #{renewalNoticeRuleName,jdbcType=VARCHAR},
+      AGENCY_CODE = #{agencyCode,jdbcType=VARCHAR},
+      GROUP_PLAN_CODE = #{groupPlanCode,jdbcType=VARCHAR},
+      RENEWAL_NOTICE_YN = #{renewalNoticeYn,jdbcType=VARCHAR},
+      NOTICE_TEMPLATE = #{noticeTemplate,jdbcType=VARCHAR},
+      FIRST_NE_BEFORE_ENDDATE_DAYS = #{firstNeBeforeEnddateDays,jdbcType=DECIMAL},
+      SECOND_NE_BEFORE_ENDDATE_DAYS = #{secondNeBeforeEnddateDays,jdbcType=DECIMAL},
+      THIRD_NE_BEFORE_ENDDATE_DAYS = #{thirdNeBeforeEnddateDays,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATED_USER = #{createdUser,jdbcType=VARCHAR},
+      LAST_UPDATED_USER = #{lastUpdatedUser,jdbcType=VARCHAR},
+      CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      LAST_UPDATED_DATE = #{lastUpdatedDate,jdbcType=TIMESTAMP},
+      FOURTH_NE_BEFORE_ENDDATE_DAYS = #{fourthNeBeforeEnddateDays,jdbcType=DECIMAL},
+      FIFTH_NE_BEFORE_ENDDATE_DAYS = #{fifthNeBeforeEnddateDays,jdbcType=DECIMAL},
+      AUTO_RENEWAL_NOTICE_YN = #{autoRenewalNoticeYn,jdbcType=VARCHAR}
+    where RENEWAL_NOTICE_RULE_ID = #{renewalNoticeRuleId,jdbcType=DECIMAL}
+  </update>
+</mapper>
